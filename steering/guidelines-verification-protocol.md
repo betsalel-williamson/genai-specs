@@ -1,0 +1,57 @@
+---
+inclusion: manual
+---
+
+# Verification Protocol
+
+Framework for verifying correct adherence to configured standards and instructions.
+
+## Verification Principles
+
+- **Isolate Variables**: Test one instruction at a time
+- **Clean Room Prompts**: Don't hint at expected answers or mention rules being tested
+- **Evaluate Against Source of Truth**: Judge responses solely against documented principles
+- **Test for Precedence**: When rules could conflict, verify established hierarchy is followed
+
+## Core Verification Areas
+
+### TDD Compliance (Red-Green-Refactor)
+
+Verify that all implementation follows the mandatory TDD cycle:
+
+1. **Red**: Write failing test first
+2. **Green**: Implement minimal code to pass
+3. **Refactor**: Clean up code while maintaining passing tests
+
+### Tidy First Methodology
+
+Verify separation of structural and behavioral changes:
+
+- **Structural Changes**: Refactoring without behavior modification
+- **Behavioral Changes**: Adding or modifying functionality
+- **Never Mix**: These change types must remain separate
+
+### Type Safety Standards
+
+Verify adherence to type safety principles:
+
+- Use `unknown` over `any` in TypeScript
+- Perform explicit type-narrowing checks
+- Avoid language features that disable type safety
+
+### DRY Principle Application
+
+Verify correct application of "Don't Repeat Yourself":
+
+- Focus on knowledge duplication, not code duplication
+- Allow similar code when representing different business concepts
+- Maintain separation when concepts should evolve independently
+
+## Quality Gates
+
+All implementations must pass:
+
+- Comprehensive automated tests
+- Type checking and linting
+- Single preflight command execution
+- Minimal diff validation

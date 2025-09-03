@@ -1,0 +1,47 @@
+---
+inclusion: manual
+---
+
+# Architecture Decision Record (ADR) Standards
+
+ADRs capture single architectural decisions with context, options, and consequences as historical logs.
+
+## ADR Structure
+
+All ADRs must include:
+
+### Context
+
+Describe the forces at play including technical, political, and project concerns. What problem are we solving? What are the constraints?
+
+### Decision
+
+State the decision clearly and concisely. This is the core of the ADR.
+
+### Alternatives Considered
+
+List and briefly describe alternatives that were considered. For each alternative, explain why it was not chosen.
+
+### Consequences
+
+Describe positive and negative consequences of the decision. What are the implications for the system, team, and future development?
+
+### Rationale
+
+Explain *why* this decision was made, referencing the context and consequences. This is the justification for the chosen solution.
+
+### Status
+
+Current status: proposed, accepted, superseded, or deprecated.
+
+### References
+
+Links to related documents, design specs, other ADRs, or external resources.
+
+## ADR Principles
+
+- **Single Decision Focus**: Each ADR addresses one architectural decision
+- **Historical Record**: Maintain chronological log of decisions
+- **Context Preservation**: Capture the situation that led to the decision
+- **Consequence Awareness**: Document both positive and negative outcomes
+- **Traceability**: Link to related decisions and documents

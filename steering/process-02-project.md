@@ -1,0 +1,63 @@
+---
+inclusion: always
+---
+
+# Project Practices
+
+General project practices that apply across all languages and technologies.
+
+## Documentation Standards
+
+### Clear Documentation and Usage Examples
+
+Provide comprehensive documentation for configurations, including evaluation instructions and common use cases.
+
+- **Principle**: Use Markdown (`.md`) for documentation in this project
+- **Principle**: Include practical examples with shell commands
+- **Principle**: Explain commands with glob patterns and output flags
+- **Principle**: Provide clear usage instructions
+
+## File Organization Standards
+
+### Directory Structure
+
+- Use clear, descriptive directory names that reflect business domains
+- Keep related files grouped together
+- Separate concerns (tests, documentation, configuration)
+
+### Naming Conventions
+
+- Use consistent naming patterns across the project
+- Prefer descriptive names over abbreviated ones
+- Follow language-specific conventions (kebab-case for files, camelCase for variables, etc.)
+
+## Testing Practices
+
+### File I/O in Tests
+
+For simple file input/output operations, prefer creating temporary files directly within tests rather than extensive mocking. This approach enhances test clarity and realism. Mocking should be reserved for complex interactions with external libraries or systems where setting up realistic test data is overly cumbersome or introduces unnecessary dependencies.
+
+## Spec Workflow
+
+### Steering File Organization
+
+- **Always included**: Core principles that apply throughout development
+- **Manual inclusion**: Phase-specific standards (use `#filename` to include when needed)
+- **Conditional inclusion**: Technology-specific guidelines based on file patterns
+
+### Context Efficiency
+
+- Keep steering context lean by using appropriate inclusion strategies
+- Only load standards when they're actually needed for the current work
+- Use manual inclusion for specialized or phase-specific guidance
+
+### Phase Reminders
+
+When working on specific phases, remember to include relevant standards or remind the coder to include them:
+
+- Requirements phase: Use `#standards-user-story`
+- Design phase: Use `#standards-design`
+- Task creation: Use `#standards-task`
+- Architecture: Use `#standards-architecture`
+- Decisions: Use `#standards-decision`
+- Guidelines: Use `#standards-guidelines`

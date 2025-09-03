@@ -1,0 +1,12 @@
+# Env files
+*.env
+
+# Node
+node_modules/
+package-lock.json
+
+# Vale
+.vale/Google
+
+# Log files
+log.txt

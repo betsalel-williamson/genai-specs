@@ -1,0 +1,10 @@
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "Running pre-commit hook..."
+
+npx markdownlint-cli2 '**/*.md'
+vale --no-exit --config .vale.ini --minAlertLevel error .
+
+git update-index --again

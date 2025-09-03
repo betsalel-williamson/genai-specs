@@ -1,0 +1,62 @@
+---
+inclusion: always
+---
+
+# Development Process Standards
+
+All implementation must follow Test-Driven Development (TDD) and "Tidy First" methodology.
+
+## TDD Methodology
+
+- **Red → Green → Refactor Cycle**
+  Always follow this sequence: write a failing test, implement minimal code to pass, then refactor
+- **Start with Failing Tests**
+  Write the simplest failing test that defines a small increment of functionality
+- **Minimal Implementation**
+  Write just enough code to make the test pass - no more
+- **Meaningful Test Names**
+  Use descriptive test names that describe behavior (for example, "shouldSumTwoPositiveNumbers")
+- **Clear Test Failures**
+  Make test failures informative and actionable
+
+## Tidy First Approach
+
+Separate all changes into two distinct types:
+
+- **Structural Changes**
+  Rearranging code without changing behavior (renaming, extracting methods, moving code)
+- **Behavioral Changes**
+  Adding or modifying actual functionality
+
+**Critical Rules:**
+
+- Never mix structural and behavioral changes in the same commit
+- Always make structural changes first when both types are needed
+- Validate structural changes don't alter behavior by running tests before and after
+
+## Commit Discipline
+
+Only commit when:
+
+- **All** tests are passing
+- **All** compiler/linter warnings are resolved
+- The change represents a single logical unit of work
+- Commit messages clearly state whether the commit contains structural or behavioral changes
+- Use small, frequent commits rather than large, infrequent ones
+
+## Code Quality Standards
+
+- Remove duplication ruthlessly
+- Express intent clearly through naming and structure
+- Make dependencies explicit
+- Keep methods small and focused on a single responsibility
+- Minimize state and side effects
+- Use the simplest solution that could possibly work
+
+## Refactoring Guidelines
+
+- Refactor only when tests are passing (in the "Green" phase)
+- Use established refactoring patterns with their proper names
+- Make one refactoring change at a time
+- Run tests after each refactoring step
+- Prioritize refactorings that remove duplication or improve clarity

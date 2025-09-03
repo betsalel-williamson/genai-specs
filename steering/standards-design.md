@@ -1,0 +1,56 @@
+---
+inclusion: manual
+---
+
+# Design Standards
+
+Design documents bridge the "what" of requirements and the "how" of implementation at a feature level. They detail the technical approach for specific functionalities, always aligning with the overarching architectural decisions.
+
+## Design Document Structure
+
+All design documents must include:
+
+### 1. Objective
+
+A brief, one-sentence statement describing the goal of this design, directly linked to the user story's goal and consistent with the project's architecture.
+
+### 2. Technical Design
+
+A high-level overview of the proposed solution. Describe new components, services, or modules and how they interact with existing systems. Include diagrams or flowcharts when they add clarity. This section must explicitly reference relevant architecture documents (see `standards-architecture.md`) that inform this design.
+
+### 3. Key Changes
+
+#### 3.1. API Contracts
+
+Details of any new or modified API endpoints. Include request/response formats and status codes.
+
+#### 3.2. Data Models
+
+Description of any new or modified database schemas, tables, or data structures.
+
+#### 3.3. Component Responsibilities
+
+A breakdown of new or modified frontend and backend components and their specific roles.
+
+### 4. Alternatives Considered
+
+A brief summary of other approaches considered and why the proposed design was chosen. This provides crucial future context.
+
+### 5. Out of Scope
+
+A clear list of what this design does *not* address to prevent scope creep.
+
+## Design Principles
+
+- **Single Responsibility**: Each component should have one clear purpose
+- **Loose Coupling**: Components interact through stable, well-defined interfaces
+- **High Cohesion**: Related functionality should be grouped together
+- **Fail-Safe Design**: Assume components will fail and design for graceful degradation
+- **Observable by Default**: Include logging, metrics, and tracing from the start
+
+## Document Creation and Storage
+
+New design documents should be created by copying this `standards-design.md` file as a template. They are derived from and must adhere to the guidelines set forth in the project's architecture documents.
+
+**Storage Location:**
+Design documents for specific features or work items should be stored within the `.kiro/specs/{feature_name}/` directory, named `design.md`. For example, a design document for the `pkl-highlighting` feature would be located at `.kiro/specs/pkl-highlighting/design.md`. This structure ensures that design documents are co-located with their related requirements and tasks, providing a clear, scalable, and traceable organization for project specifications.

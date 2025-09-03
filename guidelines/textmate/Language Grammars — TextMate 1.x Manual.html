@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" type="image/vnd.microsoft.icon" sizes="16x16 32x32" href="https://macromates.com/textmate/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://macromates.com/css/bootstrap-11d3994106039e25b079a4adada40bcc.css">
+  <title>Language Grammars — TextMate 1.x Manual</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+  <a class="navbar-brand" href="https://macromates.com/">TextMate <span class="d-sm-none d-md-inline">for macOS</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">TextMate</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="https://macromates.com/">Home</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://macromates.com/textmate/manual/">Documentation (2.0)</a>
+              <a class="dropdown-item" href="https://macromates.com/manual/en/">Documentation (1.x)</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://macromates.com/blog/">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://sigpipe.macromates.com/">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://macromates.com/support">Support</a>
+          </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+<main>
+
+
+<style type="text/css">
+  :root {
+    --chapter-index: 11;
+  }
+</style>
+
+<div class="bg-alternative border-bottom mb-4">
+
+<div class="container py-2">
+  <div class="row">
+    <div class="col">
+      <a href="https://macromates.com/manual/en/drag_commands" class="no-text-decoration">
+        <svg role="img" class="svg-icon-sm"><use xlink:href="https://macromates.com/textmate/img/icons.svg#icon-prev"/></svg>
+        <span class="d-none d-sm-inline">Drag Commands</span>
+      </a>
+    </div>
+
+    <div class="col text-center">
+      <a href="." class="no-text-decoration">
+        <svg role="img" class="svg-icon-sm"><use xlink:href="https://macromates.com/textmate/img/icons.svg#icon-list"/></svg>
+        <span class="d-none d-md-inline">Table of Contents</span>
+      </a>
+    </div>
+
+    <div class="col text-right">
+      <a href="https://macromates.com/manual/en/scope_selectors" class="no-text-decoration">
+        <span class="d-none d-sm-inline">Scope Selectors</span>
+        <svg role="img" class="svg-icon-sm"><use xlink:href="https://macromates.com/textmate/img/icons.svg#icon-next"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-primary" role="alert">
+        This manual covers TextMate 1.5.1 — Go to <a href="/textmate/manual/">TextMate 2 manual</a>
+      </div>
+
+      <div class="enumerate-headers">
+        <h1 id="language_grammars">Language Grammars</h1>
+
+<p>Language grammars are used to assign names to document elements such as keywords, comments, strings or similar. The purpose of this is to allow styling (syntax highlighting) and to make the text editor “smart” about which context the caret is in. For example you may want a key stroke or tab trigger to act differently depending on the context, or you may want to disable spell check as you type those portions of your text document which are not prose (for example HTML tags).</p>
+
+<p>The language grammar is used only to parse the document and assign names to subsets of this document. Then <a href="scope_selectors">scope selectors</a> can be used for styling, preferences and deciding how keys and tab triggers should expand.</p>
+
+<p>For a more thorough introduction to this concept see the <a href="https://macromates.com/blog/2005/introduction-to-scopes/">introduction to scopes</a> blog post.</p>
+
+<h2 id="example_grammar">Example Grammar</h2>
+
+<p>You can create a new language grammar by opening the bundle editor (Window → Show Bundle Editor) and select “New Language” from the add button in the lower left corner.</p>
+
+<p>This will give you a starting grammar which will look like the one below, so let us start by explaining that.</p>
+
+<pre><code> 1  {  scopeName = 'source.untitled';
+ 2     fileTypes = ( );
+ 3     foldingStartMarker = '\{\s*$';
+ 4     foldingStopMarker = '^\s*\}';
+ 5     patterns = (
+ 6        {  name = 'keyword.control.untitled';
+ 7           match = '\b(if|while|for|return)\b';
+ 8        },
+ 9        {  name = 'string.quoted.double.untitled';
+10           begin = '"';
+11           end = '"';
+12           patterns = ( 
+13              {  name = 'constant.character.escape.untitled';
+14                 match = '\\.';
+15              }
+16           );
+17        },
+18     );
+19  }
+</code></pre>
+
+<p>The format is the <a href="appendix#property-list-format">property list format</a> and at the root level there are five key/value pairs:</p>
+
+<ul>
+  <li>
+    <p><code>scopeName</code> (line 1) — this should be a unique name for the grammar, following the convention of being a dot-separated name where each new (left-most) part specializes the name. Normally it would be a two-part name where the first is either <code>text</code> or <code>source</code> and the second is the name of the language or document type. But if you are specializing an existing type, you probably want to derive the name from the type you are specializing. For example Markdown is <code>text.html.markdown</code> and Ruby on Rails (<code>rhtml</code> files) is <code>text.html.rails</code>. The advantage of deriving it from (in this case) <code>text.html</code> is that everything which works in the <code>text.html</code> scope will also work in the <code>text.html.«something»</code> scope (but with a lower precedence than something specifically targeting <code>text.html.«something»</code>).</p>
+  </li>
+  <li>
+    <p><code>fileTypes</code> (line 2) — this is an array of file type extensions that the grammar should (by default) be used with. This is referenced when TextMate does not know what grammar to use for a file the user opens. If however the user selects a grammar from the language pop-up in the status bar, TextMate will remember that choice.</p>
+  </li>
+  <li>
+    <p><code>foldingStartMarker</code> / <code>foldingStopMarker</code> (line 3-4) — these are regular expressions that lines (in the document) are matched against. If a line matches one of the patterns (but not both), it becomes a folding marker (see the <a href="navigation_overview#customizing-foldings">foldings</a> section for more info).</p>
+  </li>
+  <li>
+    <p><code>patterns</code> (line 5-18) — this is an array with the actual rules used to parse the document. In this example there are two rules (line 6-8 and 9-17). Rules will be explained in the next section.</p>
+  </li>
+</ul>
+
+<p>There are two additional (root level) keys which are not used in the example:</p>
+
+<ul>
+  <li>
+    <p><code>firstLineMatch</code> — a regular expression which is matched against the first line of the document (when it is first loaded). If it matches, the grammar is used for the document (unless there is a user override). Example: <code>^#!/.*\bruby\b</code>.</p>
+  </li>
+  <li>
+    <p><code>repository</code> — a dictionary (i.e. key/value pairs) of rules which can be included from other places in the grammar. The key is the name of the rule and the value is the actual rule. Further explanation (and example) follow with the description of the <code>include</code> rule key.</p>
+  </li>
+</ul>
+
+<h2 id="language_rules">Language Rules</h2>
+
+<p>A language rule is responsible for matching a portion of the document. Generally a rule will specify a name which gets assigned to the part of the document which is matched by that rule.</p>
+
+<p>There are two ways a rule can match the document. It can either provide a single regular expression, or two. As with the <code>match</code> key in the first rule above (lines 6-8), everything which matches that regular expression will then get the name specified by that rule. For example the first rule above assigns the name <code>keyword.control.untitled</code> to the following keywords: <code>if</code>, <code>while</code>, <code>for</code> and <code>return</code>. We can then use a <a href="scope_selectors">scope selector</a> of <code>keyword.control</code> to have our <a href="themes">theme</a> style these keywords.</p>
+
+<p>The other type of match is the one used by the second rule (lines 9-17). Here two regular expressions are given using the <code>begin</code> and <code>end</code> keys. The name of the rule will be assigned from where the begin pattern matches to where the end pattern matches (including both matches). If there is no match for the end pattern, the end of the document is used.</p>
+
+<p>In this latter form, the rule can have sub-rules which are matched against the part between the begin and end matches. In our example here we match strings that start and end with a quote character and escape characters are marked up as <code>constant.character.escape.untitled</code> inside the matched strings (line 13-15).</p>
+
+<p><em>Note that the regular expressions are matched against only a <strong>single line of the document</strong> at a time. That means it is <strong>not possible to use a pattern that matches multiple lines</strong>.</em> The reason for this is technical: being able to restart the parser at an arbitrary line and having to re-parse only the minimal number of lines affected by an edit. In most situations it is possible to use the begin/end model to overcome this limitation.</p>
+
+<h2 id="rule_keys">Rule Keys</h2>
+
+<p>What follows is a list of all keys which can be used in a rule.</p>
+
+<ul>
+  <li>
+    <p><code>name</code> — the name which gets assigned to the portion matched. This is used for styling and scope-specific settings and actions, which means it should generally be derived from one of the standard names (see <a href="language_grammars#naming-conventions">naming conventions</a> later).</p>
+  </li>
+  <li>
+    <p><code>match</code> — a regular expression which is used to identify the portion of text to which the name should be assigned. Example: <code>'\b(true|false)\b'</code>.</p>
+  </li>
+  <li>
+    <p><code>begin</code>, <code>end</code> — these keys allow matches which span several lines and must both be mutually exclusive with the <code>match</code> key. Each is a regular expression pattern. <code>begin</code> is the pattern that starts the block and <code>end</code> is the pattern which ends the block. Captures from the <code>begin</code> pattern can be referenced in the <code>end</code> pattern by using normal regular expression back-references. This is often used with here-docs, for example:</p>
+
+    <pre><code> {   name = 'string.unquoted.here-doc';
+     begin = '&lt;&lt;(\w+)';  // match here-doc token
+     end = '^\1$';       // match end of here-doc
+ }
+</code></pre>
+
+    <p>A <code>begin</code>/<code>end</code> rule can have nested patterns using the <code>patterns</code> key. For example we can do:</p>
+
+    <pre><code> {  begin = '&lt;%'; end = '%&gt;'; patterns = (
+       { match = '\b(def|end)\b'; … },
+       …
+    );
+ };
+</code></pre>
+
+    <p>The above will match <code>def</code> and <code>end</code> keywords inside a <code>&lt;% … %&gt;</code> block (though for embedded languages see info about the <code>include</code> key later).</p>
+  </li>
+  <li>
+    <p><code>contentName</code> — this key is similar to the <code>name</code> key but only assigns the name to the text <strong>between</strong> what is matched by the <code>begin</code>/<code>end</code> patterns. For example to get the text between <code>#if 0</code> and <code>#endif</code> marked up as a comment, we would do:</p>
+
+    <pre><code> {  begin = '#if 0(\s.*)?$'; end = '#endif';
+    contentName = 'comment.block.preprocessor';
+ };
+</code></pre>
+  </li>
+  <li>
+    <p><code>captures</code>, <code>beginCaptures</code>, <code>endCaptures</code> — these keys allow you to assign attributes to the captures of the <code>match</code>, <code>begin</code>, or <code>end</code> patterns. Using the <code>captures</code> key for a <code>begin</code>/<code>end</code> rule is short-hand for giving both <code>beginCaptures</code> and <code>endCaptures</code> with same values.</p>
+
+    <p>The value of these keys is a dictionary with the key being the capture number and the value being a dictionary of attributes to assign to the captured text. Currently <code>name</code> is the only attribute supported. Here is an example:</p>
+
+    <pre><code> {  match = '(@selector\()(.*?)(\))';
+    captures = {
+       1 = { name = 'storage.type.objc'; };
+       3 = { name = 'storage.type.objc'; };
+    };
+ };
+</code></pre>
+
+    <p>In that example we match text like <code>@selector(windowWillClose:)</code> but the <code>storage.type.objc</code> name will only be assigned to <code>@selector(</code> and <code>)</code>.</p>
+  </li>
+  <li>
+    <p><code>include</code> — this allows you to reference a different language, recursively reference the grammar itself or a rule declared in this file’s repository.</p>
+
+    <ol>
+      <li>
+        <p>To reference another language, use the scope name of that language:</p>
+
+        <pre><code> {  begin = '&lt;\?(php|=)?'; end = '\?&gt;'; patterns = (
+       { include = "source.php"; }
+    );
+ }
+</code></pre>
+      </li>
+      <li>
+        <p>To reference the grammar itself, use <code>$self</code>:</p>
+
+        <pre><code> {  begin = '\('; end = '\)'; patterns = (
+       { include = "$self"; }
+    );
+ }
+</code></pre>
+      </li>
+      <li>
+        <p>To reference a rule from the current grammars repository, prefix the name with a pound sign (<code>#</code>):</p>
+
+        <pre><code> patterns = (
+    {  begin = '"'; end = '"'; patterns = (
+          { include = "#escaped-char"; },
+          { include = "#variable"; }
+       );
+    },
+    …
+ ); // end of patterns
+ repository = {
+    escaped-char = { match = '\\.'; };
+    variable =     { match = '\$[a-zA-Z0-9_]+'; };
+ };
+</code></pre>
+
+        <p>This can also be used to match recursive constructs like balanced characters:</p>
+
+        <pre><code> patterns = (
+    {  name = 'string.unquoted.qq.perl';
+       begin = 'qq\('; end = '\)'; patterns = (
+          { include = '#qq_string_content'; },
+       );
+    },
+    …
+ ); // end of patterns
+ repository = {
+    qq_string_content = {
+       begin = '\('; end = '\)'; patterns = (
+          { include = '#qq_string_content'; },
+       );
+    };
+ };
+</code></pre>
+
+        <p>This will correctly match a string like: <code>qq( this (is (the) entire) string)</code>.</p>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="naming_conventions">Naming Conventions</h2>
+
+<!-- punctuation scope: http://pastie.textmate.org/private/ciiuinopemstdncv1auppa -->
+
+<p>TextMate is free-form in the sense that you can assign basically any name you wish to any part of the document that you can markup with the grammar system and then use that name in <a href="scope_selectors">scope selectors</a>.</p>
+
+<p>There are however conventions so that one <a href="themes">theme</a> can target as many languages as possible, without having dozens of rules specific to each language and also so that functionality (mainly <a href="preferences_items">preferences</a>) can be re-used across languages, for example you probably do not want an apostrophe to be auto-paired when inserted in strings and comments, regardless of the language you are in, so it makes sense to only set this up once.</p>
+
+<p>Before going through the conventions, here are a few things to keep in mind:</p>
+
+<ol>
+  <li>
+    <p>A minimal theme will only assign styles to 10 of the 11 root groups below (<code>meta</code> does not get a visual style), so you should “spread out” your naming i.e. instead of putting everything below <code>keyword</code> (as your formal language definition may insist) you should think “would I want these two elements styled differently?” and if so, they should probably be put into different root groups.</p>
+  </li>
+  <li>
+    <p>Even though you should “spread out” your names, when you have found the group in which you want to place your element (for example <code>storage</code>) you should re-use the existing names used below that group (for <code>storage</code> that is <code>modifier</code> or <code>type</code>) rather than make up a new sub-type. You should however append as much information to the sub-type you choose. For example if you are matching the <code>static</code> storage modifier, then instead of just naming it <code>storage.modifier</code> use <code>storage.modifier.static.«language»</code>. A scope selector of just <code>storage.modifier</code> will match both, but having the extra information in the name means it is possible to specifically target it disregarding the other storage modifiers.</p>
+  </li>
+  <li>
+    <p>Put the language name last in the name. This may seem redundant, since you can generally use a scope selector of: <code>source.«language» storage.modifier</code>, but when embedding languages, this is not always possible.</p>
+  </li>
+</ol>
+
+<p>And now the 11 root groups which are currently in use with some explanation about their intended purpose. This is presented as a hierarchical list but the actual scope name is obtained by joining the name from each level with a dot. For example <code>double-slash</code> is <code>comment.line.double-slash</code>.</p>
+
+<ul>
+  <li>
+    <p><code>comment</code> — for comments.</p>
+
+    <ul>
+      <li><code>line</code> — line comments, we specialize further so that the type of comment start character(s) can be extracted from the scope.
+        <ul>
+          <li><code>double-slash</code> — <code>// comment</code></li>
+          <li><code>double-dash</code> — <code>-- comment</code></li>
+          <li><code>number-sign</code> — <code># comment</code></li>
+          <li><code>percentage</code> — <code>% comment</code></li>
+          <li><em>character</em> — other types of line comments.</li>
+        </ul>
+      </li>
+      <li><code>block</code> — multi-line comments like <code>/* … */</code> and <code>&lt;!-- … --&gt;</code>.
+        <ul>
+          <li><code>documentation</code> — embedded documentation.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code>constant</code> — various forms of constants.</p>
+
+    <ul>
+      <li><code>numeric</code> — those which represent numbers, for example <code>42</code>, <code>1.3f</code>, <code>0x4AB1U</code>.</li>
+      <li><code>character</code> — those which represent characters, for example <code>&amp;lt;</code>, <code>\e</code>, <code>\031</code>.
+        <ul>
+          <li><code>escape</code> — escape sequences like <code>\e</code> would be <code>constant.character.escape</code>.</li>
+        </ul>
+      </li>
+      <li><code>language</code> — constants (generally) provided by the language which are “special” like <code>true</code>, <code>false</code>, <code>nil</code>, <code>YES</code>, <code>NO</code>, etc.</li>
+      <li><code>other</code> — other constants, for example colors in CSS.</li>
+    </ul>
+  </li>
+  <li>
+    <p><code>entity</code> — an entity refers to a larger part of the document, for example a chapter, class, function, or tag. We do not scope the entire entity as <code>entity.*</code> (we use <code>meta.*</code> for that). But we do use <code>entity.*</code> for the “placeholders” in the larger entity, for example if the entity is a chapter, we would use <code>entity.name.section</code> for the chapter title.</p>
+
+    <ul>
+      <li><code>name</code> — we are naming the larger entity.
+        <ul>
+          <li><code>function</code> — the name of a function.</li>
+          <li><code>type</code> — the name of a type declaration or class.</li>
+          <li><code>tag</code> — a tag name.</li>
+          <li><code>section</code> — the name is the name of a section/heading.</li>
+        </ul>
+      </li>
+      <li><code>other</code> — other entities.
+        <ul>
+          <li><code>inherited-class</code> — the superclass/baseclass name.</li>
+          <li><code>attribute-name</code> — the name of an attribute (mainly in tags).</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>invalid</code> — stuff which is “invalid”.
+    <ul>
+      <li><code>illegal</code> — illegal, for example an ampersand or lower-than character in HTML (which is not part of an entity/tag).</li>
+      <li><code>deprecated</code> — for deprecated stuff for example using an API function which is deprecated or using styling with strict HTML.</li>
+    </ul>
+  </li>
+  <li><code>keyword</code> — keywords (when these do not fall into the other groups).
+    <ul>
+      <li><code>control</code> — mainly related to flow control like <code>continue</code>, <code>while</code>, <code>return</code>, etc.</li>
+      <li><code>operator</code> — operators can either be textual (for example <code>or</code>) or be characters.</li>
+      <li><code>other</code> — other keywords.</li>
+    </ul>
+  </li>
+  <li><code>markup</code> — this is for markup languages and generally applies to larger subsets of the text.
+    <ul>
+      <li><code>underline</code> — underlined text.
+        <ul>
+          <li><code>link</code> — this is for links, as a convenience this is derived from <code>markup.underline</code> so that if there is no theme rule which specifically targets <code>markup.underline.link</code> then it will inherit the underline style.</li>
+        </ul>
+      </li>
+      <li><code>bold</code> — bold text (text which is strong and similar should preferably be derived from this name).</li>
+      <li><code>heading</code> — a section header. Optionally provide the heading level as the next element, for example <code>markup.heading.2.html</code> for <code>&lt;h2&gt;…&lt;/h2&gt;</code> in HTML.</li>
+      <li><code>italic</code> — italic text (text which is emphasized and similar should preferably be derived from this name).</li>
+      <li><code>list</code> — list items.
+        <ul>
+          <li><code>numbered</code> — numbered list items.</li>
+          <li><code>unnumbered</code> — unnumbered list items.</li>
+        </ul>
+      </li>
+      <li><code>quote</code> — quoted (sometimes block quoted) text.</li>
+      <li><code>raw</code> — text which is verbatim, for example code listings. Normally spell checking is disabled for <code>markup.raw</code>.</li>
+      <li><code>other</code> — other markup constructs.</li>
+    </ul>
+  </li>
+  <li>
+    <p><code>meta</code> — the meta scope is generally used to markup larger parts of the document. For example the entire line which declares a function would be <code>meta.function</code> and the subsets would be <code>storage.type</code>, <code>entity.name.function</code>, <code>variable.parameter</code> etc. and only the latter would be styled. Sometimes the meta part of the scope will be used only to limit the more general element that is styled, most of the time meta scopes are however used in scope selectors for activation of bundle items. For example in Objective-C there is a meta scope for the interface declaration of a class and the implementation, allowing the same tab-triggers to expand differently, depending on context.</p>
+  </li>
+  <li><code>storage</code> — things relating to “storage”.
+    <ul>
+      <li><code>type</code> — the type of something, <code>class</code>, <code>function</code>, <code>int</code>, <code>var</code>, etc.</li>
+      <li><code>modifier</code> — a storage modifier like <code>static</code>, <code>final</code>, <code>abstract</code>, etc.</li>
+    </ul>
+  </li>
+  <li><code>string</code> — strings.
+    <ul>
+      <li><code>quoted</code> — quoted strings.
+        <ul>
+          <li><code>single</code> — single quoted strings: <code>'foo'</code>.</li>
+          <li><code>double</code> — double quoted strings: <code>"foo"</code>.</li>
+          <li><code>triple</code> — triple quoted strings: <code>"""Python"""</code>.</li>
+          <li><code>other</code> — other types of quoting: <code>$'shell'</code>, <code>%s{...}</code>.</li>
+        </ul>
+      </li>
+      <li><code>unquoted</code> — for things like here-docs and here-strings.</li>
+      <li><code>interpolated</code> — strings which are “evaluated”: <code>`date`</code>, <code>$(pwd)</code>.</li>
+      <li><code>regexp</code> — regular expressions: <code>/(\w+)/</code>.</li>
+      <li><code>other</code> — other types of strings (should rarely be used).</li>
+    </ul>
+  </li>
+  <li><code>support</code> — things provided by a framework or library should be below <code>support</code>.
+    <ul>
+      <li><code>function</code> — functions provided by the framework/library. For example <code>NSLog</code> in Objective-C is <code>support.function</code>.</li>
+      <li><code>class</code> — when the framework/library provides classes.</li>
+      <li><code>type</code> — types provided by the framework/library, this is probably only used for languages derived from C, which has <code>typedef</code> (and <code>struct</code>). Most other languages would introduce new types as classes.</li>
+      <li><code>constant</code> — constants (magic values) provided by the framework/library.</li>
+      <li><code>variable</code> — variables provided by the framework/library. For example <code>NSApp</code> in AppKit.</li>
+      <li><code>other</code> — the above should be exhaustive, but for everything else use <code>support.other</code>.</li>
+    </ul>
+  </li>
+  <li><code>variable</code> — variables. Not all languages allow easy identification (and thus markup) of these.
+    <ul>
+      <li><code>parameter</code> — when the variable is declared as the parameter.</li>
+      <li><code>language</code> — reserved language variables like <code>this</code>, <code>super</code>, <code>self</code>, etc.</li>
+      <li><code>other</code> — other variables, like <code>$some_variables</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-alternative border-bottom border-top my-4">
+
+<div class="container py-2">
+  <div class="row">
+    <div class="col">
+      <a href="https://macromates.com/manual/en/drag_commands" class="no-text-decoration">
+        <svg role="img" class="svg-icon-sm"><use xlink:href="https://macromates.com/textmate/img/icons.svg#icon-prev"/></svg>
+        <span class="d-none d-sm-inline">Drag Commands</span>
+      </a>
+    </div>
+
+    <div class="col text-center">
+      <a href="." class="no-text-decoration">
+        <svg role="img" class="svg-icon-sm"><use xlink:href="https://macromates.com/textmate/img/icons.svg#icon-list"/></svg>
+        <span class="d-none d-md-inline">Table of Contents</span>
+      </a>
+    </div>
+
+    <div class="col text-right">
+      <a href="https://macromates.com/manual/en/scope_selectors" class="no-text-decoration">
+        <span class="d-none d-sm-inline">Scope Selectors</span>
+        <svg role="img" class="svg-icon-sm"><use xlink:href="https://macromates.com/textmate/img/icons.svg#icon-next"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</main>
+
+<footer>
+  <p class="text-center">Copyright © 2024 MacroMates Ltd.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

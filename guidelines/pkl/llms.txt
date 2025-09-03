@@ -1,0 +1,1983 @@
+========================
+CODE SNIPPETS
+========================
+TITLE: Installation Example
+DESCRIPTION: Demonstrates the installation process with nested steps and code block.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/classComments/index.html#_snippet_0
+
+LANGUAGE: text
+CODE:
+```
+name = "Pigeon"
+age = 42
+```
+
+----------------------------------------
+
+TITLE: Installation Steps
+DESCRIPTION: Provides a step-by-step guide for installing the module, emphasizing its simplicity.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/moduleComments/index.html#_snippet_0
+
+LANGUAGE: text
+CODE:
+```
+1. Install it
+    1.  I promise it's easy.
+    2.  You'll figure it out.
+2. Install it
+3. Install it
+```
+
+----------------------------------------
+
+TITLE: Installation Example
+DESCRIPTION: Demonstrates the installation process with nested steps and includes a simple variable assignment.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/classComments/Comments8.html#_snippet_0
+
+LANGUAGE: python
+CODE:
+```
+name = "Pigeon"
+age = 42
+```
+
+----------------------------------------
+
+TITLE: Running Executable Pkl CLI
+DESCRIPTION: Examples of how to run the Pkl command-line interface executables for different platforms after building.
+
+SOURCE: https://github.com/apple/pkl/blob/main/DEVELOPMENT.adoc#_snippet_2
+
+LANGUAGE: shell
+CODE:
+```
+pkl-cli/build/executable/jpkl
+pkl-cli/build/executable/pkl-macos-aarch64
+pkl-cli/build/executable/pkl-macos-amd64
+pkl-cli/build/executable/pkl-linux-amd64
+pkl-cli/build/executable/pkl-alpine-linux-amd64
+pkl-cli/build/executable/pkl-windows-amd64.exe
+```
+
+----------------------------------------
+
+TITLE: Example Pkl Kotlin Codegen CLI Version Output
+DESCRIPTION: Example output shown when running the `pkl-codegen-kotlin --version` command, indicating the installed version and system details.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/kotlin-binding/pages/codegen.adoc#_snippet_5
+
+LANGUAGE: Shell
+CODE:
+```
+pkl-codegen-kotlin {pkl-version} (macOS 14.2, Java 17.0.10)
+```
+
+----------------------------------------
+
+TITLE: Puppet Configuration Language Summary
+DESCRIPTION: Puppet is a configuration management tool that uses a declarative language to describe the desired state of systems. This example shows a basic resource declaration.
+
+SOURCE: https://github.com/apple/pkl/blob/main/DEVELOPMENT.adoc#_snippet_15
+
+LANGUAGE: Puppet
+CODE:
+```
+class myapp {
+  service {
+    'my-service':
+      ensure => running,
+      enable => true,
+      port   => 8080,
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Pkl Project Package Example
+DESCRIPTION: Example of how to package the current working directory's Pkl project.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_23
+
+LANGUAGE: shell
+CODE:
+```
+# Search the current working directory for a project, and package it.
+pkl project package
+```
+
+----------------------------------------
+
+TITLE: Full Example Reference
+DESCRIPTION: Provides a link to a ready-to-go example with full source code for code generation in Java.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/java-binding/pages/codegen.adoc#_snippet_7
+
+LANGUAGE: adoc
+CODE:
+```
+[[full-example]]
+== Full Example
+
+For a ready-to-go example with full source code,
+see link:{uri-codegen-java-example}[codegen-java] in the _pkl-jvm-examples_ repository.
+```
+
+----------------------------------------
+
+TITLE: Pkl Module Example
+DESCRIPTION: Demonstrates a basic Pkl module defining data structures for favorite foods.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/02_filling_out_a_template.adoc#_snippet_5
+
+LANGUAGE: pkl
+CODE:
+```
+favoriteFoods {
+  ["Barn owl"] {
+    "mice"
+  }
+  "red berries"
+  "blue berries"
+}
+adultBirdFoods {
+  ["Barn owl"] {
+    "mice"
+    "fish"
+  }
+  "red berries"
+  "pebbles"
+  ["Falcon"] {
+    "insects"
+    "amphibians"
+  }
+  "worms"
+}
+```
+
+----------------------------------------
+
+TITLE: Doc Comments Example
+DESCRIPTION: Demonstrates the correct usage of doc comments in PKL, including a summary sentence and additional paragraphs with bullet points and external links.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_10
+
+LANGUAGE: pkl
+CODE:
+```
+/// The time allotted for eating lunch.
+///
+/// Note:
+/// * Hamburgers typically take longer to eat than salad.
+/// * Pizza gets prepared per-order.
+///
+/// Orders must be placed on-prem.
+/// See <https://cafeteria.com> for more details.
+lunchHours: Duration
+```
+
+----------------------------------------
+
+TITLE: Example Function Definition
+DESCRIPTION: A simple example function that takes an integer and returns a string. This serves as a basic illustration of function definition within the project.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package2/4.5.6/Module3/index.html#_snippet_3
+
+LANGUAGE: pkl
+CODE:
+```
+function3(n: Int): String
+```
+
+----------------------------------------
+
+TITLE: Pkl Settings File Example for Editor Configuration
+DESCRIPTION: This example shows a typical `settings.pkl` file used to customize the Pkl CLI. It amends the standard `pkl:settings` module and configures IntelliJ IDEA as the preferred editor for opening source code links.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_53
+
+LANGUAGE: Pkl
+CODE:
+```
+amends "pkl:settings"
+
+editor = Idea
+```
+
+----------------------------------------
+
+TITLE: Valid Pkl Code Snippets
+DESCRIPTION: Examples of correctly formatted Pkl code, demonstrating operator placement and structure.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_21
+
+LANGUAGE: pkl
+CODE:
+```
+foo = bar
+  |> baz
+  |> biz
+
+myNum = 1
+  + 2
+  + 3
+  + 4
+```
+
+LANGUAGE: pkl
+CODE:
+```
+myNum = 1 -
+  2 -
+  3 -
+  4
+```
+
+LANGUAGE: pkl
+CODE:
+```
+amends "Foo.pkl"
+
+res1 { "foo" }
+res2 = 1 + 2
+res3 = res2 as Number
+res4 = List(1, 2, 3)
+res5 = if (foo) bar else baz
+```
+
+LANGUAGE: pkl
+CODE:
+```
+typealias Foo = "foo"|"bar"|"baz"
+```
+
+LANGUAGE: pkl
+CODE:
+```
+res1 = new { bar = "bar"; baz = "baz" }
+res2 = new { 1; 2; 3; 4; 5; 6 }
+```
+
+LANGUAGE: pkl
+CODE:
+```
+res {
+  foo = "foo"
+  bar = "bar"
+}
+
+res2 {
+  ["foo"] = "foo"
+  ["bar"] = "bar"
+}
+
+res3 {
+  "foo"
+  "bar"
+}
+```
+
+LANGUAGE: pkl
+CODE:
+```
+res {
+  foo = "foo"
+
+  bar = "bar"
+}
+
+res2 {
+  ["foo"] = "foo"
+
+  ["bar"] = "bar"
+}
+
+res3 {
+  "foo"
+
+  "bar"
+}
+```
+
+LANGUAGE: pkl
+CODE:
+```
+res {
+  foo = "foo"
+  bar = "bar"
+}
+```
+
+LANGUAGE: pkl
+CODE:
+```
+numbers {
+  1
+  2
+  3
+  4
+}
+
+squares {
+  for (num in numbers) {
+    num ** 2
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Download and install Pkl executable on Windows
+DESCRIPTION: Downloads the Pkl executable for Windows, and verifies the installation by printing the version.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_9
+
+LANGUAGE: PowerShell
+CODE:
+```
+Invoke-WebRequest '{uri-pkl-windows-download}' -OutFile pkl.exe
+.\pkl --version
+```
+
+----------------------------------------
+
+TITLE: Property with Code Example (Simplified)
+DESCRIPTION: Shows another property with a code example, this time a simpler assignment.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/modulePropertyComments/index.html#_snippet_1
+
+LANGUAGE: pkl
+CODE:
+```
+property9: [Int](https://pages.github.com/apple/pkl/stdlib/pkl/0.24.0/base/Int.html)[Source](https://example.com/package1/modulePropertyComments.pkl#L123-L456)
+    
+    Summary
+    
+        
+        code = 0
+        
+    
+    Rest
+```
+
+----------------------------------------
+
+TITLE: Pkl Settings File Example
+DESCRIPTION: An example of a Pkl settings file (`~/.pkl/settings.pkl`) that amends the default `pkl.settings` and configures the preferred editor.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_42
+
+LANGUAGE: pkl
+CODE:
+```
+amends "pkl:settings" // <1>
+
+editor = Idea // <2>
+```
+
+----------------------------------------
+
+TITLE: Block Comments Example
+DESCRIPTION: Shows the correct formatting for single-line block comments in PKL, ensuring a space after the opening delimiter and before the closing delimiter.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_12
+
+LANGUAGE: pkl
+CODE:
+```
+/* Let's have a zebra party */
+```
+
+----------------------------------------
+
+TITLE: Jenv Configuration for Gradle and Export
+DESCRIPTION: Enables jenv plugins for Gradle and export to manage JDK versions effectively within the project.
+
+SOURCE: https://github.com/apple/pkl/blob/main/DEVELOPMENT.adoc#_snippet_0
+
+LANGUAGE: shell
+CODE:
+```
+jenv enable-plugin gradle
+jenv enable-plugin export
+```
+
+----------------------------------------
+
+TITLE: Example Module and Data Structure
+DESCRIPTION: Provides an example module definition with a person data structure and a function.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/classComments/Comments8.html#_snippet_1
+
+LANGUAGE: foo.bar
+CODE:
+```
+/// example module
+module foo.bar
+
+person {
+  name = "Pigeon"
+  age = 42
+}
+
+function sing() = "tra-la-la"
+
+class Person {
+  name: String
+  age: Int
+}
+```
+
+----------------------------------------
+
+TITLE: Pkl Configuration Example: Workshop
+DESCRIPTION: A comprehensive Pkl configuration file defining various properties for a workshop, including strings, booleans, numbers, durations, and nested objects.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/03_writing_a_template.adoc#_snippet_10
+
+LANGUAGE: pkl
+CODE:
+```
+title = "Pkl: Configure your Systems in New Ways"
+interactive = true
+seats = 100
+occupancy = 0.85
+duration = 1.5.h
+`abstract` = """
+  With more systems to configure, the software industry is drowning in repetitive and brittle configuration files.
+  YAML and other configuration formats have been turned into programming languages against their will.
+  Unsurprisingly, they don’t live up to the task.
+  Pkl puts you back in control.
+  "
+
+event {
+  name = "Migrating Birds between hemispheres"
+  year = 2024
+}
+
+instructors {
+  "Kate Sparrow"
+  "Jerome Owl"
+}
+
+sessions {
+  new {
+    date = "2/1/2024"
+    time = 30.min
+  }
+  new {
+    date = "2/1/2024"
+    time = 30.min
+  }
+}
+
+assistants {
+  ["kevin"] = "Kevin Parrot"
+  ["betty"] = "Betty Harrier"
+}
+
+agenda {
+  ["beginners"] {
+    name = "Basic Configuration"
+    part = 1
+    duration = 45.min
+  }
+  ["intermediates"] {
+    name = "Filling out a Template"
+    part = 2
+    duration = 45.min
+  }
+  ["experts"] {
+    name = "Writing a Template"
+    part = 3
+    duration = 45.min
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Mixed Object Example in Pkl
+DESCRIPTION: Demonstrates an object in Pkl that mixes properties, elements, and entries. This showcases Pkl's flexibility in defining object members.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/01_basic_config.adoc#_snippet_7
+
+LANGUAGE: pkl
+CODE:
+```
+mixedObject {
+  name = "Pigeon"
+  lifespan = 8
+  "wing"
+  "claw"
+  ["wing"] = "Not related to the _element_ \"wing\""
+  42
+  extinct = false
+  [false] {
+    description = "Construed object example"
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Install Pkl using mise
+DESCRIPTION: Installs and activates a specific version of Pkl using the `mise` package manager.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_3
+
+LANGUAGE: shell
+CODE:
+```
+mise use pkl@{pkl-version}
+```
+
+----------------------------------------
+
+TITLE: Line Comments Example
+DESCRIPTION: Illustrates the placement of line comments in PKL, both after doc comments for property definitions and at the end of a line, adhering to character limits.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_11
+
+LANGUAGE: pkl
+CODE:
+```
+/// Designates whether it is zebra party time.
+// TODO: Add constraints here?
+partyTime: Boolean
+```
+
+LANGUAGE: pkl
+CODE:
+```
+/// Designates whether it is zebra party time.
+partyTime: Boolean // TODO: Add constraints here?
+```
+
+----------------------------------------
+
+TITLE: Common Gradle Build Commands
+DESCRIPTION: A collection of frequently used Gradle commands for project management, including cleaning, testing, formatting, and building.
+
+SOURCE: https://github.com/apple/pkl/blob/main/DEVELOPMENT.adoc#_snippet_1
+
+LANGUAGE: shell
+CODE:
+```
+gw clean
+gw test
+gw spotlessApply
+gw build
+gw pkl-cli:testNative
+gw pkl-cli:buildNative
+```
+
+----------------------------------------
+
+TITLE: Pkl Module Name Convention
+DESCRIPTION: Ensures the module name matches the filename. Demonstrates the basic module clause and provides an example for modules intended for publication, including doc comments and the @ModuleInfo annotation.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_2
+
+LANGUAGE: pkl
+CODE:
+```
+module MyModule
+```
+
+LANGUAGE: pkl
+CODE:
+```
+/// Used for some type of purpose. <1>
+@ModuleInfo { minPklVersion = "0.24.0" } // <2>
+module MyModule // <3>
+```
+
+----------------------------------------
+
+TITLE: Property with Code Example
+DESCRIPTION: Demonstrates a property with a code example embedded within its documentation. The example shows a simple calculation.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/modulePropertyComments/index.html#_snippet_0
+
+LANGUAGE: pkl
+CODE:
+```
+property8: [Int](https://pages.github.com/apple/pkl/stdlib/pkl/0.24.0/base/Int.html)[Source](https://example.com/package1/modulePropertyComments.pkl#L123-L456)
+    
+    Summary
+    
+        
+        code = 4 * 10
+        
+    
+    Rest of the body
+```
+
+----------------------------------------
+
+TITLE: Download and install Pkl executable on Linux (amd64)
+DESCRIPTION: Downloads the Pkl executable for Linux amd64, makes it executable, and verifies the installation by printing the version.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_7
+
+LANGUAGE: shell
+CODE:
+```
+curl -L -o pkl '{uri-pkl-linux-amd64-download}'
+chmod +x pkl
+./pkl --version
+```
+
+----------------------------------------
+
+TITLE: Pigeon Module Example
+DESCRIPTION: Demonstrates how to use the `--expression` flag to substitute a module's output.text property. This example shows a simple Pkl module defining metadata and output.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_17
+
+LANGUAGE: pkl
+CODE:
+```
+metadata {
+  species = "Pigeon"
+}
+
+output {
+  text = metadata.species.toString()
+}
+```
+
+----------------------------------------
+
+TITLE: Example Module Code
+DESCRIPTION: Provides an example of PKL code, including module definition, data structures, functions, and classes.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/classComments/index.html#_snippet_1
+
+LANGUAGE: pkl
+CODE:
+```
+/// example module
+module foo.bar
+
+person {
+  name = "Pigeon"
+  age = 42
+}
+
+function sing() = "tra-la-la"
+
+class Person {
+  name: String
+  age: Int
+}
+```
+
+----------------------------------------
+
+TITLE: Download and install Pkl executable on Alpine Linux
+DESCRIPTION: Downloads the Pkl executable for Alpine Linux, makes it executable, and verifies the installation by printing the version.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_8
+
+LANGUAGE: shell
+CODE:
+```
+curl -L -o pkl '{uri-pkl-alpine-download}'
+chmod +x pkl
+./pkl --version
+```
+
+----------------------------------------
+
+TITLE: Pkl Set API Examples
+DESCRIPTION: Provides examples of using the rich API offered by Pkl's `Set` class, demonstrating methods like `contains`, `drop`, `take`, `map`, and `intersect`.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-reference/pages/index.adoc#_snippet_121
+
+LANGUAGE: pkl
+CODE:
+```
+set = Set(1, 2, 3, 4)
+res1 = set.contains(3) // <1>
+res2 = set.drop(1).take(2) // <2>
+res3 = set.map((n) -> n * 3) // <3>
+res4 = set.intersect(Set(3, 9, 2)) // <4>
+```
+
+----------------------------------------
+
+TITLE: Install Pkl with Mise
+DESCRIPTION: Installs and activates a specific Pkl version globally using the Mise version manager on macOS, Linux, and Windows.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_2
+
+LANGUAGE: shell
+CODE:
+```
+# Install and activate Pkl globally
+mise use -g pkl@1.0.0
+```
+
+----------------------------------------
+
+TITLE: Pkl Language and Example Repository URIs
+DESCRIPTION: Defines the language identifiers for Pkl code blocks and provides URIs for Pkl examples hosted on GitHub, including specific examples for build-eval, codegen, config, and pkldoc.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/ROOT/partials/component-attributes.adoc#_snippet_2
+
+LANGUAGE: pkl
+CODE:
+```
+// This attribute is used as language for Pkl code blocks.
+// It can then be mapped to different languages in different environments (for example, IntelliJ vs. Antora).
+:pkl: pkl
+:pkl-expr: pkl expression
+
+:uri-pkl-examples-repo: https://github.com/apple/pkl-jvm-examples
+:uri-pkl-examples-tree: {uri-pkl-examples-repo}/tree/main
+:uri-build-eval-example: {uri-pkl-examples-tree}/build-eval
+:uri-codegen-java-example: {uri-pkl-examples-tree}/codegen-java
+:uri-codegen-kotlin-example: {uri-pkl-examples-tree}/codegen-kotlin
+:uri-config-java-example: {uri-pkl-examples-tree}/config-java
+:uri-config-kotlin-example: {uri-pkl-examples-tree}/config-kotlin
+:uri-pkldoc-example: {uri-pkl-examples-tree}/pkldoc
+```
+
+----------------------------------------
+
+TITLE: Property with Code Example (No Summary)
+DESCRIPTION: Illustrates a property with a code example where no explicit summary is provided, only the code block and the rest of the documentation.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/modulePropertyComments/index.html#_snippet_2
+
+LANGUAGE: pkl
+CODE:
+```
+property10: [Int](https://pages.github.com/apple/pkl/stdlib/pkl/0.24.0/base/Int.html)[Source](https://example.com/package1/modulePropertyComments.pkl#L123-L456)
+    
+        
+        code = 2
+        
+    
+    Rest
+```
+
+----------------------------------------
+
+TITLE: Example Code Snippet
+DESCRIPTION: Demonstrates the structure and syntax of the module's code, including module definition, data structures, functions, and classes.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/moduleComments/index.html#_snippet_1
+
+LANGUAGE: pkl
+CODE:
+```
+/// example module
+module foo.bar
+
+person {
+  name = "Pigeon"
+  age = 42
+}
+
+function sing() = "tra-la-la"
+
+class Person {
+  name: String
+  age: Int
+}
+```
+
+----------------------------------------
+
+TITLE: Pkl List API Examples
+DESCRIPTION: Provides examples of using the rich API offered by Pkl's `List` class, demonstrating methods like `contains`, `first`, `rest`, `reverse`, `drop`, `take`, and `map`.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-reference/pages/index.adoc#_snippet_118
+
+LANGUAGE: pkl
+CODE:
+```
+list = List(1, 2, 3, 4)
+res1 = list.contains(3) // <1>
+res2 = list.first // <2>
+res3 = list.rest // <3>
+res4 = list.reverse() // <4>
+res5 = list.drop(1).take(2) // <5>
+res6 = list.map((n) -> n * 3) // <6>
+```
+
+----------------------------------------
+
+TITLE: Define Sing Function (Pkl Example)
+DESCRIPTION: An example function `sing` that takes a `song` string as input. The return type is `unknown`. This snippet appears to be part of an example or test documentation.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/docLinks/index.html#_snippet_12
+
+LANGUAGE: APIDOC
+CODE:
+```
+sing(song: String): unknown
+  song: The song to sing.
+  Returns: An unknown value.
+```
+
+----------------------------------------
+
+TITLE: Download and install Pkl executable on macOS (amd64)
+DESCRIPTION: Downloads the Pkl executable for macOS amd64, makes it executable, and verifies the installation by printing the version.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_5
+
+LANGUAGE: shell
+CODE:
+```
+curl -L -o pkl '{uri-pkl-macos-amd64-download}'
+chmod +x pkl
+./pkl --version
+```
+
+----------------------------------------
+
+TITLE: Pkl Indentation for Multi-line Assignments (Bad)
+DESCRIPTION: Illustrates incorrect indentation for assignees that start on a new line after the assignment operator (`=`). The assignee is not indented, violating the Pkl style guide.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_29
+
+LANGUAGE: Pkl
+CODE:
+```
+foo =
+"foo"
+
+bar =
+new {
+  baz = "baz"
+  biz = "biz"
+}
+```
+
+----------------------------------------
+
+TITLE: Pkl Expanded Configuration Output
+DESCRIPTION: Shows the fully expanded output after Pkl processes the amending example. Both 'bird' and 'parrot' configurations are presented with all their properties, including the amended ones in 'parrot'.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/02_filling_out_a_template.adoc#_snippet_1
+
+LANGUAGE: pkl
+CODE:
+```
+bird {
+  name = "Pigeon"
+  diet = "Seeds"
+  taxonomy {
+    kingdom = "Animalia"
+    clade = "Dinosauria"
+    order = "Columbiformes"
+  }
+}
+parrot {
+  name = "Parrot"
+  diet = "Berries"
+  taxonomy {
+    kingdom = "Animalia"
+    clade = "Dinosauria"
+    order = "Psittaciformes"
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Download and install Pkl executable on Linux (aarch64)
+DESCRIPTION: Downloads the Pkl executable for Linux aarch64, makes it executable, and verifies the installation by printing the version.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_6
+
+LANGUAGE: shell
+CODE:
+```
+curl -L -o pkl '{uri-pkl-linux-aarch64-download}'
+chmod +x pkl
+./pkl --version
+```
+
+----------------------------------------
+
+TITLE: Install Pkl with Homebrew
+DESCRIPTION: Installs the Pkl CLI using the Homebrew package manager on macOS and Linux. Assumes a release version is available.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_0
+
+LANGUAGE: shell
+CODE:
+```
+brew install pkl
+```
+
+----------------------------------------
+
+TITLE: PKL Module and Class Definition
+DESCRIPTION: Example of defining a module, a data structure, and a class in PKL.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/index.html#_snippet_1
+
+LANGUAGE: pkl
+CODE:
+```
+/// example module
+module foo.bar
+
+person {
+name = "Pigeon"
+age = 42
+}
+
+function sing() = "tra-la-la"
+
+class Person {
+name: String
+age: Int
+}
+```
+
+----------------------------------------
+
+TITLE: Trace Output Example
+DESCRIPTION: An example of the output generated by the `trace` expression in Pkl, showing the evaluated expression and its result.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-reference/pages/index.adoc#_snippet_108
+
+LANGUAGE: shell
+CODE:
+```
+pkl: TRACE: num1 * num2 = 672 (at file:///some/module.pkl, line 42)
+
+```
+
+----------------------------------------
+
+TITLE: Pkl Module Example
+DESCRIPTION: An example of a Pkl module that imports all .pkl files from a custom file system. This snippet demonstrates module import syntax.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/bindings-specification/pages/index.adoc#_snippet_0
+
+LANGUAGE: pkl
+CODE:
+```
+module MyModule
+
+theModules = import*("customfs:/*.pkl")
+```
+
+----------------------------------------
+
+TITLE: Pkl Glob Pattern Examples
+DESCRIPTION: Provides various examples of Pkl glob patterns, illustrating the use of wildcards (`*`, `**`, `?`), character classes (`[...]`), and sub-patterns (`{...,...}`) for matching files and directories. Examples cover matching by suffix, crossing directory boundaries, specific subdirectories, and module paths.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-reference/pages/index.adoc#_snippet_269
+
+LANGUAGE: Pkl
+CODE:
+```
+*.pk[lg]
+```
+
+LANGUAGE: Pkl
+CODE:
+```
+**.y{a,}ml
+```
+
+LANGUAGE: Pkl
+CODE:
+```
+birds/{\*.yml,*.json}
+```
+
+LANGUAGE: Pkl
+CODE:
+```
+a?*.txt
+```
+
+LANGUAGE: Pkl
+CODE:
+```
+modulepath:/**.pkl
+```
+
+----------------------------------------
+
+TITLE: Pkl Name Resolution: Method Lookup Example
+DESCRIPTION: An example of a method call `x("foo")` in a Pkl configuration file. This snippet is used to illustrate Pkl's method resolution steps, which involve searching lexically enclosing scopes, `pkl.base`, and the class inheritance chain.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-reference/pages/index.adoc#_snippet_282
+
+LANGUAGE: Pkl
+CODE:
+```
+a = x("foo") + 1
+```
+
+----------------------------------------
+
+TITLE: Pkl CLI Shell Completion Installation
+DESCRIPTION: Provides instructions on how to install shell completion scripts for the Pkl CLI, specifically for the Fish shell. This enhances user experience by providing command autocompletion.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/release-notes/pages/0.29.adoc#_snippet_5
+
+LANGUAGE: shellscript
+CODE:
+```
+pkl shell-completion fish > "~/.config/fish/completions/pkl.fish"
+```
+
+----------------------------------------
+
+TITLE: Indentation: Assignment operator (=)
+DESCRIPTION: Demonstrates correct indentation for the assignment operator in PKL, covering cases where the assignee starts on a new line versus the same line.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_17
+
+LANGUAGE: pkl
+CODE:
+```
+foo =
+  "foo"
+
+bar =
+  new {
+    baz = "baz"
+    biz = "biz"
+  }
+```
+
+LANGUAGE: pkl
+CODE:
+```
+foo = new {
+  baz = "baz"
+  biz = "biz"
+}
+```
+
+----------------------------------------
+
+TITLE: Download and install Pkl executable on macOS (aarch64)
+DESCRIPTION: Downloads the Pkl executable for macOS aarch64, makes it executable, and verifies the installation by printing the version.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_4
+
+LANGUAGE: shell
+CODE:
+```
+curl -L -o pkl '{uri-pkl-macos-aarch64-download}'
+chmod +x pkl
+./pkl --version
+```
+
+----------------------------------------
+
+TITLE: Pkl Server Command
+DESCRIPTION: Starts a Pkl server that communicates over standard input/output. This is useful for embedding Pkl in external clients like pkl-swift or pkl-go.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_18
+
+LANGUAGE: shell
+CODE:
+```
+pkl server
+```
+
+----------------------------------------
+
+TITLE: Invalid Pkl Code Snippets
+DESCRIPTION: Examples of incorrectly formatted Pkl code, highlighting common errors in operator placement, spacing, and object body structure.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_22
+
+LANGUAGE: pkl
+CODE:
+```
+foo = bar |>
+  baz |>
+  biz
+
+myNum = 1 +
+  2 +
+  3 +
+  4
+```
+
+LANGUAGE: pkl
+CODE:
+```
+foo = bar
+|> baz
+|> biz
+```
+
+LANGUAGE: pkl
+CODE:
+```
+foo = bar
+  |> baz
+    |> biz
+```
+
+LANGUAGE: pkl
+CODE:
+```
+myNum = 1
+  - 2
+  - 3
+  - 4
+```
+
+LANGUAGE: pkl
+CODE:
+```
+res1 = new { bar = "bar"; baz = "baz"; biz = "biz"; } // <1>
+
+res2 = new { 1 2 3 4 5 6 } // <2>
+```
+
+LANGUAGE: pkl
+CODE:
+```
+res {
+  foo = "foo"
+
+
+  bar = "bar" // <1>
+}
+
+res2 {
+  ["foo"] = "foo"
+
+
+  ["bar"] = "bar" // <1>
+}
+
+res3 {
+  "foo"
+
+
+  "bar" // <1>
+}
+
+res4 {
+  foo = "foo"; bar = "bar" // <2>
+}
+```
+
+LANGUAGE: pkl
+CODE:
+```
+res
+{
+  foo = "foo"
+  bar = "bar"
+}
+```
+
+----------------------------------------
+
+TITLE: Pkl Data Structures and Types
+DESCRIPTION: Demonstrates the usage of various Pkl data structures and types, including Listing and Mapping, for defining workshop properties.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/03_writing_a_template.adoc#_snippet_13
+
+LANGUAGE: pkl
+CODE:
+```
+instructors: Listing<String>
+
+assistants: Mapping<String, String>
+
+agenda: Mapping<String, TutorialPart>
+```
+
+----------------------------------------
+
+TITLE: Comprehensive Pkl Doc Comment Example
+DESCRIPTION: A complete example demonstrating the application of doc comments to various Pkl declarations, including modules, classes, properties, methods, type aliases, and module properties, showcasing their usage for comprehensive documentation.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-reference/pages/index.adoc#_snippet_274
+
+LANGUAGE: Pkl
+CODE:
+```
+/// An aviated animal going by the name of [bird](https://en.wikipedia.org/wiki/Bird).
+///
+/// These animals live on the planet Earth.
+module com.animals.Birds
+
+/// A bird living on Earth.
+///
+/// Has [name] and [lifespan] properties and an [isOlderThan()] method.
+class Bird {
+  /// The name of this bird.
+  name: String
+
+  /// The lifespan of this bird.
+  lifespan: UInt8
+
+  /// Tells if this bird is older than [bird].
+  function isOlderThan(bird: Bird): Boolean = lifespan > bird.lifespan
+}
+
+/// An adult [Bird].
+typealias Adult = Bird(lifespan >= 2)
+
+/// A common [Bird] found in large cities.
+pigeon: Bird = new {
+  name = "Pigeon"
+  lifespan = 8
+}
+
+/// Creates a [Bird] with the given [_name] and lifespan `0`.
+function Infant(_name: String): Bird = new { name = _name; lifespan = 0 }
+```
+
+----------------------------------------
+
+TITLE: Download and run Pkl Java executable on Windows
+DESCRIPTION: Downloads the Pkl Java executable (jpkl) for Windows and verifies the installation by printing the version.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_11
+
+LANGUAGE: PowerShell
+CODE:
+```
+Invoke-WebRequest '{uri-pkl-java-download}' -OutFile jpkl.bat
+.\jpkl --version
+```
+
+----------------------------------------
+
+TITLE: Pkl Object Member Spacing
+DESCRIPTION: Specifies that object members (properties, elements, entries) should be separated by at most one blank line for readability. Shows examples of correct and incorrect spacing.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_6
+
+LANGUAGE: pkl
+CODE:
+```
+foo = "bar"
+
+baz = "buz"
+```
+
+LANGUAGE: pkl
+CODE:
+```
+foo = "bar"
+baz = "buz"
+```
+
+LANGUAGE: pkl
+CODE:
+```
+foo = "bar"
+
+
+baz = "buz"
+```
+
+----------------------------------------
+
+TITLE: Pkl REPL - Loading and Evaluating Modules
+DESCRIPTION: Demonstrates loading a Pkl module into the REPL and evaluating its properties or the entire module.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_35
+
+LANGUAGE: shell
+CODE:
+```
+pkl> :load config.pkl
+```
+
+LANGUAGE: shell
+CODE:
+```
+pkl> bird.species
+```
+
+LANGUAGE: shell
+CODE:
+```
+pkl> :force this
+```
+
+----------------------------------------
+
+TITLE: com.package1.docExampleSubject2 Methods
+DESCRIPTION: Lists and describes the methods provided by the com.package1.docExampleSubject2 module. These include methods for getting class information, string representation, conditional non-null transformations, property access, and dynamic conversion.
+
+SOURCE: https://github.com/apple/pkl/blob/main/pkl-doc/src/test/files/DocGeneratorTest/output/com.package1/1.2.3/docExampleSubject2/index.html#_snippet_1
+
+LANGUAGE: APIDOC
+CODE:
+```
+getClass(): Class
+  Returns the class of `this`.
+
+toString(): String
+  Returns a string representation of `this`.
+  This method is used to convert the values of string interpolation expressions to strings.
+
+ifNonNull<Result>(transform: (NonNull) -> Result): Result?
+  Returns `this |> transform` if `this` is non-null, and `null` otherwise.
+  This method is the complement of the `??` operator and the equivalent of an `Option` type's `map` and `flatMap` methods.
+
+hasProperty(name: String): Boolean
+  Tells if this object has a property with the given `name`.
+
+getProperty(name: String): unknown
+  Returns the value of the property with the given `name`.
+  Throws if a property with this name does not exist.
+
+getPropertyOrNull(name: String): unknown?
+  Returns the value of the property with the given `name`.
+  Returns `null` if a property with this name does not exist.
+
+toDynamic(): Dynamic
+  Converts this object to a `Dynamic` object.
+
+toaMap(): Map
+  Converts this object to a Map.
+```
+
+----------------------------------------
+
+TITLE: Example Pkl Module
+DESCRIPTION: A sample Pkl module defining nested data structures for birds, including properties like species and diet.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_39
+
+LANGUAGE: pkl
+CODE:
+```
+bird {
+  species = "Pigeon"
+  diet = "Seeds"
+}
+parrot = (bird) {
+  species = "Parrot"
+  diet = "Berries"
+}
+```
+
+----------------------------------------
+
+TITLE: Evaluating Pkl Modules
+DESCRIPTION: Command-line execution of Pkl modules to evaluate their output.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/02_filling_out_a_template.adoc#_snippet_8
+
+LANGUAGE: shell
+CODE:
+```
+$ pkl eval /Users/me/tutorial/pigeon.pkl
+name = "Common wood pigeon"
+diet = "Seeds"
+taxonomy {
+  kingdom = "Animalia"
+  clade = "Dinosauria"
+  species = "Columba palumbus"
+}
+
+$ pkl eval /Users/me/tutorial/parrot.pkl
+parrot {
+  name = "Great green macaw"
+  diet = "Berries"
+  taxonomy {
+    kingdom = "Animalia"
+    clade = "Dinosauria"
+    species = "Ara ambiguus"
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Pkl Indentation for Inline Assignments (Good)
+DESCRIPTION: Demonstrates correct indentation when an assignee starts on the same line as the assignment operator (`=`). Subsequent members within the assigned block are indented correctly.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_30
+
+LANGUAGE: Pkl
+CODE:
+```
+foo = new {
+  baz = "baz"
+  biz = "biz"
+}
+```
+
+----------------------------------------
+
+TITLE: Pkl Error Message Example
+DESCRIPTION: Illustrates a typical Pkl error message, showing how Pkl reports type constraint violations and custom error messages thrown from within the Pkl code. This example highlights a missing `branchName` property.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/02_filling_out_a_template.adoc#_snippet_16
+
+LANGUAGE: plain
+CODE:
+```
+–– Pkl Error ––
+Pipelines that set a 'name' must also set a 'branchName'.
+
+8 | throw("Pipelines that set a 'name' must also set a 'branchName'.")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+at AcmeCICD#Pipeline.nameRequiresBranchName.<function#1> (file:///Users/me/tutorial/AcmeCICD.pkl, line 8)
+
+6 | name = "prb"
+           ^^^^^
+at cicd#pipelines[#1].name (file:///Users/me/tutorial/cicd.pkl, line 6)
+
+90 | text = renderer.renderDocument(value)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+at pkl.base#Module.output.text (https://github.com/apple/pkl/blob/e4d8c882d/stdlib/base.pkl#L90)
+```
+
+----------------------------------------
+
+TITLE: pkldoc CLI Synopsis and Options
+DESCRIPTION: Provides the basic command structure for pkldoc and details its available options. This includes specifying output directories and controlling symbolic link creation for generated documentation.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-doc/pages/index.adoc#_snippet_7
+
+LANGUAGE: APIDOC
+CODE:
+```
+Synopsis:
+pkldoc [<options>] <modules>
+
+<modules>::
+The absolute or relative URIs of docsite descriptors, package descriptors, and the modules for which to generate documentation.
+Relative URIs are resolved against the working directory.
+
+Options:
+-o, --output-dir
+  Default: (none)
+  Example: pkldoc
+  The directory where generated documentation is placed.
+
+--no-symlinks
+  Create copies of files and directories instead of symbolic links.
+  In particular, this affects how the "current" directories containing documentation content for the last generated version should be created.
+  By default, a symbolic link is created pointing to the last generated version. If symlinks are disabled, a full copy of the last generated version is created.
+
+Common CLI options: include::../../pkl-cli/partials/cli-common-options.adoc[]
+
+Full Example:
+For a ready-to-go example with full source code and detailed walkthrough,
+see link:{uri-pkldoc-example}[pkldoc] in the _pkl-jvm-examples_ repository.
+```
+
+----------------------------------------
+
+TITLE: Incorrect Indentation for Nested If Within Else (Pkl)
+DESCRIPTION: Shows incorrect indentation when a nested `if` expression within an `else` branch is indented further than the parent `else` keyword and starts on a new line.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_38
+
+LANGUAGE: {pkl-expr}
+CODE:
+```
+if (bar)
+  bar
+else
+  if (baz)
+    baz
+  else
+    foo
+```
+
+----------------------------------------
+
+TITLE: Core Evaluator Usage Example
+DESCRIPTION: Demonstrates how to use the pkl-core Evaluator to evaluate a Pkl module from text. It shows how to build an Evaluator, evaluate a ModuleSource, retrieve properties from the evaluated module (PObject and List<String>), and handle potential PklExceptions. The example utilizes a try-with-resources statement for proper Evaluator management.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-core/pages/index.adoc#_snippet_3
+
+LANGUAGE: java
+CODE:
+```
+Evaluator evaluator = Evaluator.create();
+
+ModuleSource moduleSource = ModuleSource.text("import \"pkl:base\"\n\npigeon {\n  diet = [\"seeds\", \"insects\"]\n}");
+
+PModule module = evaluator.evaluate(moduleSource);
+
+PObject pigeon = (PObject) module.getProperty("pigeon");
+System.out.println(pigeon.getClassName()); // pkl.base#Dynamic
+
+List<String> pigeonDiet = (List<String>) pigeon.getProperty("diet");
+System.out.println(pigeonDiet); // [seeds, insects]
+```
+
+----------------------------------------
+
+TITLE: Pkldoc Installation - Gradle Dependency (Kotlin)
+DESCRIPTION: This snippet shows how to add the pkl-doc library as a dependency in a Gradle project using Kotlin.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-doc/pages/index.adoc#_snippet_0
+
+LANGUAGE: kotlin
+CODE:
+```
+dependencies {
+    implementation("org.pkl-lang:pkl-doc:LATEST_VERSION")
+}
+```
+
+----------------------------------------
+
+TITLE: Indenting Nested If/Else If/Else Expressions (Pkl)
+DESCRIPTION: Illustrates the correct indentation for a chain of `if`, `else if`, and `else` branches, where the `else if` starts on the same line as the parent `else` and subsequent bodies are indented.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_37
+
+LANGUAGE: {pkl-expr}
+CODE:
+```
+if (bar)
+  bar
+else if (baz)
+  baz
+else
+  foo
+```
+
+----------------------------------------
+
+TITLE: Pkl Indentation for Multi-line Assignments (Good)
+DESCRIPTION: Shows the correct indentation for assignees that start on a new line after the assignment operator (`=`). The assignee should be indented one level deeper than the property name.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_28
+
+LANGUAGE: Pkl
+CODE:
+```
+foo =
+  "foo"
+
+bar =
+  new {
+    baz = "baz"
+    biz = "biz"
+  }
+```
+
+----------------------------------------
+
+TITLE: External Reader Configuration Example
+DESCRIPTION: Illustrates how to configure external readers for modules and resources using command-line flags, mapping URI schemes to executable paths and arguments.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-reference/pages/index.adoc#_snippet_204
+
+LANGUAGE: text
+CODE:
+```
+--external-resource-reader --external-module-reader
+```
+
+----------------------------------------
+
+TITLE: Pkl Build and Formatting Commands
+DESCRIPTION: Commands for formatting code and building the Pkl project for both JVM and native targets. Ensures code consistency and project integrity.
+
+SOURCE: https://github.com/apple/pkl/blob/main/CONTRIBUTING.adoc#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+./gradlew spotlessApply
+./gradlew build
+./gradlew buildNative
+```
+
+----------------------------------------
+
+TITLE: Pkl Line Breaks with Minus Operator
+DESCRIPTION: This snippet highlights a specific exception for line breaks involving the minus operator (`-`) in Pkl. To ensure it's parsed as a binary operator rather than a unary minus, the operator must appear before the newline. The good example demonstrates this correct placement, while the bad example shows how placing the operator on the new line can lead to misinterpretation.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_32
+
+LANGUAGE: pkl
+CODE:
+```
+myNum = 1 -
+  2 -
+  3 -
+  4
+```
+
+LANGUAGE: pkl
+CODE:
+```
+myNum = 1
+  - 2
+  - 3
+  - 4
+```
+
+----------------------------------------
+
+TITLE: Gradle Plugin Installation (Kotlin)
+DESCRIPTION: Applies the Pkl Gradle plugin using Kotlin DSL in build.gradle.kts and configures repositories in settings.gradle.kts.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-gradle/pages/index.adoc#_snippet_0
+
+LANGUAGE: kotlin
+CODE:
+```
+plugins {
+  id("org.pkl-lang") version "{pkl-artifact-version}"
+}
+
+```
+
+LANGUAGE: kotlin
+CODE:
+```
+pluginManagement {
+    repositories {
+ifdef::is-release-version[]
+        mavenCentral()
+endif::[]
+ifndef::is-release-version[]
+        maven(url = "{uri-sonatype}")
+endif::[]
+    }
+}
+
+```
+
+----------------------------------------
+
+TITLE: Gradle Plugin Installation (Groovy)
+DESCRIPTION: Applies the Pkl Gradle plugin using Groovy DSL in build.gradle and configures repositories in settings.gradle.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-gradle/pages/index.adoc#_snippet_1
+
+LANGUAGE: groovy
+CODE:
+```
+plugins {
+  id "org.pkl-lang" version "{pkl-artifact-version}"
+}
+
+```
+
+LANGUAGE: groovy
+CODE:
+```
+pluginManagement {
+    repositories {
+ifdef::is-release-version[]
+        mavenCentral()
+endif::[]
+ifndef::is-release-version[]
+        maven { url "{uri-sonatype}" }
+endif::[]
+    }
+}
+
+```
+
+----------------------------------------
+
+TITLE: Evaluate Pkl File (JSON Output)
+DESCRIPTION: Demonstrates evaluating a Pkl file and outputting the configuration in JSON format using the `-f json` option. This is useful for integrating Pkl configurations with systems that consume JSON.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/01_basic_config.adoc#_snippet_2
+
+LANGUAGE: shell
+CODE:
+```
+$ pkl eval -f json /Users/me/tutorial/intro.pkl
+{
+  "name": "Pkl: Configure your Systems in New Ways",
+  "attendants": 100,
+  "isInteractive": true,
+  "amountLearned": 13.37
+}
+```
+
+----------------------------------------
+
+TITLE: Nickel Configuration Language
+DESCRIPTION: Nickel is a simple, strongly-typed configuration language that aims to be easy to use and integrate into various systems. It focuses on clarity and safety.
+
+SOURCE: https://github.com/apple/pkl/blob/main/DEVELOPMENT.adoc#_snippet_9
+
+LANGUAGE: Nickel
+CODE:
+```
+let config = {
+  service: {
+    port: 8080,
+    name: "my-service"
+  }
+}
+in config
+```
+
+----------------------------------------
+
+TITLE: Pkl Name Resolution: Variable (LAMP) Lookup Example
+DESCRIPTION: An example of a variable `x` being used in a Pkl configuration file. This snippet serves as a basis for explaining Pkl's detailed name resolution process for LAMP (let binding, anonymous function parameter, method parameter, or property) definitions.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-reference/pages/index.adoc#_snippet_281
+
+LANGUAGE: Pkl
+CODE:
+```
+a = x + 1
+```
+
+----------------------------------------
+
+TITLE: Formatting Pipe Operators in Pkl
+DESCRIPTION: Demonstrates the correct and incorrect ways to format the pipe operator (`|>`) when breaking expressions across multiple lines. The operator should be placed at the beginning of the new line, aligned with the start of the expression.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_40
+
+LANGUAGE: pkl
+CODE:
+```
+foo = bar
+  |> baz
+  |> biz
+
+myNum = 1
+  + 2
+  + 3
+  + 4
+```
+
+LANGUAGE: pkl
+CODE:
+```
+foo = bar |>
+  baz |>
+  biz
+
+myNum = 1 +
+  2 +
+  3 +
+  4
+```
+
+LANGUAGE: pkl
+CODE:
+```
+foo = bar
+|> baz
+|> biz
+```
+
+LANGUAGE: pkl
+CODE:
+```
+foo = bar
+  |> baz
+    |> biz
+```
+
+----------------------------------------
+
+TITLE: Pkl Listings and Mappings
+DESCRIPTION: Defines a Pkl listing for elements (birds) and a mapping for entries (habitats). This demonstrates how to structure collections for JSON compatibility.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/01_basic_config.adoc#_snippet_9
+
+LANGUAGE: pkl
+CODE:
+```
+birds {
+  "Pigeon"
+  "Parrot"
+  "Barn owl"
+  "Falcon"
+}
+
+habitats {
+  ["Pigeon"] = "Streets"
+  ["Parrot"] = "Parks"
+  ["Barn owl"] = "Forests"
+  ["Falcon"] = "Mountains"
+}
+```
+
+----------------------------------------
+
+TITLE: Class Naming Convention
+DESCRIPTION: Demonstrates the PascalCase naming convention for classes in PKL.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_13
+
+LANGUAGE: pkl
+CODE:
+```
+class ZebraParty {}
+```
+
+----------------------------------------
+
+TITLE: Pkl Objects with Entries
+DESCRIPTION: Demonstrates the use of entries in Pkl objects, which are keyed members where the key is an expression. This example shows entries with string keys and entries keyed by other Pkl values.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/01_basic_config.adoc#_snippet_6
+
+LANGUAGE: pkl
+CODE:
+```
+pigeonShelter {
+  ["bird"] {
+    name = "Common wood pigeon"
+    diet = "Seeds"
+    taxonomy {
+      species = "Columba palumbus"
+    }
+  }
+  ["address"] = "355 Bird St."
+}
+
+birdCount {
+  [pigeonShelter] = 42
+}
+```
+
+----------------------------------------
+
+TITLE: Indenting Multiline Chained Method Calls (Pkl)
+DESCRIPTION: Demonstrates the recommended indentation style for chained method calls that span multiple lines, indenting each subsequent call one level deeper than the start of the chain.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/style-guide/pages/index.adoc#_snippet_39
+
+LANGUAGE: {pkl-expr}
+CODE:
+```
+foo()
+  .bar()
+  .baz()
+  .biz()
+```
+
+----------------------------------------
+
+TITLE: Exercise 1: Pkl for Given JSON
+DESCRIPTION: A Pkl file that generates the provided JSON snippet, demonstrating the conversion of JSON structures to Pkl objects.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/01_basic_config.adoc#_snippet_13
+
+LANGUAGE: pkl
+CODE:
+```
+{
+  name = "Common wood pigeon"
+  lifespan = 8
+  friends {
+    bird1 = "Parrot"
+    bird2 = "Albatross"
+    bird3 = "Falcon"
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Standard Library: Listing and Mapping Enhancements
+DESCRIPTION: Shows an example of how new properties and methods added to `Listing` and `Mapping` in `pkl:base` simplify constraint authoring. This diff demonstrates a more concise way to check for the presence of an IP address.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/release-notes/pages/0.27.adoc#_snippet_9
+
+LANGUAGE: Diff
+CODE:
+```
+-ipAddresses: Listing<String>(toList().contains("127.0.0.1"))
++ipAddresses: Listing<String>(contains("127.0.0.1"))
+```
+
+----------------------------------------
+
+TITLE: Configure native-image build with Gradle system properties
+DESCRIPTION: This change introduces the ability to configure the `native-image` build using Gradle system properties. Any system property starting with "pkl.native" will have this prefix stripped and the remainder passed as CLI arguments to `native-image`. For example, the native-image resource cache can be configured by passing the Gradle flag `-Dpkl.native-Dpolyglot.engine.userResourceCache=/my/cache/dir`.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/release-notes/pages/changelog.adoc#_snippet_0
+
+LANGUAGE: pkl
+CODE:
+```
+Gradle system properties starting with "pkl.native" are passed as CLI arguments to `native-image` after stripping the prefix.
+Example: `-Dpkl.native-Dpolyglot.engine.userResourceCache=/my/cache/dir`
+```
+
+----------------------------------------
+
+TITLE: Pkl REPL - Basic Usage
+DESCRIPTION: Starts the Pkl Read-Eval-Print Loop (REPL) for interactive evaluation of Pkl code.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/pkl-cli/pages/index.adoc#_snippet_34
+
+LANGUAGE: shell
+CODE:
+```
+pkl repl
+```
+
+----------------------------------------
+
+TITLE: Amending a Pkl Module
+DESCRIPTION: Shows how to amend an existing Pkl module ('TutorialPart.pkl') by providing values for its properties, effectively creating a new configuration instance.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/language-tutorial/pages/03_writing_a_template.adoc#_snippet_8
+
+LANGUAGE: pkl
+CODE:
+```
+amends "TutorialPart.pkl"
+
+name = "Writing a Template"
+
+part = 3
+```
+
+----------------------------------------
+
+TITLE: CLI Installation and Version Check
+DESCRIPTION: Downloads and installs the Pkl Code Generator CLI for macOS/Linux and Windows, and verifies the installation by checking the version.
+
+SOURCE: https://github.com/apple/pkl/blob/main/docs/modules/java-binding/pages/codegen.adoc#_snippet_2
+
+LANGUAGE: shell
+CODE:
+```
+curl -L -o pkl-codegen-java '{uri-pkl-codegen-java-download}'
+chmod +x pkl-codegen-java
+./pkl-codegen-java --version
+```
+
+LANGUAGE: PowerShell
+CODE:
+```
+Invoke-WebRequest '{uri-pkl-codegen-java-download}' -OutFile pkl-codegen-java.bat
+.\pkl-codegen-java --version
+```
+
+LANGUAGE: shell
+CODE:
+```
+pkl-codegen-java {pkl-version} (macOS 14.2, Java 17.0.10)
+```
