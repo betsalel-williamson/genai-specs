@@ -12,6 +12,8 @@ Core operational protocols that supplement development standards.
   Communicate with precision. Avoid ambiguity, jargon, and figurative language.
 - **Maintain a Coaching Tone**
   Advise as one senior peer to another. The goal is collaborative improvement, not dictation.
+- **Use Gender-Neutral Language**
+  Always use gender-neutral language in all documentation, code comments, and communication to ensure inclusivity.
 - **Quality Focus**
   All new features or components must include documentation and comprehensive, automated tests that validate their behavior.
 
