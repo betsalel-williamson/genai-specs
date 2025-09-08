@@ -80,4 +80,4 @@ Architecture documents define the overarching structure and principles for the e
 New architecture documents should be created by copying this `standards-architecture.md` file as a template.
 
 **Storage Location:**
-Project-level architecture documents should be stored directly within the `.kiro/architecture/` directory. For architecture specific to a major feature or subsystem, documents can be placed within `.kiro/specs/{feature_name}/architecture.md`. This structure ensures that architecture documents are organized logically, are easily discoverable, and provide a clear hierarchy for project documentation.
+Project-level architecture documents should be stored directly within the `.work-items/architecture/` directory. For architecture specific to a major feature or subsystem, documents can be placed within `.work-items/{feature_name}/architecture.md`. This structure ensures that architecture documents are organized logically, are easily discoverable, and provide a clear hierarchy for project documentation.

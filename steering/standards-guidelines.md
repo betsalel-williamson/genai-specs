@@ -6,7 +6,7 @@ inclusion: manual
 
 Standards for creating and maintaining guideline documents.
 
-This document defines the format for "lessons learned" entries. Each lesson is a standalone Markdown file in `.kiro/guidelines/<category>/`.
+This document defines the format for "lessons learned" entries. Each lesson is a standalone Markdown file in `genai-specs/guidelines/<category>/`.
 
 ## File Naming
 
