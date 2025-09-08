@@ -31,3 +31,7 @@ This directory contains Docker development and deployment guidelines.
 ## Future Planning
 
 - [Future Direction](./future-direction.md) - Roadmap and evolution plans
+
+## Additional resources
+
+- https://github.com/github/awesome-copilot/blob/main/instructions/containerization-docker-best-practices.instructions.md
