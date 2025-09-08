@@ -25,6 +25,12 @@ Tasks should include:
 - **Requirements Traceability**: References to specific requirements
 - **Test Strategy**: How the task will be validated
 
+## Task Completion and Verification
+
+- **Do NOT mark tasks as complete until ALL acceptance criteria have been fully verified.**
+- Verification must involve executing the defined test strategy and confirming the expected outcomes.
+- Prematurely marking tasks as complete can lead to incomplete work and hinder project progress.
+
 ## Task Sequencing
 
 - **Start with Infrastructure**: Set up project structure and core interfaces first
