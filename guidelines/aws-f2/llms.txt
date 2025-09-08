@@ -1,0 +1,1396 @@
+========================
+CODE SNIPPETS
+========================
+TITLE: C2H Metadata Ring Read Pointer Register
+DESCRIPTION: Indicates the current read pointer for the metadata ring.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define MD_RD_PTR 0x0
+#define RSVD_MD_RD_PTR 0x10
+```
+
+----------------------------------------
+
+TITLE: Status DW Register - Descriptor Error
+DESCRIPTION: Register indicating a Descriptor Error in the Status DW Register. This is a Read-Only (RO) register.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: DESC_ERROR
+ * Bit Range: 0
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Descriptor Error
+ */
+volatile uint32_t DESC_ERROR_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: H2C Descriptor FIFO Pointers
+DESCRIPTION: Provides the read and write pointers for the descriptor FIFO within the H2C interface. These are read-only fields indicating the current status of the FIFO.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_DESC_FIFO_POINTERS_ADDR (PCIS_BASE_ADDR + 0x3B0C)
+#define H2C_DESC_FIFO_POINTERS_OFFSET (CSR_BASE_ADDR + 0xB0C)
+#define H2C_CSR_DESC_FIFO_POINTERS_OFFSET (H2C_CSR_BASE_ADDR + 0x10C)
+
+// Read FIFO_WR_PTR and FIFO_RD_PTR fields
+// Example (conceptual):
+// uint32_t fifo_pointers = read_csr(H2C_DESC_FIFO_POINTERS_ADDR);
+// uint16_t write_ptr = (fifo_pointers >> 0) & 0x7FFF; // Assuming 15:0 for WR_PTR
+// uint16_t read_ptr = (fifo_pointers >> 16) & 0x7FFF; // Assuming 30:16 for RD_PTR
+
+```
+
+----------------------------------------
+
+TITLE: Status DW Register - Write Back BRESP Error
+DESCRIPTION: Register indicating a Write Back BRESP Error for Status Write-Back. This is a Read-1-Clear (RW1C) register.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: WB_STS_BRESP_ERROR
+ * Bit Range: 0
+ * Type: RW1C
+ * Default Value: 0x0
+ * Description: Write Back BRESP Error for Status Write-Back
+ */
+volatile uint32_t WB_STS_BRESP_ERROR_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: Check for Metadata Ring Full Condition (C)
+DESCRIPTION: Software can determine if the metadata ring is full by checking if the write pointer plus one equals the read pointer.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+bool is_metadata_ring_full(int write_ptr, int read_ptr) {
+  return (write_ptr + 1) == read_ptr;
+}
+```
+
+----------------------------------------
+
+TITLE: Status DW Register - Write Back BRESP Error for Metadata
+DESCRIPTION: Register indicating a Write Back BRESP Error for Metadata Write-Back. This is a Read-1-Clear (RW1C) register.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: WB_MD_BRESP_ERROR
+ * Bit Range: 1
+ * Type: RW1C
+ * Default Value: 0x0
+ * Description: Write Back BRESP Error for Metadata Write-Back
+ */
+volatile uint32_t WB_MD_BRESP_ERROR_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: C2H Metadata Ring Write Pointer Register
+DESCRIPTION: Indicates the current write pointer for the metadata ring. Writing 0 to this register clears it.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define MD_WR_PTR 0x0
+#define RSVD_MD_WR_PTR 0x10
+```
+
+----------------------------------------
+
+TITLE: C2H Write-Back Config Register 0 - Enable Triggers
+DESCRIPTION: Configures write-back triggers for descriptor count, packet count, and metadata pointer. Enables coalescing for various write-back events.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define DESC_CNT_WB_EN 0x0
+#define PKT_CNT_WB_EN 0x1
+#define DESC_CDT_WB_EN 0x2
+#define MD_PTR_EN 0x3
+#define DESC_CDT_WC_EN 0x4
+#define DESC_CNT_WC_EN 0x5
+#define PKT_CNT_WC_EN 0x6
+#define MD_WR_PTR_WC_EN 0x7
+#define WC_CNT_MINUS1 0x8
+#define RSVD_WB_CONFIG 0xE
+```
+
+----------------------------------------
+
+TITLE: H2C Descriptor Info Register
+DESCRIPTION: Contains information about descriptors, including their type (regular or compact) and the depth of the descriptor RAM. This register provides configuration and status details for descriptor handling.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_DESC_INFO_ADDR (PCIS_BASE_ADDR + 0x3B20)
+#define H2C_DESC_INFO_OFFSET (CSR_BASE_ADDR + 0xB20)
+#define H2C_CSR_DESC_INFO_OFFSET (H2C_CSR_BASE_ADDR + 0x120)
+
+// Example (conceptual):
+// uint32_t info = read_csr(H2C_DESC_INFO_ADDR);
+// uint8_t desc_type = (info >> 0) & 0x1;
+// uint16_t desc_ram_depth = (info >> 16) & 0xFFFF;
+
+```
+
+----------------------------------------
+
+TITLE: Status DW Register - Write Back Error
+DESCRIPTION: Register indicating a Write Back Error in the Status DW Register. This is a Read-Only (RO) register.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: WB_ERROR
+ * Bit Range: 2
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Write Back Error
+ */
+volatile uint32_t WB_ERROR_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: Software Poll Metadata Valid Bit (C)
+DESCRIPTION: Software polls the valid bit of the metadata to confirm data transfer completion and then clears the bit and increments its read pointer.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+while (!is_metadata_valid(metadata_address)) {
+  // Wait for valid bit to be set
+  // ...
+}
+
+// Read metadata
+// ...
+
+// Clear valid bit
+clear_metadata_valid(metadata_address);
+
+// Increment software's read pointer
+// ...
+
+```
+
+----------------------------------------
+
+TITLE: C2H Metadata Ring Base Address High Register
+DESCRIPTION: Specifies the upper 16 bits of the base address for the metadata ring.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define MD_WB_ADDR_HI 0x0
+#define RSVD_MD_WB_ADDR_HI 0x10
+```
+
+----------------------------------------
+
+TITLE: C2H Data Mover Config Register 0
+DESCRIPTION: This is the first configuration register for the C2H Data Mover. It currently only contains reserved fields, indicating no specific configuration options are exposed through this register in this version.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DATA_MOVER_CONFIG_0 0x600
+// Field: RSVD (31:0), Type: RW, Default: 0x0
+// Description: Reserved
+```
+
+----------------------------------------
+
+TITLE: Configure Circular Buffer and Pointers (C)
+DESCRIPTION: Software must configure the circular buffer's base address and size during initialization. It also needs to clear the SDE's copy of the read and write pointers.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+void initialize_circular_buffer() {
+  // Configure base address and size
+  // ...
+
+  // Clear SDE's copy of pointers
+  // ...
+}
+```
+
+----------------------------------------
+
+TITLE: C2H Metadata Ring Base Address Low Register
+DESCRIPTION: Specifies the lower 32 bits of the base address for the metadata ring. This address must be 64-byte aligned.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define MD_WB_ADDR_LO 0x0
+```
+
+----------------------------------------
+
+TITLE: H2C Data Mover Config Register 0
+DESCRIPTION: The first configuration register for the H2C Data Mover. This register is currently reserved and intended for future configuration options.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_DATA_MOVER_CONFIG0_ADDR (PCIS_BASE_ADDR + 0x3C00)
+#define H2C_DATA_MOVER_CONFIG0_OFFSET (CSR_BASE_ADDR + 0xC00)
+#define H2C_CSR_DATA_MOVER_CONFIG0_OFFSET (H2C_CSR_BASE_ADDR + 0x200)
+
+// Example (conceptual):
+// write_csr(H2C_DATA_MOVER_CONFIG0_ADDR, 0); // Writing 0 as it's reserved
+
+```
+
+----------------------------------------
+
+TITLE: C2H Buffer CSRs - Aux RAM Pointers
+DESCRIPTION: Register holding read and write pointers for the auxiliary RAM used in C2H buffers. All pointer fields are read-only.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: AUX_RAM_WR_PTR
+ * Bit Range: 14:0
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Aux RAM Write Pointer
+ */
+/*
+ * Field Name: AUX_RAM_WR_PTR_MSB
+ * Bit Range: 15
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Aux RAM Write Pointer MSB
+ */
+/*
+ * Field Name: AUX_RAM_RD_PTR
+ * Bit Range: 30:16
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Aux RAM Read Pointer
+ */
+/*
+ * Field Name: AUX_RAM_RD_PTR_MSB
+ * Bit Range: 31
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Aux RAM Read Pointer MSB
+ */
+volatile uint32_t C2H_AUX_RAM_PTRS_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: C2H Metadata Ring Size Register
+DESCRIPTION: Defines the size of the metadata ring in bytes. The size must be an integer multiple of the metadata size, with constraints on the number of descriptors.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define MD_RING_SIZE_BYTES 0x0
+```
+
+----------------------------------------
+
+TITLE: Configure H2C Packet Size for AWS FPGA F2 SDE
+DESCRIPTION: The H2C_PKT_SIZE_BYTES parameter defines the small packet size in bytes for the H2C channel.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter H2C_PKT_SIZE_BYTES = 64;
+```
+
+----------------------------------------
+
+TITLE: SDE Descriptor Write Instructions
+DESCRIPTION: To avoid issues with out-of-order writes to the descriptor address range, use x86 intrinsic load/store instructions. Traditional write-combine methods are not supported by the SDE due to its requirement for ordered writes.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: x86 Assembly
+CODE:
+```
+// Use x86 intrinsic load/store instructions for ordered writes:
+// Example: _mm_storeu_si128, _mm_loadu_si128 (or similar intrinsics)
+```
+
+----------------------------------------
+
+TITLE: Status DW Register - Data Mover Error
+DESCRIPTION: Register indicating a Data Mover Error in the Status DW Register. This is a Read-Only (RO) register.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: DM_ERROR
+ * Bit Range: 1
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Data Mover Error
+ */
+volatile uint32_t DM_ERROR_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: C2H Status Write-Back Address High Register
+DESCRIPTION: Specifies the upper 16 bits of the base address for status counters.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define STATUS_WB_ADDR_HI 0x0
+#define RSVD_WB_ADDR_HI 0x10
+```
+
+----------------------------------------
+
+TITLE: SDE Write Metadata to Host (Verilog)
+DESCRIPTION: The SDE writes metadata to the host memory location determined by the write pointer, base address, and ring size. It then increments its own write pointer and updates the software's copy.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+assign metadata_write_address = metadata_base_address + (sde_write_pointer * METADATA_ENTRY_SIZE);
+
+// Logic to write metadata to metadata_write_address
+// ...
+
+// Increment SDE's write pointer
+sde_write_pointer <= sde_write_pointer + 1;
+
+// Schedule update to software's copy of write pointer
+// ...
+
+```
+
+----------------------------------------
+
+TITLE: C2H Buffer CSRs - Buffer Status Register
+DESCRIPTION: Status register for C2H buffers, indicating buffer fullness, emptiness, and auxiliary FIFO status. All fields are read-only.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: BUF_FULL
+ * Bit Range: 0
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Buffer Full
+ */
+/*
+ * Field Name: BUF_EMPTY
+ * Bit Range: 1
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Buffer Empty
+ */
+/*
+ * Field Name: AUX_FIFO_FULL
+ * Bit Range: 2
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Aux FIFO Full
+ */
+/*
+ * Field Name: AUX_FIFO_EMPTY
+ * Bit Range: 3
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Aux FIFO Empty
+ */
+/*
+ * Field Name: RSVD
+ * Bit Range: 31:4
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Reserved
+ */
+volatile uint32_t C2H_BUFFER_STATUS_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: H2C Number of Entries in Buffer Register
+DESCRIPTION: Register indicating the number of free entries available in the H2C buffer RAM. It includes reserved bits and is read-only.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3E18
+CSR Offset – CSR_BASE_ADDR + 0xE18
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x418
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+NUM_FREE_ENTRIES | 15:0 | RO | 0x0 | Number of Free Entries in Buffer RAM
+RSVD | 31:16 | RO | 0x0 | Reserved
+```
+
+----------------------------------------
+
+TITLE: C2H Write-Back Coalesce Timeout Count Register
+DESCRIPTION: Configures the timeout parameters for write-back coalescing, including the tick count and the number of coalesced writes.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define WC_TO_TICK_CNT 0x0
+#define WC_TO_CNT 0x4
+#define RSVD_WB_TIMEOUT 0x8
+```
+
+----------------------------------------
+
+TITLE: H2C Aux RAM Pointers
+DESCRIPTION: Registers managing pointers for the auxiliary RAM used by the H2C buffer, including write and read pointers with MSB indicators. These are read-only.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3E14
+CSR Offset – CSR_BASE_ADDR + 0xE14
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x414
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+AUX_RAM_WR_PTR | 14:0 | RO | 0x0 | Aux RAM Write Pointer
+AUX_RAM_WR_PTR_MSB | 15 | RO | 0x0 | Aux RAM Write Pointer MSB
+AUX_RAM_RD_PTR | 30:16 | RO | 0x0 | Aux RAM Read Pointer
+AUX_RAM_RD_PTR_MSB | 31 | RO | 0x0 | Aux RAM Read Pointer MSB
+```
+
+----------------------------------------
+
+TITLE: Update Read Pointer (C)
+DESCRIPTION: Software increments the read pointer after reading metadata and periodically updates the SDE's copy via CSR memory writes. This helps the SDE determine buffer space.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+void update_read_pointer() {
+  // Increment software's read pointer
+  // ...
+
+  // Update SDE's copy of read pointer via CSR write
+  // ...
+}
+```
+
+----------------------------------------
+
+TITLE: C2H Buffer CSRs - Buffer Pointer Register
+DESCRIPTION: Register containing read and write pointers for C2H buffers. Both buffer write pointer and read address are read-only.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: BUF_WR_PTR
+ * Bit Range: 15:0
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Buffer Write Pointer (RAM entry based)
+ */
+/*
+ * Field Name: BUF_RD_ADDR
+ * Bit Range: 31:16
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Buffer Read Address (Byte based)
+ */
+volatile uint32_t C2H_BUFFER_PTR_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: C2H Status Counters Base Address Low Register
+DESCRIPTION: Specifies the lower 32 bits of the base address for status counters. This address must be 64-byte aligned.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define STATUS_WB_ADDR_LO 0x0
+```
+
+----------------------------------------
+
+TITLE: C2H Completed Descriptors Counter
+DESCRIPTION: This register counts the number of completed descriptors. Writing 0 to this register clears the counter. It is a read-write register with a default value of 0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_COMPLETED_DESCRIPTORS_COUNTER 0x508
+// Field: COMP_COUNT (31:0), Type: RW0C, Default: 0x0
+// Description: Completed Descriptor Counter. Write 0 to clear.
+```
+
+----------------------------------------
+
+TITLE: Configure Descriptor Type for AWS FPGA F2 SDE
+DESCRIPTION: The C2H_DESC_TYPE and H2C_DESC_TYPE parameters define the descriptor type. A value of 0 indicates a regular descriptor, while 1 indicates a compact descriptor.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter C2H_DESC_TYPE = 0; // 0 - Regular, 1 - Compact
+parameter H2C_DESC_TYPE = 0; // 0 - Regular, 1 - Compact
+```
+
+----------------------------------------
+
+TITLE: C2H Buffer CSRs - Number of Bytes in Buffer Register
+DESCRIPTION: Register indicating the number of bytes currently in the C2H buffer. This is a read-only register.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: NUM_BYTES
+ * Bit Range: 15:0
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Number of Bytes in Buffer. When Aux FIFO is valid, this is the number of bytes until end of current packet. When Aux FIFO is not valid, this is the number of bytes in the buffer
+ */
+/*
+ * Field Name: RSVD
+ * Bit Range: 31:16
+ * Type: RO
+ * Default Value: 0x0
+ * Description: Reserved
+ */
+volatile uint32_t C2H_NUM_BYTES_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: C2H Buffer CSRs - Buffer Config Register 0
+DESCRIPTION: Configuration register for C2H buffers. This register is reserved for future use and is read/write with a default value of 0x0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: RSVD
+ * Bit Range: 31:0
+ * Type: RW
+ * Default Value: 0x0
+ * Description: Reserved
+ */
+volatile uint32_t C2H_BUFFER_CONFIG_REG0 = 0x0;
+```
+
+----------------------------------------
+
+TITLE: Configure PCI Length Width for AWS FPGA F2 SDE
+DESCRIPTION: The PCIS_LEN_WIDTH and PCIM_LEN_WIDTH parameters define the AWLEN and ARLEN widths for PCI Express interfaces, controlling the length of transactions.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter PCIS_LEN_WIDTH = 8;
+parameter PCIM_LEN_WIDTH = 8;
+```
+
+----------------------------------------
+
+TITLE: Configure User Bit Width for AWS FPGA F2 SDE
+DESCRIPTION: The C2H_USER_BIT_WIDTH and H2C_USER_BIT_WIDTH parameters define the user bit width for AXIS streams, allowing for custom user-defined information.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter C2H_USER_BIT_WIDTH = 64;
+parameter H2C_USER_BIT_WIDTH = 64;
+```
+
+----------------------------------------
+
+TITLE: SDE Info Register (PCIS CSRs)
+DESCRIPTION: The SDE Info Register provides information about the presence of C2H and H2C instances within the SDE. It contains read-only fields indicating whether C2H or H2C are instantiated.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Assembly
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3004
+CSR Offset – CSR_BASE_ADDR + 0x004
+PCIS CSR Offset – PCIS_CSR_BASE_ADDR + 0x004
+
+Field Name: C2H_PRESENT
+Bit Range: 0
+Type: RO
+Default Value: 0x0
+Description: 1 = C2H Instanced 0 = C2H Not Instanced
+
+Field Name: H2C_PRESENT
+Bit Range: 16
+Type: RO
+Default Value: 0x0
+Description: 1 = H2C Instanced 0 = H2C Not Instanced
+```
+
+----------------------------------------
+
+TITLE: C2H Descriptor FIFO Pointers
+DESCRIPTION: This register provides the read and write pointers for the descriptor FIFO. It includes separate fields for the most significant bits (MSB) of both pointers. These are read-only registers.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DESC_FIFO_POINTERS 0x50C
+// Field: FIFO_WR_PTR (14:0), Type: RO, Default: 0x0
+// Description: Descriptor FIFO Write Pointer
+// Field: FIFO_WR_PTR_MSB (15), Type: RO, Default: 0x0
+// Description: Descriptor FIFO Write Pointer MSB
+// Field: FIFO_RD_PTR (30:16), Type: RO, Default: 0x0
+// Description: Descriptor FIFO Read Pointer
+// Field: FIFO_RD_PTR_MSB (31), Type: RO, Default: 0x0
+// Description: Descriptor FIFO Read Pointer MSB
+```
+
+----------------------------------------
+
+TITLE: Configure PCI ID Width for AWS FPGA F2 SDE
+DESCRIPTION: Parameters such as PCIS_ID_WIDTH, PCIM_ID_WIDTH, C2H_PCIM_DM_AWID, C2H_PCIM_WB_AWID, H2C_PCIM_WB_AWID, C2H_PCIM_DESC_ARID, H2C_PCIM_DESC_ARID, and H2C_PCIM_DM_ARID configure the ID widths for various PCI Express transactions.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter PCIS_ID_WIDTH = 16;
+parameter PCIM_ID_WIDTH = 3;
+parameter C2H_PCIM_DM_AWID = 0;
+parameter C2H_PCIM_WB_AWID = 1;
+parameter H2C_PCIM_WB_AWID = 2;
+parameter C2H_PCIM_DESC_ARID = 0;
+parameter H2C_PCIM_DESC_ARID = 1;
+parameter H2C_PCIM_DM_ARID = 2;
+```
+
+----------------------------------------
+
+TITLE: H2C Buffer Pointer Register
+DESCRIPTION: Register containing pointers for the H2C buffer, including write pointer and read address. These are read-only registers.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3E10
+CSR Offset – CSR_BASE_ADDR + 0xE10
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x410
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+BUF_WR_PTR | 15:0 | RO | 0x0 | Buffer Write Pointer (RAM entry based)
+BUF_RD_ADDR | 31:16 | RO | 0x0 | Buffer Read Address (Byte based)
+```
+
+----------------------------------------
+
+TITLE: H2C Buffer Config Register 0
+DESCRIPTION: Configuration register for the H2C buffer, including reserved fields. It defines the base address and CSR offsets for accessing this register.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3E00
+CSR Offset – CSR_BASE_ADDR + 0xE00
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x400
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+RSVD | 31:0 | RW | 0x0 | Reserved
+```
+
+----------------------------------------
+
+TITLE: Configure FPGA Channels (C2H_ONLY, H2C_ONLY)
+DESCRIPTION: This snippet demonstrates how to configure the FPGA for specific channel requirements. By setting design parameters like C2H_ONLY and H2C_ONLY, users can enable or disable specific communication channels (Cloud-to-Host or Host-to-Cloud) to optimize logic usage.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+`define C2H_ONLY 1
+`define H2C_ONLY 0
+```
+
+----------------------------------------
+
+TITLE: Configure PCI Address Width for AWS FPGA F2 SDE
+DESCRIPTION: The PCIS_ADDR_WIDTH and PCIM_ADDR_WIDTH parameters specify the AWADDR and ARADDR widths for PCI Express interfaces, defining the address space for transactions.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter PCIS_ADDR_WIDTH = 64;
+parameter PCIM_ADDR_WIDTH = 64;
+```
+
+----------------------------------------
+
+TITLE: Configure PCI Data Width for AWS FPGA F2 SDE
+DESCRIPTION: Parameters like PCIS_DATA_WIDTH, PCIM_DATA_WIDTH, C2H_AXIS_DATA_WIDTH, and H2C_AXIS_DATA_WIDTH define the data bus widths for PCI Express interfaces and AXIS streams.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter PCIS_DATA_WIDTH = 512;
+parameter PCIM_DATA_WIDTH = 512;
+parameter C2H_AXIS_DATA_WIDTH = 512;
+parameter H2C_AXIS_DATA_WIDTH = 512;
+```
+
+----------------------------------------
+
+TITLE: H2C Data Mover Buffer Pointer Register
+DESCRIPTION: Register for Data Mover buffer pointers, including write pointers and read pointers for auxiliary RAM. These are read-only registers.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3E1C
+CSR Offset – CSR_BASE_ADDR + 0xE1C
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x41C
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+DM_BUF_WR_PTR | 14:0 | RO | 0x0 | Data Mover Buffer Write Pointer
+DM_BUF_WR_PTR_MSB | 15 | RO | 0x0 | Data Mover Buffer Write Pointer MSB
+DM_AUX_WR_PTR | 30:16 | RO | 0x0 | Data Mover Aux RAM Read Pointer
+DM_AUX_WR_PTR_MSB | 31 | RO | 0x0 | Data Mover Aux RAM Read Pointer MSB
+```
+
+----------------------------------------
+
+TITLE: C2H AXI-Stream CSRs - Packet Count
+DESCRIPTION: Register tracking the number of packets transmitted on the C2H AXI-Stream interface. It increments after transmitting an EOP and can be cleared by writing 0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: PKT_CNT
+ * Bit Range: 31:0
+ * Type: RW0C
+ * Default Value: 0x0
+ * Description: Number of packets transmitted on the AXIS interface. Increments after transmitting an EOP. Write 0 to clear.
+ */
+volatile uint32_t C2H_AXIS_PKT_CNT_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: H2C Buffer Status Register
+DESCRIPTION: Status register for the H2C buffer, indicating buffer fullness, emptiness, and auxiliary FIFO status. It also includes reserved bits.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3E04
+CSR Offset – CSR_BASE_ADDR + 0xE04
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x404
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+BUF_FULL | 0 | RO | 0x0 | Buffer Full
+BUF_EMPTY | 1 | RO | 0x0 | Buffer Empty
+AUX_FIFO_FULL | 2 | RO | 0x0 | Aux FIFO Full
+AUX_FIFO_EMPTY | 3 | RO | 0x0 | Aux FIFO Empty
+RSVD | 31:4 | RO | 0x0 | Reserved
+```
+
+----------------------------------------
+
+TITLE: C2H Buffer CSRs - Buffer Input Packet Count Register
+DESCRIPTION: Register to track the count of input packets for C2H buffers. This is a read/write register that clears on write (RW0C).
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: IN_PKT_CNT
+ * Bit Range: 31:0
+ * Type: RW0C
+ * Default Value: 0x0
+ * Description: Input Packet Count
+ */
+volatile uint32_t C2H_BUFFER_IN_PKT_CNT_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: H2C Descriptor RAM Data Register
+DESCRIPTION: Used for reading from and writing to the descriptor RAM in the H2C interface. Writes initiate a descriptor RAM write after all data words are provided. Reads initiate a descriptor RAM read when the data word index is 0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_DESC_RAM_DATA_ADDR (PCIS_BASE_ADDR + 0x3B14)
+#define H2C_DESC_RAM_DATA_OFFSET (CSR_BASE_ADDR + 0xB14)
+#define H2C_CSR_DESC_RAM_DATA_OFFSET (H2C_CSR_BASE_ADDR + 0x114)
+
+// Example (conceptual):
+// write_csr(H2C_DESC_RAM_DATA_ADDR, descriptor_data_word);
+// uint32_t read_data = read_csr(H2C_DESC_RAM_DATA_ADDR);
+
+```
+
+----------------------------------------
+
+TITLE: C2H Buffer CSRs - Buffer Output Packet Count Register
+DESCRIPTION: Register to track the count of output packets for C2H buffers. This is a read/write register that clears on write (RW0C).
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+/*
+ * Field Name: OUT_PKT_CNT
+ * Bit Range: 31:0
+ * Type: RW0C
+ * Default Value: 0x0
+ * Description: Output Packet Count
+ */
+volatile uint32_t C2H_BUFFER_OUT_PKT_CNT_REG = 0x0;
+```
+
+----------------------------------------
+
+TITLE: C2H Descriptor RAM Data Register
+DESCRIPTION: This register is used for reading from and writing to the descriptor RAM. When writing, all data words for a descriptor are written to this register, initiating a RAM write. When reading, a RAM read is initiated if the DESC_RAM_DW_IDX is 0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DESC_RAM_DATA 0x514
+// Field: DESC_RAM_DATA_DW (31:0), Type: RW, Default: 0x0
+// Description: Descriptor RAM Data. When writing the descriptor RAM, SDE initiates a write to the descriptor RAM after all the DWs that make up the descriptor are written to this register. When reading the descriptor RAM, SDE initiates a read from the descriptor RAM when this register is read and when the DESC_RAM_DW_IDX is 0.
+```
+
+----------------------------------------
+
+TITLE: C2H Descriptor Info Register
+DESCRIPTION: This register provides information about the descriptor type and the depth of the descriptor RAM. The descriptor type indicates if it's a regular or compact descriptor. The descriptor RAM depth specifies the maximum number of descriptors.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DESC_INFO 0x520
+// Field: DESC_TYPE (0), Type: RO, Default: 0x0
+// Description: Descriptor/Write-Back Type 0 – Regular 1 – Compact
+// Field: RSVD (15:1), Type: RO, Default: 0x0
+// Description: RSVD
+// Field: DESC_RAM_DEPTH (31:16), Type: RO, Default: 0x0
+// Description: Descriptor RAM Depth. Maximum Number of descriptors.
+```
+
+----------------------------------------
+
+TITLE: H2C AXI-Stream Packet Count
+DESCRIPTION: Register to count packets received on the H2C AXI-Stream interface. It increments after an End-of-Packet (EOP) and can be cleared by writing 0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3F00
+CSR Offset – CSR_BASE_ADDR + 0xF00
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x500
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+PKT_CNT | 31:0 | RW0C | 0x0 | Number of packets received on the AXIS interface. Increments after receiving an EOP. Write 0 to clear.
+```
+
+----------------------------------------
+
+TITLE: C2H Descriptor RAM Address Register
+DESCRIPTION: This register specifies the address within the descriptor RAM. It also includes a data word index that auto-increments when the descriptor RAM data register is read or written. This register is read-write.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DESC_RAM_ADDRESS 0x510
+// Field: DESC_RAM_ADDR (15:0), Type: RW, Default: 0x0
+// Description: Descriptor RAM Address
+// Field: DESC_RAM_DW_IDX (19:16), Type: RWC, Default: 0x0
+// Description: Descriptor RAM Data DW Index. This bitfield is cleared when this register is written. This will auto-increment when DESC_RAM_DATA is read or written.
+// Field: RSVD (31:20), Type: RO, Default: 0x0
+// Description: Reserved
+```
+
+----------------------------------------
+
+TITLE: H2C Buffer Output Packet Count Register
+DESCRIPTION: Register to track the number of output packets from the H2C buffer. It is a read/write register that clears on read.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3E0C
+CSR Offset – CSR_BASE_ADDR + 0xE0C
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x40C
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+OUT_PKT_CNT | 31:0 | RW0C | 0x0 | Output Packet Count
+```
+
+----------------------------------------
+
+TITLE: H2C Completed Descriptors Counter
+DESCRIPTION: Counts the number of completed descriptors processed by the H2C interface. Writing 0 to this register clears the counter. This is a read-write register with a clear on read/write behavior.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_COMPLETED_DESCRIPTORS_COUNTER_ADDR (PCIS_BASE_ADDR + 0x3B08)
+#define H2C_COMPLETED_DESCRIPTORS_COUNTER_OFFSET (CSR_BASE_ADDR + 0xB08)
+#define H2C_CSR_COMPLETED_DESCRIPTORS_COUNTER_OFFSET (H2C_CSR_BASE_ADDR + 0x108)
+
+// To clear the counter, write 0 to the COMP_COUNT field
+// Example (conceptual):
+// write_csr(H2C_COMPLETED_DESCRIPTORS_COUNTER_ADDR, 0);
+
+```
+
+----------------------------------------
+
+TITLE: Configure SDE Descriptor RAM Depth
+DESCRIPTION: To increase the number of descriptors that can be stored in the SDE, you can modify the C2H_DESC_RAM_DEPTH and H2C_DESC_RAM_DEPTH parameters. Be aware that this change will increase the BRAM usage within the SDE.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+// Parameters to increase descriptor storage:
+// C2H_DESC_RAM_DEPTH
+// H2C_DESC_RAM_DEPTH
+```
+
+----------------------------------------
+
+TITLE: H2C Buffer Input Packet Count Register
+DESCRIPTION: Register to track the number of input packets received by the H2C buffer. It is a read/write register that clears on read.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: text
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3E08
+CSR Offset – CSR_BASE_ADDR + 0xE08
+H2C CSR Offset – H2C_CSR_BASE_ADDR + 0x408
+
+Field Name | Bit Range | Type | Default Value | Description
+---|---|---|---|---
+IN_PKT_CNT | 31:0 | RW0C | 0x0 | Input Packet Count
+```
+
+----------------------------------------
+
+TITLE: H2C Data Mover Status Register
+DESCRIPTION: Provides status information for the H2C Data Mover, including errors like Rresp errors and descriptor length errors. These are read-clear status bits.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_DATA_MOVER_STATUS_ADDR (PCIS_BASE_ADDR + 0x3C04)
+#define H2C_DATA_MOVER_STATUS_OFFSET (CSR_BASE_ADDR + 0xC04)
+#define H2C_CSR_DATA_MOVER_STATUS_OFFSET (H2C_CSR_BASE_ADDR + 0x204)
+
+// Example (conceptual):
+// uint32_t status = read_csr(H2C_DATA_MOVER_STATUS_ADDR);
+// if (status & (1 << 0)) { /* DM_RRESP_ERR set */ }
+// if (status & (1 << 1)) { /* DM_DESC_LEN_ERR set */ }
+// To clear status bits, write 1 to the corresponding bit (e.g., write_csr(H2C_DATA_MOVER_STATUS_ADDR, 1 << 0); for DM_RRESP_ERR)
+
+```
+
+----------------------------------------
+
+TITLE: C2H Descriptor RAM Status Register
+DESCRIPTION: This register provides status information about the descriptor RAM, including overflow, out-of-order errors, unaligned address errors, and whether the RAM is full or empty. Most error bits are read-clear (RW1C).
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DESC_RAM_STATUS 0x518
+// Field: DESC_OFLOW (0), Type: RW1C, Default: 0x0
+// Description: Desc RAM Overflow Indicates that a descriptor was written when the descriptor RAM is full
+// Field: DESC_OOO_ERROR (1), Type: RW1C, Default: 0x0
+// Description: Desc Out of Order Error
+// Field: DESC_UNALIGN_ERROR (2), Type: RW1C, Default: 0x0
+// Description: Desc Unaligned Address Error
+// Field: DESC_FULL (3), Type: RO, Default: 0x0
+// Description: Desc RAM Full
+// Field: DESC_EMPTY (4), Type: RO, Default: 0x0
+// Description: Desc RAM Empty
+// Field: RSVD (31:5), Type: RO, Default: 0x0
+// Description: Reserved
+```
+
+----------------------------------------
+
+TITLE: Configure Outstanding Reads for AWS FPGA F2 SDE
+DESCRIPTION: The PCIM_NUM_OT_RD parameter sets the number of outstanding reads for the PCIM interface. It should be set to 64 when using the AWS shell to maximize H2C performance.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter PCIM_NUM_OT_RD = 64;
+```
+
+----------------------------------------
+
+TITLE: Configure SDE Packet Buffer Sizes
+DESCRIPTION: The size of the main packet buffers for C2H and H2C can be adjusted using the C2H_BUF_DEPTH and H2C_BUF_DEPTH parameters, respectively. These parameters allow for tuning buffer sizes based on specific application needs.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+// Parameters to change packet buffer sizes:
+// C2H_BUF_DEPTH
+// H2C_BUF_DEPTH
+```
+
+----------------------------------------
+
+TITLE: H2C Descriptor RAM Status Register
+DESCRIPTION: Provides status flags for the descriptor RAM in the H2C interface, including overflow, out-of-order errors, unaligned address errors, and whether the RAM is full or empty. These are read-clear status bits.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_DESC_RAM_STATUS_ADDR (PCIS_BASE_ADDR + 0x3B18)
+#define H2C_DESC_RAM_STATUS_OFFSET (CSR_BASE_ADDR + 0xB18)
+#define H2C_CSR_DESC_RAM_STATUS_OFFSET (H2C_CSR_BASE_ADDR + 0x118)
+
+// Example (conceptual):
+// uint32_t status = read_csr(H2C_DESC_RAM_STATUS_ADDR);
+// if (status & (1 << 0)) { /* DESC_OFLOW set */ }
+// if (status & (1 << 3)) { /* DESC_FULL set */ }
+// To clear status bits, write 1 to the corresponding bit (e.g., write_csr(H2C_DESC_RAM_STATUS_ADDR, 1 << 0); for DESC_OFLOW)
+
+```
+
+----------------------------------------
+
+TITLE: Configure C2H_ONLY for AWS FPGA F2 SDE
+DESCRIPTION: The C2H_ONLY parameter disables the SDE H2C logic. Set to 1 if only the C2H channel is required. Note that if C2H_ONLY is 1, H2C_ONLY should be 0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter C2H_ONLY = 1;
+```
+
+----------------------------------------
+
+TITLE: C2H Data Mover Status Register
+DESCRIPTION: This register provides status information for the C2H Data Mover, including bus response errors and errors where the descriptor length is zero. These error bits are read-clear (RW1C).
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DATA_MOVER_STATUS 0x604
+// Field: DM_BRESP_ERR (0), Type: RW1C, Default: 0x0
+// Description: Data Mover Bresp Error
+// Field: DM_DESC_LEN_ERR (1), Type: RW1C, Default: 0x0
+// Description: Descriptor Length equal to 0
+// Field: RSVD (31:2), Type: RO, Default: 0x0
+// Description: Reserved
+```
+
+----------------------------------------
+
+TITLE: C2H Descriptor Credit Consumed Counter
+DESCRIPTION: This register tracks the number of descriptor credits consumed by the C2H interface. Writing a 0 to this register clears the counter. It is a read-write register with a default value of 0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DESC_CREDIT_CONSUMED_COUNTER 0x500
+// Field: CDT_CONSUMED (31:0), Type: RW0C, Default: 0x0
+// Description: Descriptor Credit Consumed Counter. Write 0 to clear.
+```
+
+----------------------------------------
+
+TITLE: C2H Descriptor Credit Limit Counter
+DESCRIPTION: This register defines the limit for descriptor credits. Writing 0 to this register resets the counter to the value of C2H_DESC_RAM_DEPTH. It is a read-write register with a default value set by C2H_DESC_RAM_DEPTH.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define C2H_CSR_DESC_CREDIT_LIMIT_COUNTER 0x504
+// Field: CDT_LIMIT (31:0), Type: RW0C, Default: C2H_DESC_RAM_DEPTH
+// Description: Descriptor Credit Limit Counter. Write 0 to clear. When cleared, the value of the counter is reset to C2H_DESC_RAM_DEPTH.
+```
+
+----------------------------------------
+
+TITLE: Configure Buffer RAM Depth for AWS FPGA F2 SDE
+DESCRIPTION: The C2H_BUF_DEPTH and H2C_BUF_DEPTH parameters define the buffer RAM depth, representing the maximum number of data slices the buffer can hold. Supported values for both are 64, 128, 256, and 512.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter C2H_BUF_DEPTH = 512; // Supported: 64, 128, 256, 512
+parameter H2C_BUF_DEPTH = 512; // Supported: 64, 128, 256, 512
+```
+
+----------------------------------------
+
+TITLE: Software Reset Register (PCIS CSRs)
+DESCRIPTION: The Software Reset Register is used to assert a reset to functional blocks within the SDE, excluding the PCIS Slave Block. It is a read-write register where setting the SW_RST bit initiates the reset.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Assembly
+CODE:
+```
+Address – PCIS_BASE_ADDR + 0x3000
+CSR Offset – CSR_BASE_ADDR + 0x000
+PCIS CSR Offset – PCIS_CSR_BASE_ADDR + 0x000
+
+Field Name: SW_RST
+Bit Range: 0
+Type: RW
+Default Value: 0x0
+Description: Software Reset. When Set, reset is asserted to all the functional blocks of the SDE except the PCIS Slave Block.
+```
+
+----------------------------------------
+
+TITLE: H2C Descriptor Credit Consumed Counter
+DESCRIPTION: Monitors the number of descriptor credits consumed by the Host-to-Cloud (H2C) interface. Writing 0 to this register clears the counter. This is a read-write register with a clear on read/write behavior.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_DESC_CREDIT_CONSUMED_COUNTER_ADDR (PCIS_BASE_ADDR + 0x3B00)
+#define H2C_DESC_CREDIT_CONSUMED_COUNTER_OFFSET (CSR_BASE_ADDR + 0xB00)
+#define H2C_CSR_DESC_CREDIT_CONSUMED_COUNTER_OFFSET (H2C_CSR_BASE_ADDR + 0x100)
+
+// To clear the counter, write 0 to the CDT_CONSUMED field
+// Example (conceptual):
+// write_csr(H2C_DESC_CREDIT_CONSUMED_COUNTER_ADDR, 0);
+
+```
+
+----------------------------------------
+
+TITLE: SDE User Bit Width Configuration
+DESCRIPTION: In the current SDE version, the user bit width is fixed and should not be changed. Parameters C2H_USER_BIT_WIDTH and H2C_USER_BIT_WIDTH are for reference and should not be modified. If more user bits are needed, they must be embedded within the packet payload.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+// User bit width parameters (do not change):
+// C2H_USER_BIT_WIDTH
+// H2C_USER_BIT_WIDTH
+```
+
+----------------------------------------
+
+TITLE: Configure H2C_ONLY for AWS FPGA F2 SDE
+DESCRIPTION: The H2C_ONLY parameter disables the SDE C2H logic. Set to 1 if only the H2C channel is required. Note that if H2C_ONLY is 1, C2H_ONLY should be 0.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter H2C_ONLY = 1;
+```
+
+----------------------------------------
+
+TITLE: Configure Descriptor RAM Depth for AWS FPGA F2 SDE
+DESCRIPTION: The C2H_DESC_RAM_DEPTH and H2C_DESC_RAM_DEPTH parameters specify the descriptor RAM depth, which is the maximum number of descriptors supported for C2H and H2C channels respectively. Supported values are 64 and 128.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: Verilog
+CODE:
+```
+parameter C2H_DESC_RAM_DEPTH = 64; // Supported: 64, 128
+parameter H2C_DESC_RAM_DEPTH = 64; // Supported: 64, 128
+```
+
+----------------------------------------
+
+TITLE: H2C Descriptor RAM Address Register
+DESCRIPTION: Specifies the address and data word index for accessing the descriptor RAM in the H2C interface. Writing to this register can auto-increment the data word index upon reads/writes to the Descriptor RAM Data register.
+
+SOURCE: https://awsdocs-fpga-f2.readthedocs-hosted.com/latest/sdk/apps/virtual-ethernet/doc/SDE-HW-Guide
+
+LANGUAGE: C
+CODE:
+```
+#define H2C_DESC_RAM_ADDRESS_ADDR (PCIS_BASE_ADDR + 0x3B10)
+#define H2C_DESC_RAM_ADDRESS_OFFSET (CSR_BASE_ADDR + 0xB10)
+#define H2C_CSR_DESC_RAM_ADDRESS_OFFSET (H2C_CSR_BASE_ADDR + 0x110)
+
+// Example (conceptual):
+// write_csr(H2C_DESC_RAM_ADDRESS_ADDR, (descriptor_index & 0xFFFF) | ((dw_index & 0xF) << 16));
+
+```
