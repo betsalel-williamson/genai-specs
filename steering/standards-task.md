@@ -59,3 +59,37 @@ Do NOT include tasks for:
 
 **Storage Location:**
 User story documents for specific features or work items should be stored within the `.work-items/{feature_name}/` directory, named `task.md`. For example, a user story document for the `pkl-highlighting` feature would be located at `.work-items/pkl-highlighting/task.md`. This structure ensures that user story documents are co-located with their related requirements and tasks, providing a clear, scalable, and traceable organization for project specifications.
+
+---
+
+## Task Breakdown Methodology: Sequential, ACID-Compliant Steps
+
+To ensure clarity, maintainability, and safe incremental development, complex tasks will be broken down into a series of sequential, ACID-compliant steps. Each step will be documented in its own markdown file within the feature's task directory.
+
+**Principles:**
+
+- **Atomic:** Each step is a single, indivisible unit of work. It either completes entirely or not at all.
+- **Consistent:** Each step, upon completion, leaves the system in a valid state, adhering to all defined invariants.
+- **Isolated:** The execution of one step does not interfere with other concurrent or subsequent steps. Changes made by a step are not visible until it is fully committed.
+- **Durable:** Once a step is completed and committed, its changes are permanent and survive system failures.
+
+**Structure:**
+
+Within a feature's task directory (e.g., `.work-items/<feature_name>/`), individual task steps will be represented as sequentially numbered markdown files:
+
+```txt
+/.work-items/<feature_name>/
+├── task.md (overall task description)
+├── 01_step_description.md
+├── 02_another_step.md
+└── ...
+```
+
+Each `0X_step_description.md` file will contain:
+
+- A clear objective for that specific step.
+- Detailed acceptance criteria for the step.
+- A focused test strategy to verify the step's completion.
+- Any specific implementation details or considerations for that step.
+
+This approach allows for granular tracking of progress, easier rollback if a step introduces issues, and a more structured development workflow.
