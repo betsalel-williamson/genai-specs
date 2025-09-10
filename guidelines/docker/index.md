@@ -34,4 +34,4 @@ This directory contains Docker development and deployment guidelines.
 
 ## Additional resources
 
-- https://github.com/github/awesome-copilot/blob/main/instructions/containerization-docker-best-practices.instructions.md
+- <https://github.com/github/awesome-copilot/blob/main/instructions/containerization-docker-best-practices.instructions.md>

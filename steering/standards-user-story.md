@@ -11,6 +11,7 @@ User stories must capture end-user value and follow the standard format.
 For effective UX work, each user story should begin with a clear definition of the user persona. This persona should be a semi-fictional representation of your ideal user based on real data and some educated guesses about demographics, behavior patterns, motivations, and goals. This helps in understanding the user's needs and designing solutions that truly address them.
 
 **Structure:**
+
 - **Name:** A descriptive name for the persona (e.g., "Data Analyst Dave", "System Administrator Sarah").
 - **Description:** A brief paragraph outlining who this persona is, their role, their primary goals, and any relevant pain points or motivations related to the system.
 
