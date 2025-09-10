@@ -56,3 +56,6 @@ Do NOT include tasks for:
 - Complex features should be broken into multiple tasks
 - Each task should result in working, tested code
 - Avoid tasks that require multiple days of work
+
+**Storage Location:**
+User story documents for specific features or work items should be stored within the `.work-items/{feature_name}/` directory, named `task.md`. For example, a user story document for the `pkl-highlighting` feature would be located at `.work-items/pkl-highlighting/task.md`. This structure ensures that user story documents are co-located with their related requirements and tasks, providing a clear, scalable, and traceable organization for project specifications.
