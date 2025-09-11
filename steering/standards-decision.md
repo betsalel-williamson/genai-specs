@@ -45,3 +45,13 @@ Links to related documents, design specs, other ADRs, or external resources.
 - **Context Preservation**: Capture the situation that led to the decision
 - **Consequence Awareness**: Document both positive and negative outcomes
 - **Traceability**: Link to related decisions and documents
+
+## Document Creation and Storage
+
+New Architecture Decision Records (ADRs) should be created by copying this `standards-decision.md` file as a template.
+
+**Storage Location and Naming:**
+- All ADRs should be stored within the `docs/decisions/` directory.
+- **Filenames** should follow a numerical prefix and descriptive `kebab-case` format (e.g., `0001-choose-database-technology.md`, `0002-implement-authentication-strategy.md`). This ensures chronological ordering and easy identification.
+
+This structure ensures that ADRs are organized logically, are easily discoverable, and provide a clear historical log of decisions.
