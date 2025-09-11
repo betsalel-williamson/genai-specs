@@ -51,6 +51,7 @@ Links to related documents, design specs, other ADRs, or external resources.
 New Architecture Decision Records (ADRs) should be created by copying this `standards-decision.md` file as a template.
 
 **Storage Location and Naming:**
+
 - All ADRs should be stored within the `docs/decisions/` directory.
 - **Filenames** should follow a numerical prefix and descriptive `kebab-case` format (e.g., `0001-choose-database-technology.md`, `0002-implement-authentication-strategy.md`). This ensures chronological ordering and easy identification.
 
