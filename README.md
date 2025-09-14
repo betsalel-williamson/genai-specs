@@ -69,6 +69,31 @@ The steering system supports a general spec-driven development workflow:
 "Need to validate code quality #guidelines-verification-protocol"
 ```
 
+## Initialization Script
+
+The `init.sh` script located is designed to set up the necessary files for using these specs as a git submodule in your main project.
+
+This script performs the following actions:
+
+1.  **Submodule Verification**: Checks if the `genai-specs` project is correctly configured as a Git submodule in your main repository. If not, it will alert you and provide the `git submodule add ...` command to add it.
+2.  **Environment File (`.env`) Management**:
+    *   Creates a `.env` file in your main project's root directory if it doesn't already exist.
+    *   Adds placeholder environment variables (`GOOGLE_CLOUD_PROJECT`, `GEMINI_MODEL`, `GEMINI_API_KEY`) to the `.env` file if they are missing. It will warn you if a variable already exists. See the Gemini CLI project for details on setting up a Google Cloud project and getting a Gemini API key.
+3.  **Gemini Settings File (`.gemini/settings.json`) Management**:
+    *   Creates the `.gemini` directory in your main project's root if it doesn't exist.
+    *   Creates or updates `.gemini/settings.json` with default configurations for the Gemini CLI. If the file already exists and its content differs from the default, it will output a warning and show the differences, skipping the overwrite.
+4.  **Git Ignore (`.gitignore`) Update**:
+    *   Ensures that `.env` is added to your main project's `.gitignore` file to prevent sensitive information from being committed. It will create the `.gitignore` file if it doesn't exist.
+
+### How to Use
+
+To run the initialization script, after this project is added as a submodule project, navigate to the `genai-specs` directory within your main project and execute the script:
+
+```bash
+cd genai-specs
+./init.sh
+```
+
 ## Acknowledgements
 
 This steering system and development methodology draws from established practices and thought leaders in software development:
@@ -95,5 +120,6 @@ The core engineering principles synthesize best practices from:
 - Domain-driven design patterns
 - Functional programming principles
 - Modern software architecture patterns
+- [DORA Community](https://dora.community/) and [best practices](https://dora.dev/guides/).
 
 These influences have been adapted and integrated to create a cohesive system for AI-assisted development that maintains high code quality while enabling rapid, iterative progress.
