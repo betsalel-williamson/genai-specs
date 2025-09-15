@@ -79,5 +79,10 @@ Architecture documents define the overarching structure and principles for the e
 
 New architecture documents should be created by copying this `standards-architecture.md` file as a template.
 
-**Storage Location:**
-Project-level architecture documents should be stored directly within the `.work-items/architecture/` directory. For architecture specific to a major feature or subsystem, documents can be placed within `.work-items/{feature_name}/architecture.md`. This structure ensures that architecture documents are organized logically, are easily discoverable, and provide a clear hierarchy for project documentation.
+**Storage Location and Naming:**
+
+- **Project-level architecture documents** should be stored directly within the `docs/architecture/` directory.
+- **Filenames** should be descriptive and use `kebab-case` (e.g., `system-overview.md`, `data-flow.md`).
+- **For architecture specific to a major feature or subsystem**, documents can be placed within `docs/architecture/{feature_name}/` or referenced from a main architecture document if they are part of a larger system.
+
+This structure ensures that architecture documents are organized logically, are easily discoverable, and provide a clear hierarchy for project documentation.
