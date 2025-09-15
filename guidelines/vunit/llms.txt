@@ -1,0 +1,1603 @@
+================
+CODE SNIPPETS
+================
+TITLE: Minimal VUnit Testbench Setup
+DESCRIPTION: Demonstrates a basic VUnit testbench structure, including library inclusions, runner configuration, and the main test runner process with setup and cleanup procedures.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/user_guide.rst#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+library vunit_lib;
+context vunit_lib.run;
+
+entity tb is
+  generic (
+    runner_cfg : string := runner_cfg_default
+  );
+  port (
+    -- ... ports ...
+  );
+end entity tb;
+
+architecture rtl of tb is
+  -- ... architecture body ...
+begin
+
+  test_runner : process
+  begin
+    test_runner_setup(runner, runner_cfg);
+    -- Test code goes here
+    check_equal(1, 1); -- Example from check library
+    test_runner_cleanup;
+    wait;
+  end process test_runner;
+
+end architecture rtl;
+```
+
+--------------------------------
+
+TITLE: VUnit VHDL Testbench Setup and Path Logging
+DESCRIPTION: This VHDL code snippet demonstrates the basic setup of a VUnit test runner. It utilizes the `vunit_lib` to configure the runner, log the testbench's directory using `tb_path`, and the output directory using `output_path`. This example requires the VUnit library to be available.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/img/tb_magic_paths.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+library vunit_lib;
+context vunit_lib.vunit_context;
+
+entity tb_magic_paths is
+  generic (runner_cfg : string);
+end entity;
+
+architecture tb of tb_magic_paths is
+begin
+  test_runner : process
+  begin
+    test_runner_setup(runner, runner_cfg);
+    info("Directory containing testbench: " & tb_path(runner_cfg));
+    info("Test output directory: " & output_path(runner_cfg));
+    test_runner_cleanup(runner);
+  end process;
+end architecture;
+```
+
+--------------------------------
+
+TITLE: GHDL Setup via Package Manager
+DESCRIPTION: Instructions for installing GHDL using common package managers like apt (Debian/Ubuntu) or pacman (Arch Linux). This is a common method for setting up the simulator in CI environments.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/ci/manual.rst#_snippet_0
+
+LANGUAGE: shell
+CODE:
+```
+sudo apt update && sudo apt install ghdl
+# or
+sudo pacman -S ghdl
+```
+
+--------------------------------
+
+TITLE: Example Mailbox State String (Console)
+DESCRIPTION: Provides an example of the string output from `get_mailbox_state_string`, showing mailbox details like size and a list of messages with their IDs, sender, and type.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_49
+
+LANGUAGE: console
+CODE:
+```
+Mailbox: inbox
+  Size: 2147483647
+  Messages:
+    0. 5:- _actor_3 -> memory BFM (write)
+```
+
+--------------------------------
+
+TITLE: Verbose Format Example
+DESCRIPTION: Shows an example of the 'verbose' log output format, which includes simulator time, log level, logger name, and the message content.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_9
+
+LANGUAGE: vhdl
+CODE:
+```
+-- Assuming verbose_format_log.html contains the actual VHDL code or output example
+-- Example output structure:
+-- [SIM_TIME] [LEVEL] [LOGGER_NAME]: MESSAGE
+```
+
+--------------------------------
+
+TITLE: Full Time Resolution Example
+DESCRIPTION: Shows an example of log output when 'n_log_time_decimals' is set to 'full_time_resolution', displaying the simulator time with its maximum precision.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_13
+
+LANGUAGE: vhdl
+CODE:
+```
+-- Assuming full_time_resolution_log.html contains the actual VHDL code or output example
+-- Example output structure (if simulator resolution is ps and log_time_unit is us):
+-- [SIM_TIME_US_WITH_HIGH_PRECISION] [LEVEL] [LOGGER_NAME]: MESSAGE
+```
+
+--------------------------------
+
+TITLE: VHDL Testbench Setup and Execution with VUnit
+DESCRIPTION: This VHDL code demonstrates a basic testbench structure for the VUnit testing framework. It includes setting up the test runner with a generic configuration, iterating through test suites, conditionally running tests, and performing cleanup. The example relies on the 'vunit_lib' and 'vunit_context' libraries.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/img/test_control.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+library vunit_lib;
+context vunit_lib.vunit_context;
+
+entity test_control is
+  generic (
+    nested_runner_cfg : string);
+end entity test_control;
+
+architecture tb of test_control is
+begin
+  test_runner : process
+  begin
+    test_runner_setup(runner, nested_runner_cfg);
+
+    while test_suite loop
+      if run("Test something") then
+        info("Testing something");
+      elsif run("Test something else") then
+        info("Testing something else");
+      end if;
+    end loop;
+
+    test_runner_cleanup(runner);
+  end process;
+end architecture tb;
+```
+
+--------------------------------
+
+TITLE: VHDL Check Equal Example with Context
+DESCRIPTION: Shows how to use the `check_equal` subprogram in VHDL to compare two values and provide a descriptive message. This example includes custom context for error reporting.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_8
+
+LANGUAGE: vhdl
+CODE:
+```
+check_equal(output_pixel, reference_model(x, y), "Comparing output pixel with reference model");
+```
+
+--------------------------------
+
+TITLE: Example Trace Log Entry - Message Received (Console)
+DESCRIPTION: Shows an example of a trace log entry when a message is received by an actor's inbox. It includes timestamps, the logger source, log level, and the message details in brackets.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_44
+
+LANGUAGE: console
+CODE:
+```
+30000 ps - vunit_lib:com -   TRACE - test sequencer inbox => [3:2 memory BFM -> test sequencer (read reply)]
+```
+
+--------------------------------
+
+TITLE: VUnit Standalone Test Output Example
+DESCRIPTION: Example of console output when running a VUnit testbench standalone, showing test case progression and check results. This output includes messages from the internal 'runner' logger and 'check' module.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/user_guide.rst#_snippet_12
+
+LANGUAGE: text
+CODE:
+```
+#             0 ps - runner  -    INFO  - Test case: Test that fails on VUnit check procedure
+#             0 ps - check   -    ERROR - Equality check failed - Got 17. Expected 18.
+#             0 ps - runner  -    INFO  - Test case: Test to_string for boolean
+#             0 ps - default -    INFO  - ===Summary===
+#                                         checker_stat'(n_checks => 2, n_failed => 1, n_passed => 1)
+```
+
+--------------------------------
+
+TITLE: Install VUnit from Source (Standard)
+DESCRIPTION: Installs VUnit from its local source code using the setup.py script, typically placing it in the Python site-packages directory.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/installing.rst#_snippet_4
+
+LANGUAGE: console
+CODE:
+```
+python setup.py install
+```
+
+--------------------------------
+
+TITLE: Define VUnit Procedure with Info Logging
+DESCRIPTION: This VUnit procedure, 'my_convenience_procedure', demonstrates a common pattern for test setup or execution within VUnit. It includes a call to the `info` function, a VUnit utility for emitting informational messages during test runs. The procedure is written in VHDL, a hardware description language commonly used with VUnit.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/convenience_procedure.html#_snippet_0
+
+LANGUAGE: VHDL
+CODE:
+```
+procedure my_convenience_procedure(
+  -- Parameters ...
+) is
+begin
+  -- Some code ...
+  info("Some message", path_offset => 1);
+  -- Some code ...
+end procedure my_convenience_procedure;
+```
+
+--------------------------------
+
+TITLE: GHDL Setup via GitHub Actions
+DESCRIPTION: Utilizing the official GHDL GitHub Action to set up the simulator environment within GitHub Actions workflows. This simplifies the process for CI pipelines hosted on GitHub.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/ci/manual.rst#_snippet_1
+
+LANGUAGE: yaml
+CODE:
+```
+steps:
+  - uses: actions/checkout@v3
+  - uses: ghdl/setup-ghdl@v2
+    with:
+      architecture: 'x86_64'
+      ghdl_version: 'nightly'
+```
+
+--------------------------------
+
+TITLE: Example Trace Log Sequence (Console)
+DESCRIPTION: Presents a sequence of trace log entries showing the complete flow of a request and its reply, including message sending, receiving, and specific component debug output.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_46
+
+LANGUAGE: console
+CODE:
+```
+0 ps - vunit_lib:com -   TRACE - [2:- test sequencer -> memory BFM (read)] => memory BFM inbox
+  10000 ps - vunit_lib:com -   TRACE - memory BFM inbox => [2:- test sequencer -> memory BFM (read)]
+  20000 ps - memory BFM    -   DEBUG - Reading x"21" from address x"80"
+  20000 ps - vunit_lib:com -   TRACE - [3:2 memory BFM -> test sequencer (read reply)] => test sequencer inbox
+  30000 ps - vunit_lib:com -   TRACE - test sequencer inbox => [3:2 memory BFM -> test sequencer (read reply)]
+```
+
+--------------------------------
+
+TITLE: VUnit Assertion Check Examples
+DESCRIPTION: Demonstrates the usage of VUnit's assertion checks in VHDL and the resulting console output for a failed check.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_29
+
+LANGUAGE: console
+CODE:
+```
+1000 ps - check - ERROR - Check failed for my data.
+```
+
+LANGUAGE: vhdl
+CODE:
+```
+check_true(false, result("for my data."));
+```
+
+LANGUAGE: console
+CODE:
+```
+1000 ps - check - ERROR - True check failed for my data.
+```
+
+--------------------------------
+
+TITLE: Example Actor State Output
+DESCRIPTION: Illustrates the detailed string output for an actor's state, including its name, deferred status, mailbox contents (size and messages), subscriptions, and subscribers. This format helps in debugging actor behavior.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_51
+
+LANGUAGE: console
+CODE:
+```
+Name: driver
+  Is deferred: no
+  Mailbox: inbox
+    Size: 2147483647
+    Messages:
+      0. 8:- _actor_3 -> driver (add)
+      1. 9:- _actor_3 -> driver (add)
+      2. 10:- _actor_3 -> driver (add)
+  Mailbox: outbox
+    Size: 2147483647
+    Messages:
+  Subscriptions:
+  Subscribers:
+    driver channel subscribes to inbound traffic
+```
+
+--------------------------------
+
+TITLE: VHDL Check Example
+DESCRIPTION: Demonstrates a basic VHDL check call to verify a condition and log a message. This is typically used to assert expected behavior during simulation.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_6
+
+LANGUAGE: vhdl
+CODE:
+```
+check(re = '1', "Checking that read enable is active");
+```
+
+--------------------------------
+
+TITLE: VUnit Setup and Path Management
+DESCRIPTION: Ensures the VUnit source tree is correctly added to the system path during setup for proper module import and execution.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/release_notes/4.5.0.rst#_snippet_7
+
+LANGUAGE: APIDOC
+CODE:
+```
+Project Setup:
+
+- Ensure that the source tree is on the sys path.
+```
+
+--------------------------------
+
+TITLE: VHDL Setup for Communication Library
+DESCRIPTION: Specifies the necessary VHDL context clauses to include the VUnit and communication libraries in a VHDL testbench. This makes the communication library's functionalities available for use.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_1
+
+LANGUAGE: vhdl
+CODE:
+```
+library vunit_lib;
+context vunit_lib.vunit_context;
+context vunit_lib.com_context;
+```
+
+--------------------------------
+
+TITLE: Example Logged Message Format (Console)
+DESCRIPTION: Illustrates the format of a logged message string. It includes the message ID, sender, receiver, and message type, providing context for debugging communication flows.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_42
+
+LANGUAGE: console
+CODE:
+```
+3:2 memory BFM -> test sequencer (read reply)
+```
+
+--------------------------------
+
+TITLE: VUnit Check Example Usage
+DESCRIPTION: Demonstrates a basic usage of the VUnit 'check' procedure with a literal false value and a result message.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_27
+
+LANGUAGE: vhdl
+CODE:
+```
+check(false, result("for my data."));
+```
+
+--------------------------------
+
+TITLE: VHDL Test with VUnit Setup and Check
+DESCRIPTION: This snippet demonstrates a basic VUnit test case written in VHDL. It includes the necessary VUnit context, sets up the test runner, performs an equality check using `check_equal`, and cleans up the test runner. It requires the VUnit library.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/img/tb_minimal.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+library vunit_lib;
+context vunit_lib.vunit_context;
+
+entity tb_minimal is
+  generic (runner_cfg : string);
+end entity;
+
+architecture tb of tb_minimal is
+begin
+  test_runner : process
+  begin
+    test_runner_setup(runner, runner_cfg);
+    check_equal(to_string(17), "17");
+    test_runner_cleanup(runner);
+  end process;
+end architecture;
+```
+
+--------------------------------
+
+TITLE: Running the Vivado and VUnit Example
+DESCRIPTION: Commands to execute the Vivado and VUnit example. The first command generates the Vivado project, and the second runs the VUnit simulation, compiling necessary libraries and project IPs.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/examples/vhdl/vivado/readme.md#_snippet_0
+
+LANGUAGE: shell
+CODE:
+```
+python generate_vivado_project.py
+python run.py
+```
+
+--------------------------------
+
+TITLE: VUnit Setup and Configuration in Python
+DESCRIPTION: Initializes the VUnit testing framework from command-line arguments, adds VHDL built-in libraries, and enables location preprocessing for enhanced error reporting.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/location_preprocessing.html#_snippet_0
+
+LANGUAGE: python
+CODE:
+```
+ui = VUnit.from_argv()
+ui.add_vhdl_builtins()
+ui.enable_location_preprocessing()
+```
+
+--------------------------------
+
+TITLE: CSV Format Example
+DESCRIPTION: Demonstrates the 'csv' log output format, which presents all information within a log entry as a comma-separated list, facilitating easy parsing.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_11
+
+LANGUAGE: vhdl
+CODE:
+```
+-- Assuming csv_format_log.html contains the actual VHDL code or output example
+-- Example output structure:
+-- SIM_TIME,LEVEL,LOGGER_NAME,MESSAGE
+```
+
+--------------------------------
+
+TITLE: VUnit Test Runner Process
+DESCRIPTION: This VHDL process outlines the structure of a VUnit test runner. It includes phases for test suite setup and cleanup, executed once per suite, and a loop for executing individual test cases. Each test case can have its own setup and cleanup logic, and is conditionally run using the 'run' function, with assertions performed using 'check_equal'.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/img/test_runner_with_test_cases.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+test_runner : process
+begin
+  test_runner_setup(runner, runner_cfg);
+
+  -- Put test suite setup code here. This code is common to the entire test suite
+  -- and is executed *once* prior to all test cases.
+
+  while test_suite loop
+
+    -- Put test case setup code here. This code executed before *every* test case.
+
+    if run("Test to_string for integer") then
+      -- The test case code is placed in the corresponding (els)if branch.
+      check_equal(to_string(17), "17");
+
+    elsif run("Test to_string for boolean") then
+      check_equal(to_string(true), "true");
+
+    end if;
+
+    -- Put test case cleanup code here. This code executed after *every* test case.
+
+  end loop;
+
+  -- Put test suite cleanup code here. This code is common to the entire test suite
+  -- and is executed *once* after all test cases have been run.
+
+  test_runner_cleanup(runner);
+end process;
+```
+
+--------------------------------
+
+TITLE: Standard Log Levels
+DESCRIPTION: Provides examples of using standard log levels for reporting different types of messages. These include INFO, WARNING, ERROR, and FAILURE, each with dedicated procedure calls.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_4
+
+LANGUAGE: vhdl
+CODE:
+```
+-- Assuming standard_log_levels.html contains the actual VHDL code for standard log levels
+-- Example placeholder:
+-- log_info("Informational message.");
+-- log_warning("Warning message.");
+-- log_error("Error message.");
+-- log_failure("Failure message.");
+```
+
+--------------------------------
+
+TITLE: Installing Tox
+DESCRIPTION: Instructions for installing the Tox testing tool using pip if it is not already available in the Python environment.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/contributing.rst#_snippet_5
+
+LANGUAGE: console
+CODE:
+```
+vunit/ > pip install tox
+```
+
+--------------------------------
+
+TITLE: VUnit Updated Actor Message Handling
+DESCRIPTION: An updated actor message handling example that calls the `handle_wait_until_idle` procedure, demonstrating how message types are managed after handler execution.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_28
+
+LANGUAGE: vhdl
+CODE:
+```
+receive(net, actor, request_msg);
+msg_type := message_type(request_msg);
+
+handle_wait_until_idle(net, msg_type, request_msg);
+
+if msg_type = write_msg then
+
+  ...
+
+else
+  unexpected_msg_type(msg_type);
+end if;
+```
+
+--------------------------------
+
+TITLE: VUnit Example Update
+DESCRIPTION: Updates to an example VHDL project demonstrating array axis verification components, including expansion of the `run_test` procedure and addition of stall functionality.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/release_notes/4.5.0.rst#_snippet_8
+
+LANGUAGE: APIDOC
+CODE:
+```
+Example Project Update:
+
+- Example: `vhdl/array_axis_vcs`
+- Updated and expanded procedure `run_test`.
+- Added stall functionality.
+```
+
+--------------------------------
+
+TITLE: Install VUnit from Source (Develop Mode)
+DESCRIPTION: Installs VUnit in an editable or 'develop' mode, allowing direct editing of the source files without reinstalling. This is recommended for VUnit developers.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/installing.rst#_snippet_3
+
+LANGUAGE: console
+CODE:
+```
+git clone https://github.com/VUnit/vunit.git
+cd vunit
+
+python setup.py develop
+or
+pip install -e .
+```
+
+--------------------------------
+
+TITLE: VUnit Test Runner Process in VHDL
+DESCRIPTION: This VHDL process demonstrates the core structure of a VUnit test runner. It includes phases for setup, test execution, and cleanup, utilizing VUnit's phase management and assertion functions.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/blog/img/vunit_phases/test_runner_minimal.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+test_runner : process
+begin
+  phase("TEST RUNNER SETUP",
+    "The testbench is initialized from the runner_cfg generic. This allows for " &
+    "configuration of features such as coloration of log entries. This phase " &
+    "call comes before initialization, so it will not be affected by any of the " &
+    "settings and the resulting log entry will be without special colors."
+  );
+  test_runner_setup(runner, runner_cfg);
+
+  phase("TEST CASE",
+    "This is where we run all the test code."
+  );
+  reset <= '1';
+  wait for 10 ns;
+  reset <= '0';
+  wait for 10 ns; -- The test code is just a wait statement in this dummy example
+  check_equal(error_flag, '0');
+  check_true(full_coverage);
+
+  phase("TEST RUNNER CLEANUP",
+    "Housekeeping performed by VUnit before ending the simulation. For example, " &
+    "if VUnit was configure not to end the simulation upon detecting the first error, " &
+    "it will fail the simulation during this phase if any errors have been detected."
+  );
+  test_runner_cleanup(runner);
+end process;
+```
+
+--------------------------------
+
+TITLE: VUnit Testbench with Test Cases
+DESCRIPTION: Illustrates structuring a VUnit testbench using test cases, showing how to define and run individual test scenarios within the simulation flow.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/user_guide.rst#_snippet_1
+
+LANGUAGE: vhdl
+CODE:
+```
+library vunit_lib;
+context vunit_lib.run;
+
+entity tb is
+  generic (
+    runner_cfg : string := runner_cfg_default
+  );
+  port (
+    -- ... ports ...
+  );
+end entity tb;
+
+architecture rtl of tb is
+  -- ... architecture body ...
+begin
+
+  test_runner : process
+  begin
+    test_runner_setup(runner, runner_cfg);
+
+    -- Test case: Test to_string for integer
+    if run("Test to_string for integer") then
+      -- Test code for integer to_string
+    end if;
+
+    -- Test case: Test to_string for boolean
+    if run("Test to_string for boolean") then
+      -- Test code for boolean to_string
+    end if;
+
+    test_runner_cleanup;
+    wait;
+  end process test_runner;
+
+end architecture rtl;
+```
+
+--------------------------------
+
+TITLE: VUnit Test Runner Process
+DESCRIPTION: This VHDL process demonstrates a typical test runner setup using VUnit. It initializes the runner, enters a loop to execute predefined test cases, and performs cleanup. The example includes tests designed to fail assertions, trigger runtime errors due to out-of-bounds access, fail VUnit equality checks, and pass with a warning severity.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/img/tb_stopping_failure.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+test_runner : process
+  variable my_vector : integer_vector(1 to 17);
+begin
+  test_runner_setup(runner, runner_cfg);
+
+  while test_suite loop
+    if run("Test that fails on an assert") then
+      assert false;
+    elsif run("Test that crashes on boundary problems") then
+      report to_string(my_vector(runner_cfg'length));
+    elsif run("Test that fails on VUnit check procedure") then
+      check_equal(17, 18);
+    elsif run("Test that a warning passes") then
+      assert false severity warning;
+    end if;
+  end loop;
+
+  test_runner_cleanup(runner);
+end process;
+```
+
+--------------------------------
+
+TITLE: Install VUnit via Pip
+DESCRIPTION: Installs the latest stable release of VUnit using the Python Package Manager (pip). Includes commands for initial installation and updating to newer versions.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/installing.rst#_snippet_0
+
+LANGUAGE: console
+CODE:
+```
+pip install vunit_hdl
+```
+
+LANGUAGE: console
+CODE:
+```
+pip install -U vunit_hdl
+```
+
+--------------------------------
+
+TITLE: Raw Format Example
+DESCRIPTION: Illustrates the 'raw' log output format, which simply emits the log message itself without any additional metadata like time, level, or logger name.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_10
+
+LANGUAGE: vhdl
+CODE:
+```
+-- Assuming raw_format_log.html contains the actual VHDL code or output example
+-- Example output structure:
+-- MESSAGE
+```
+
+--------------------------------
+
+TITLE: VUnit Postponed Action Example
+DESCRIPTION: Illustrates how to use the 'notify_if_fail' procedure in conjunction with a 'check' call to manage postponed actions in VUnit tests.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_28
+
+LANGUAGE: vhdl
+CODE:
+```
+notify_if_fail(check(re = '1', "Checking that read enable is active"), vunit_error);
+```
+
+--------------------------------
+
+TITLE: VUnit Test Execution Flow
+DESCRIPTION: Demonstrates a typical VUnit testbench structure in VHDL. It includes setting up the VUnit runner, iterating through test suites, executing individual tests using `run` and `check_equal`, and performing cleanup. This example highlights basic assertion usage and logging.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/img/tb_standalone.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+library vunit_lib;
+context vunit_lib.vunit_context;
+
+entity tb_standalone is
+  generic (runner_cfg : string := runner_cfg_default);
+end entity;
+
+architecture tb of tb_standalone is
+begin
+  test_runner : process
+  begin
+    test_runner_setup(runner, runner_cfg);
+
+    while test_suite loop
+      if run("Test that fails on VUnit check procedure") then
+        check_equal(17, 18);
+      elsif run("Test to_string for boolean") then
+        check_equal(to_string(true), "true");
+      end if;
+    end loop;
+
+    info("===Summary===" & LF & to_string(get_checker_stat));
+
+    test_runner_cleanup(runner);
+  end process;
+end architecture;
+```
+
+--------------------------------
+
+TITLE: Make VUnit Importable (sys.path)
+DESCRIPTION: Demonstrates how to make the VUnit library importable in a Python script by adding the VUnit repository root directory to the sys.path.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/installing.rst#_snippet_2
+
+LANGUAGE: python
+CODE:
+```
+import sys
+sys.path.append("/path/to/vunit_repo_root/")
+import vunit
+```
+
+--------------------------------
+
+TITLE: Example Trace Log Entry - Message Sent (Console)
+DESCRIPTION: Demonstrates a trace log entry indicating a message being sent to an actor's inbox. This helps in tracking the message lifecycle and timing, complementing received message logs.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_45
+
+LANGUAGE: console
+CODE:
+```
+20000 ps - vunit_lib:com -   TRACE - [3:2 memory BFM -> test sequencer (read reply)] => test sequencer inbox
+```
+
+--------------------------------
+
+TITLE: Log License Info
+DESCRIPTION: Logs the Mozilla Public License version 2.0 along with license information. This function is typically used for informational output during project execution or setup.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/log_call_with_custom_level.html#_snippet_0
+
+LANGUAGE: Python
+CODE:
+```
+log("Mozilla Public License, v. 2.0.", license_info);
+
+```
+
+LANGUAGE: Python
+CODE:
+```
+log(my_logger, "Mozilla Public License, v. 2.0.", license_info);
+
+```
+
+--------------------------------
+
+TITLE: VUnit Message Handling Example
+DESCRIPTION: Demonstrates a typical VUnit message handler process that receives, inspects, and processes messages based on their type. It includes logic for handling write messages by updating a memory array.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_8
+
+LANGUAGE: vhdl
+CODE:
+```
+message_handler: process is
+    variable request_msg : msg_t;
+    variable msg_type : msg_type_t;
+    variable address : unsigned(7 downto 0);
+    variable data : std_logic_vector(7 downto 0);
+    variable memory : integer_vector(0 to 255) := (others => 0)
+  begin
+    receive(net, actor, request_msg);
+    msg_type := message_type(request_msg);
+
+    if msg_type = write_msg then
+      address := pop(request_msg);
+      data := pop(request_msg);
+      memory(to_integer(address)) := to_integer(data);
+    end if;
+  end process;
+```
+
+--------------------------------
+
+TITLE: Clone VUnit Development Version
+DESCRIPTION: Clones the VUnit project from its GitHub repository, including submodules like OSVVM, which is necessary for using the development version.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/installing.rst#_snippet_1
+
+LANGUAGE: console
+CODE:
+```
+git clone --recurse-submodules https://github.com/VUnit/vunit.git
+```
+
+--------------------------------
+
+TITLE: Console: List VUnit Tests
+DESCRIPTION: Example output from running a VUnit Python script with the '-l' flag, listing the configured test cases and their configurations.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/blog/2017_06_03_enable_your_simulator_to_handle_complex_top_level_generics.rst#_snippet_2
+
+LANGUAGE: console
+CODE:
+```
+> python run.py -l
+tb_lib.tb_composite_generics.VGA.Test 1
+Listed 1 tests
+```
+
+--------------------------------
+
+TITLE: VUnit Time Formatting Example
+DESCRIPTION: Demonstrates how the VUnit logging system formats time values based on the 'n_log_time_decimals' setting. It shows truncation or zero-padding depending on the simulator resolution and specified decimal places.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_14
+
+LANGUAGE: html
+CODE:
+```
+.. raw:: html
+   :file: fix_decimals_log.html
+```
+
+--------------------------------
+
+TITLE: Gitlab CI Configuration for VUnit
+DESCRIPTION: This snippet demonstrates a `.yml` configuration file for Gitlab CI integration with VUnit. It sets up a Debian environment, installs necessary tools like curl, gnat, python3, and pip3, and configures VUnit to use GHDL as the simulator. The script also specifies artifact generation for JUnit reports.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/__wiki__/CI-Tool-Integration.md#_snippet_0
+
+LANGUAGE: yml
+CODE:
+```
+image: debian:stretch
+build:
+  stage: build
+  before_script:
+    - apt-get update
+    - apt-get install -y curl gnat python3 python3-pip
+    - mkdir ghdl
+    - curl -L https://github.com/ghdl/ghdl/releases/download/20181129/ghdl-20181129-stretch-mcode.tgz | tar xz -C ghdl
+    - pip3 install vunit-hdl
+  script:
+    - export PATH=$PATH:./ghdl/bin
+    - export VUNIT_SIMULATOR=ghdl
+    - python3 ./run.py -x ./report.xml
+  artifacts:
+    reports:
+      junit: ./report.xml
+    paths:
+      - ./report.xml
+
+```
+
+--------------------------------
+
+TITLE: VUnit Project Setup Script
+DESCRIPTION: Demonstrates the basic structure of a VUnit project's entry point script (`run.py`). It shows how to initialize VUnit, add HDL built-ins, define libraries, add source files, and execute the simulation.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/user_guide.rst#_snippet_0
+
+LANGUAGE: python
+CODE:
+```
+from vunit import VUnit
+
+# Create VUnit instance by parsing command line arguments
+vu = VUnit.from_argv()
+
+# Optionally add VUnit's builtin HDL utilities for checking, logging, communication...
+# See http://vunit.github.io/hdl_libraries.html.
+vu.add_vhdl_builtins()
+# or
+# vu.add_verilog_builtins()
+
+# Create library 'lib'
+lib = vu.add_library("lib")
+
+# Add all files ending in .vhd in current working directory to library
+lib.add_source_files("*.vhd")
+
+# Run vunit function
+vu.main()
+```
+
+--------------------------------
+
+TITLE: VUnit Message Creation and Sending
+DESCRIPTION: Illustrates the process of creating a new message, pushing data onto it, and sending it over a network interface using VUnit's messaging primitives.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_10
+
+LANGUAGE: vhdl
+CODE:
+```
+msg := new_msg(memory_bfm_pkg.write_msg);
+push(msg, my_unsigned_address);
+push(msg, my_std_logic_vector_data);
+send(net, memory_bfm_pkg.actor, msg);
+```
+
+--------------------------------
+
+TITLE: Initialize and Configure VUnit
+DESCRIPTION: This snippet demonstrates the fundamental steps to set up a VUnit environment. It initializes VUnit by parsing command-line arguments, adds built-in VHDL support, and enables location preprocessing with custom subprograms for enhanced analysis.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/additional_subprograms.html#_snippet_0
+
+LANGUAGE: python
+CODE:
+```
+ui = VUnit.from_argv()
+ui.add_vhdl_builtins()
+ui.enable_location_preprocessing(additional_subprograms=["my_convenience_procedure"])
+```
+
+--------------------------------
+
+TITLE: Running Unit Tests
+DESCRIPTION: Example command to run all unit tests for the VUnit project using the pytest framework. This is part of the Python testing procedures.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/contributing.rst#_snippet_1
+
+LANGUAGE: shell
+CODE:
+```
+pytest tests/unit/
+```
+
+--------------------------------
+
+TITLE: VUnit Test Runner Setup and Execution
+DESCRIPTION: This snippet shows a VUnit test runner process. It sets up the runner with a configuration, defines the stop level to 'failure', and iterates through test suites. Inside the loop, it runs a specific test that is designed to fail multiple times and asserts equality checks that will fail, demonstrating how VUnit handles test execution and failures.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/img/tb_stop_level.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+test_runner : process
+begin
+  test_runner_setup(runner, runner_cfg);
+  set_stop_level(failure);
+
+  while test_suite loop
+    if run("Test that fails multiple times but doesn't stop") then
+      check_equal(17, 18);
+      check_equal(17, 19);
+    end if;
+  end loop;
+
+  test_runner_cleanup(runner);
+end process;
+```
+
+--------------------------------
+
+TITLE: VUnit Testbench Configuration Example
+DESCRIPTION: Configures a VUnit testbench with specific generics, a pre_config function for plot titles, and a post_check function. This setup allows for creating distinct passing and failing test scenarios by toggling an 'activate_bug' flag.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/blog/2017_11_23_vunit_matlab_integration.rst#_snippet_10
+
+LANGUAGE: python
+CODE:
+```
+size_of_data_set = 10
+num_of_data_sets = 10
+
+for name, activate_bug in [("Passing test", False), ("Failing test", True)]:
+    tb_octave.add_config(name=name,
+                         generics=dict(size_of_data_set=size_of_data_set, 
+                                       num_of_data_sets=num_of_data_sets,
+                                       activate_bug=activate_bug),
+                         pre_config=make_pre_config(plot_title=name, num_of_data_sets=num_of_data_sets),
+                         post_check=post_check)
+```
+
+--------------------------------
+
+TITLE: VHDL Request Procedure Shortcut
+DESCRIPTION: Provides a shortcut for the common sequence of sending a request and directly receiving its reply. This simplifies the code by encapsulating the send and receive_reply calls into a single procedure.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_15
+
+LANGUAGE: vhdl
+CODE:
+```
+request(net, actor, request_msg, reply_msg);
+```
+
+--------------------------------
+
+TITLE: VHDL Testbench with VUnit Runner
+DESCRIPTION: This snippet showcases a VHDL testbench architecture designed to integrate with the VUnit simulation framework. It demonstrates the essential steps of initializing the VUnit runner, executing test cases within a loop, and performing cleanup operations, including examples of assertion checks.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/run/img/tb_run_all_in_same_sim.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+library vunit_lib;
+context vunit_lib.vunit_context;
+
+entity tb_run_all_in_same_sim is
+  generic(runner_cfg : string);
+end entity;
+
+architecture tb of tb_run_all_in_same_sim is
+begin
+  test_runner : process
+  begin
+    test_runner_setup(runner, runner_cfg);
+
+    -- vunit: run_all_in_same_sim
+    while test_suite loop
+      if run("Test to_string for integer again") then
+        check_equal(to_string(17), "17");
+      elsif run("Test to_string for boolean again") then
+        check_equal(to_string(true), "true");
+      end if;
+    end loop;
+
+    test_runner_cleanup(runner);
+  end process;
+end architecture;
+```
+
+--------------------------------
+
+TITLE: VUnit Simulation Options - ModelSim Init Files
+DESCRIPTION: Specifies user-defined DO/TCL files to be sourced during simulation setup. These files are executed at different stages of the simulation lifecycle.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/py/opts.rst#_snippet_13
+
+LANGUAGE: APIDOC
+CODE:
+```
+modelsim.init_files.after_load
+  - A list of user defined DO/TCL-files that is sourced after the design has been loaded.
+  - Executed during ``vunit_load``, after the top level has been loaded using the ``vsim`` command.
+  - During script evaluation, the ``vunit_tb_path`` variable is defined as the path of the folder containing the test bench.
+  - Additionally, the ``vunit_tb_name`` variable is defined as the name of the test bench.
+  - Must be a list of strings.
+
+modelsim.init_files.before_run
+  - A list of user defined DO/TCL-files that is sourced before the simulation is run.
+  - Executed at the start of ``vunit_run`` (and therefore also re-executed by ``vunit_restart``).
+  - Must be a list of strings.
+
+modelsim.init_file.gui
+  - (Description missing in source text, likely related to GUI initialization files)
+```
+
+--------------------------------
+
+TITLE: Running VUnit Tests with Tox
+DESCRIPTION: This section describes how to use the Tox tool to automate testing of VUnit across various Python configurations and environments. Tox handles virtual environment creation and dependency installation.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/contributing.rst#_snippet_4
+
+LANGUAGE: console
+CODE:
+```
+vunit/ > tox
+```
+
+LANGUAGE: console
+CODE:
+```
+vunit/ > tox -e py38-unit,py38-acceptance-modelsim
+```
+
+LANGUAGE: console
+CODE:
+```
+vunit/ > tox -l
+```
+
+--------------------------------
+
+TITLE: Run All Tests with VUnit CLI
+DESCRIPTION: Shows the default behavior of the VUnit CLI when no specific tests are selected, executing all tests in the project. Includes example output detailing test execution and summary.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/cli.rst#_snippet_1
+
+LANGUAGE: console
+CODE:
+```
+> python run.py
+Re-compile not needed
+
+(09:40:59) Starting lib.tb_example.all
+Output file: C:\vunit\examples\vhdl\user_guide\vunit_out\test_output\lib.tb_example.all_7b5933c73ddb812488c059080644e9fd58c418d9\output.txt
+pass (P=1 S=0 F=0 T=3) lib.tb_example.all (0.5 s)                 
+
+(09:40:59) Starting lib.tb_example_many.test_pass
+Output file: C:\vunit\examples\vhdl\user_guide\vunit_out\test_output\lib.tb_example_many.test_pass_aff64431373db20d8bbba18c28096f449861ccbe\output.txt
+pass (P=2 S=0 F=0 T=3) lib.tb_example_many.test_pass (0.5 s)      
+
+(09:41:00) Starting lib.tb_example_many.test_fail
+Output file: C:\vunit\examples\vhdl\user_guide\vunit_out\test_output\lib.tb_example_many.test_fail_d8956871e3b3d178e412e37587673fe9df648faf\output.txt
+Seed for lib.tb_example_many.test_fail: 7efb6d37186ac077      
+C:\vunit\examples\vhdl\user_guide\tb_example_many.vhd:26:9:@0ms:(assertion error): It fails
+ghdl:error: assertion failed                                                                 
+ghdl:error: simulation failed
+fail (P=2 S=0 F=1 T=3) lib.tb_example_many.test_fail (0.5 s)
+
+==== Summary =========================================
+pass lib.tb_example.all            (0.5 s)
+pass lib.tb_example_many.test_pass (0.5 s)                                                                                                                  
+fail lib.tb_example_many.test_fail (0.5 s)
+======================================================                                                                                                      
+pass 2 of 3
+fail 1 of 3
+======================================================
+Total time was 1.5 s
+Elapsed time was 1.5 s
+======================================================
+Some failed!
+```
+
+--------------------------------
+
+TITLE: VHDL Example Updates
+DESCRIPTION: Updates VHDL examples, including adding a VHDL 1993 variant, cleaning use statements, and conditionally skipping tests if the VHDL context is not supported. This improves example clarity and test robustness.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/release_notes/4.6.0.rst#_snippet_10
+
+LANGUAGE: VHDL
+CODE:
+```
+-- Example VHDL code snippet with cleaned use statements
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity my_entity is
+  port (
+    clk : in std_logic;
+    data_in : in std_logic_vector(7 downto 0);
+    data_out : out std_logic_vector(7 downto 0)
+  );
+end entity my_entity;
+
+architecture rtl of my_entity is
+begin
+  data_out <= data_in;
+end architecture rtl;
+```
+
+--------------------------------
+
+TITLE: VUnit check_match Parameters
+DESCRIPTION: Details the specific parameters for the `check_match` procedure, including 'got' and 'expected', and lists the supported type combinations for these parameters.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_36
+
+LANGUAGE: APIDOC
+CODE:
+```
+check_match:
+  Parameters:
+    got: The actual value to check.
+    expected: The expected value, can include don't care ('-').
+  Supported Type Combinations:
+    - got: unsigned, expected: unsigned
+    - got: std_logic_vector, expected: std_logic_vector
+    - got: signed, expected: signed
+    - got: std_logic, expected: std_logic
+  Preprocessor Parameters:
+    line_num: natural, default: 0
+    file_name: string, default: ""
+```
+
+--------------------------------
+
+TITLE: VUnit Synchronization using wait_until_idle_msg
+DESCRIPTION: Example of synchronizing actors by sending a dedicated `wait_until_idle_msg` and using the `request` procedure. The sender blocks until the target actor replies.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_25
+
+LANGUAGE: vhdl
+CODE:
+```
+request_msg := new_msg(wait_until_idle_msg);
+request(net, actor_to_synchronize, request_msg, reply_msg);
+```
+
+--------------------------------
+
+TITLE: VUnit Simulation Initialization Files
+DESCRIPTION: Adds support for specifying lists of DO or TCL files to be executed after the top-level design is loaded during the VUnit load process. This is particularly useful for setting up simulation environments for tools like Riviera-PRO and ModelSim.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/release_notes/2.1.0.rst#_snippet_0
+
+LANGUAGE: VUnit Configuration
+CODE:
+```
+sim_options.rivierapro_init_files.after_load
+sim_options.modelsim_init_files.after_load
+```
+
+LANGUAGE: TCL
+CODE:
+```
+# Example TCL script to be executed
+puts "Loading simulation environment..."
+set MY_VAR "some_value"
+```
+
+LANGUAGE: DO
+CODE:
+```
+# Example DO script for ModelSim/QuestaSim
+puts "Loading simulation environment..."
+set MY_VAR "some_value"
+```
+
+--------------------------------
+
+TITLE: VHDL Check Equal with Default Result
+DESCRIPTION: Example of `check_equal` using the default behavior of the `result` function, which generates a standard message based on the check type.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_14
+
+LANGUAGE: vhdl
+CODE:
+```
+check_equal(output_pixel, reference_model(x, y));
+```
+
+--------------------------------
+
+TITLE: VUnit Test Runner Setup
+DESCRIPTION: Initializes the VUnit testbench from the runner configuration. This phase configures features like log entry coloration before any settings take effect.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/blog/img/vunit_phases/test_runner.html#_snippet_0
+
+LANGUAGE: vhdl
+CODE:
+```
+test_runner : process
+begin
+  phase("TEST RUNNER SETUP",
+    "The testbench is initialized from the runner_cfg generic. This allows for " &
+    "configuration of features such as coloration of log entries. This phase " &
+    "call comes before initialization, so it will not be affected by any of the " &
+    "settings and the resulting log entry will be without special colors."
+  );
+  test_runner_setup(runner, runner_cfg);
+```
+
+--------------------------------
+
+TITLE: Running VHDL Verification Component Tests
+DESCRIPTION: Example command to run VHDL verification component tests using a Python script. This demonstrates how to execute specific test suites within the VUnit VHDL codebase.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/contributing.rst#_snippet_3
+
+LANGUAGE: shell
+CODE:
+```
+python vunit/vhdl/verification_components/run.py
+```
+
+--------------------------------
+
+TITLE: Create and Send VHDL Message
+DESCRIPTION: Details the process of creating an empty message, pushing data (string and integer) into it, and sending it asynchronously to a receiver actor via a network.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_6
+
+LANGUAGE: vhdl
+CODE:
+```
+msg := new_msg;
+push_string(msg, "10101010");
+push(msg, my_integer);
+send(net, my_receiver, msg);
+```
+
+--------------------------------
+
+TITLE: VUnit Log Visibility Configuration
+DESCRIPTION: Details how log visibility to handlers can be configured for specific loggers and log levels within the VUnit framework.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_17
+
+LANGUAGE: html
+CODE:
+```
+.. raw:: html
+   :file: log_visibility.html
+```
+
+--------------------------------
+
+TITLE: Check with Custom Log Level
+DESCRIPTION: Example of overriding the default log level for a specific check. The `failure` level is used here, but the check's severity can be adjusted.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_3
+
+LANGUAGE: vhdl
+CODE:
+```
+check(re = '1', "Expected active read enable at this point", failure);
+```
+
+--------------------------------
+
+TITLE: Custom Checker Creation
+DESCRIPTION: Illustrates the creation of a custom checker instance using the `new_checker` function, which can be initialized with a logger name or a logger object.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_2
+
+LANGUAGE: vhdl
+CODE:
+```
+constant my_checker : checker_t := new_checker("my_checker");
+```
+
+--------------------------------
+
+TITLE: Specify Simulator Executable Path
+DESCRIPTION: Enables users to define the path to the simulator executable via environment variables. This is useful for custom installations or when the simulator is not in the system's PATH.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/release_notes/0.65.0.rst#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+export VUNIT_RIVIERAPRO_PATH=/path/to/rivierapro/bin/vsim
+export VUNIT_ACTIVELOGIC_PATH=/path/to/activel/bin/activehdl
+```
+
+--------------------------------
+
+TITLE: Initialize VUnit and Add Preprocessor
+DESCRIPTION: This snippet shows how to create a VUnit instance from command-line arguments, enable location preprocessing for better error reporting, and add a specific preprocessor like WaitStatementPreprocessor. Location preprocessing is typically ordered, with a default of 100 if not specified.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/data_types/img/vunit_events/add_preprocessor.html#_snippet_0
+
+LANGUAGE: python
+CODE:
+```
+from vunit import VUnit
+from vunit.vhdl.preprocessor import WaitStatementPreprocessor
+
+# Initialize VUnit from command-line arguments
+vu = VUnit.from_argv()
+
+# Enable location preprocessing, which defaults to order 100 if not specified
+vu.enable_location_preprocessing()
+
+# Add a WaitStatementPreprocessor with a specific order (e.g., 99)
+# This preprocessor might handle specific VHDL constructs before compilation.
+vu.add_preprocessor(WaitStatementPreprocessor(order=99))
+```
+
+--------------------------------
+
+TITLE: VUnit: Get Oldest Message from Inbox
+DESCRIPTION: Retrieves the oldest message from an actor's inbox. This operation assumes messages are available, typically after checking with 'has_message'.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_33
+
+LANGUAGE: vhdl
+CODE:
+```
+get_message(net, my_actor, msg);
+```
+
+--------------------------------
+
+TITLE: Create Custom Log Level
+DESCRIPTION: Shows how to define and use custom log levels, including specifying foreground, background, and style for colored output using ANSI escape codes.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_6
+
+LANGUAGE: vhdl
+CODE:
+```
+-- Assuming custom_log_level.html contains the actual VHDL code for custom log levels
+-- Example placeholder:
+-- -- Define custom level (e.g., 'DEBUG')
+-- constant DEBUG_LEVEL : integer := 10;
+-- 
+-- -- Create a log procedure for the custom level
+-- procedure log_debug(constant L : logger_t; constant MSG : string) is
+-- begin
+--   log(L, DEBUG_LEVEL, MSG);
+-- end procedure;
+-- 
+-- -- Use the custom level
+-- log_debug(my_logger, "Debug message.");
+```
+
+--------------------------------
+
+TITLE: VUnit Synchronization VCI Usage
+DESCRIPTION: Demonstrates how to use the provided synchronization VCI, specifically the `wait_until_idle` procedure, to synchronize with a memory BFM actor.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_29
+
+LANGUAGE: vhdl
+CODE:
+```
+wait_until_idle(net, memory_bfm_pkg.actor);
+```
+
+--------------------------------
+
+TITLE: Set Time Unit and Decimals
+DESCRIPTION: Explains how to configure the simulation time display format using 'log_time_unit' and 'n_log_time_decimals' parameters in the 'set_format' procedure.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/logging/user_guide.rst#_snippet_12
+
+LANGUAGE: vhdl
+CODE:
+```
+-- Assuming set_format.html and log_time_unit_log.html contain relevant VHDL code or examples
+-- Example placeholder for setting time unit and decimals:
+-- -- Set time unit to milliseconds and 3 decimal places
+-- set_format(my_logger, "verbose", log_time_unit => "ms", n_log_time_decimals => 3);
+-- 
+-- -- Set time unit to auto and full resolution
+-- set_format(my_logger, "verbose", log_time_unit => "auto_time_unit", n_log_time_decimals => "full_time_resolution");
+```
+
+--------------------------------
+
+TITLE: VHDL Message Signing
+DESCRIPTION: Illustrates how to sign a message by providing the sending actor when creating the message. This is crucial for communication patterns like publisher/subscriber where the receiver needs to identify the sender.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_17
+
+LANGUAGE: vhdl
+CODE:
+```
+msg := new_msg(sender => sending_actor);
+```
+
+--------------------------------
+
+TITLE: Setting Stop Level for Logger
+DESCRIPTION: Demonstrates how to retrieve a checker's logger and set its stop level, for example, to `warning`, influencing simulation behavior on assertion failures.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/check/user_guide.rst#_snippet_5
+
+LANGUAGE: vhdl
+CODE:
+```
+set_stop_level(get_logger(my_checker), warning);
+```
+
+--------------------------------
+
+TITLE: VUnit Test Runner Commands
+DESCRIPTION: Demonstrates common command-line invocations for the VUnit test runner script (`run.py`). These commands cover incremental compilation, running specific testbenches or test cases, parallel execution, and debugging.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/blog/2015_09_24_short_introduction_to_vunit.rst#_snippet_0
+
+LANGUAGE: console
+CODE:
+```
+# Incrementally compile and run all testbenches and test cases found.
+# Report pass/fail result for each.
+$ python run.py
+test case
+
+# Run all test cases in testbench tb_foo
+$ python run.py *tb_foo*
+
+# Speed up the test by running the test cases in 6 parallel threads.
+# Make use of all the CPU cores!
+$ python run.py -p 6 *tb_foo*
+
+# Launch the tb_foo test case "Test that reset initializes all outputs" in the simulator GUI such that it can be debugged
+$ python run.py --gui "*tb_foo.Test that reset initializes all outputs"
+```
+
+--------------------------------
+
+TITLE: VUnit Actor Message Handling for Synchronization
+DESCRIPTION: Shows how an actor's message handling logic can be extended to process a `wait_until_idle_msg`, send a reply, and manage message types.
+
+SOURCE: https://github.com/vunit/vunit/blob/master/docs/com/user_guide.rst#_snippet_26
+
+LANGUAGE: vhdl
+CODE:
+```
+receive(net, actor, request_msg);
+msg_type := message_type(request_msg);
+
+if msg_type = wait_until_idle_msg then
+  reply_msg := new_msg;
+  reply(net, request_msg, reply_msg);
+elsif msg_type = write_msg then
+
+  ...
+
+else
+  unexpected_msg_type(msg_type);
+end if;
+```
