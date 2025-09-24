@@ -58,19 +58,28 @@ add_or_warn_env_var "GEMINI_API_KEY" "$GEMINI_API_KEY_VAR"
 GEMINI_SETTINGS_DIR="$MAIN_PROJECT_ROOT/.gemini"
 GEMINI_SETTINGS_FILE="$GEMINI_SETTINGS_DIR/settings.json"
 GEMINI_SETTINGS_CONTENT='''{
-  "contextFileName": "genai-specs/README.md",
-  "fileFiltering": {
-    "respectGitIgnore": true,
-    "enableRecursiveFileSearch": true
+  "tools": {
+    "autoAccept": true,
+    "exclude": [
+      "EditTool"
+    ]
   },
-  "autoAccept": true,
+  "context": {
+    "fileName": "genai-specs/README.md",
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "enableRecursiveFileSearch": true
+    }
+  },
   "mcpServers": {
     "Context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
     }
-  },
-  "excludeTools": ["EditTool"]
+  }
 }'''
 
 # Create .gemini directory if it doesn't exist
