@@ -1,6 +1,6 @@
 ---
 description: Architecture Standards
-alwaysApply: false
+alwaysApply: true
 ---
 
 # Architecture Standards
