@@ -1,5 +1,6 @@
 ---
-inclusion: always
+description: General Coding Guidelines
+alwaysApply: true
 ---
 
 # General Coding Guidelines

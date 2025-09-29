@@ -1,5 +1,6 @@
 ---
-inclusion: manual
+description: Design Standards
+alwaysApply: false
 ---
 
 # Design Standards

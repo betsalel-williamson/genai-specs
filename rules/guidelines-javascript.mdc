@@ -1,0 +1,9 @@
+---
+description: JavaScript Guidelines
+globs: '**/*.js'
+alwaysApply: false
+---
+
+# JavaScript Guidelines
+
+@../guidelines/javascript/index.md

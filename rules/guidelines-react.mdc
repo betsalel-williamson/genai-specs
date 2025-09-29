@@ -1,0 +1,9 @@
+---
+description: React Guidelines
+globs: '**/*.{jsx,tsx}'
+alwaysApply: false
+---
+
+# React Guidelines
+
+@../guidelines/react/index.md

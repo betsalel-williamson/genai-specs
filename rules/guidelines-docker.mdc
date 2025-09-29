@@ -1,0 +1,9 @@
+---
+description: Docker Guidelines
+globs: '**/{Dd}ocker*'
+alwaysApply: false
+---
+
+# Docker Guidelines
+
+@../guidelines/docker/index.md

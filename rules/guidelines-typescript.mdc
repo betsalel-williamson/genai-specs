@@ -1,0 +1,9 @@
+---
+description: TypeScript Guidelines
+globs: '**/*.{ts,tsx}'
+alwaysApply: false
+---
+
+# TypeScript Guidelines
+
+@../guidelines/typescript/index.md

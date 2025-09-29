@@ -1,5 +1,6 @@
 ---
-inclusion: manual
+description: Architecture Standards
+alwaysApply: false
 ---
 
 # Architecture Standards

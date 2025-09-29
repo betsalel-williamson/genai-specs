@@ -1,0 +1,8 @@
+---
+description: Pkl Language Guidelines
+globs: '**/*.pkl'
+alwaysApply: false
+---
+# Pkl Language Guidelines
+
+@../guidelines/pkl/index.md

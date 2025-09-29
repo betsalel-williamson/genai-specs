@@ -1,0 +1,9 @@
+---
+description: Testing Guidelines
+globs: '**/*.test.*'
+alwaysApply: true
+---
+
+# Testing Guidelines
+
+@../guidelines/testing/index.md

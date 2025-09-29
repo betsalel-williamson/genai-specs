@@ -1,0 +1,9 @@
+---
+description: Highlight.js Guidelines
+globs: '**/*.{js,ts,jsx,tsx}'
+alwaysApply: false
+---
+
+# Highlight.js Guidelines
+
+@../guidelines/highlightjs/index.md

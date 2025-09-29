@@ -1,5 +1,6 @@
 ---
-inclusion: always
+description: Operational Protocols
+alwaysApply: true
 ---
 
 # Operational Protocols

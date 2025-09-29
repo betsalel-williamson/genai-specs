@@ -1,0 +1,9 @@
+---
+description: Python Guidelines
+globs: '**/*.py'
+alwaysApply: false
+---
+
+# Python Guidelines
+
+@../guidelines/python/index.md

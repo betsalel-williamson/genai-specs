@@ -1,5 +1,6 @@
 ---
-inclusion: always
+description: Development Process Standards
+alwaysApply: true
 ---
 
 # Development Process Standards

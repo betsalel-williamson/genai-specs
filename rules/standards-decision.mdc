@@ -1,5 +1,6 @@
 ---
-inclusion: manual
+description: Architecture Decision Record (ADR) Standards
+alwaysApply: false
 ---
 
 # Architecture Decision Record (ADR) Standards

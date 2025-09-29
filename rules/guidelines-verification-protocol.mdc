@@ -1,5 +1,6 @@
 ---
-inclusion: manual
+description: Verification Protocol
+alwaysApply: false
 ---
 
 # Verification Protocol
