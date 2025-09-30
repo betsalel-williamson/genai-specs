@@ -4,7 +4,7 @@ This directory contains a system for AI-assisted development. The system provide
 
 This project is designed to be imported as a Git submodule into other repositories.
 
-This system is designed to be compatible with various agenic systems (e.g., Kiro, Gemini, Claude, Cursor) and provides a general set of instructions for spec-driven development.
+This system is designed to be compatible with various agenic systems (e.g., Claude, Cursor, Gemini, Kiro) and provides a general set of instructions for spec-driven development.
 
 ## How the System Works
 
@@ -79,29 +79,46 @@ The steering system supports a general spec-driven development workflow:
 "Need to validate code quality @./rules/guidelines-verification-protocol.mdc"
 ```
 
-## Initialization Script
+## Initialization Scripts
 
-The `init.sh` script located is designed to set up the necessary files for using these specs as a git submodule in your main project.
+Platform-specific initialization scripts are provided to set up the necessary files for using these specs with different AI coding assistants.
 
-This script performs the following actions:
+### Available Scripts
 
-1. **Submodule Verification**: Checks if the `genai-specs` project is correctly configured as a Git submodule in your main repository. If not, it will alert you and provide the `git submodule add ...` command to add it.
-2. **Environment File (`.env`) Management**:
-    - Creates a `.env` file in your main project's root directory if it doesn't already exist.
-    - Adds placeholder environment variables (`GOOGLE_CLOUD_PROJECT`, `GEMINI_MODEL`, `GEMINI_API_KEY`) to the `.env` file if they are missing. It will warn you if a variable already exists. See the Gemini CLI project for details on setting up a Google Cloud project and getting a Gemini API key.
-3. **Gemini Settings File (`.gemini/settings.json`) Management**:
-    - Creates the `.gemini` directory in your main project's root if it doesn't exist.
-    - Creates or updates `.gemini/settings.json` with default configurations for the Gemini CLI. If the file already exists and its content differs from the default, it will output a warning and show the differences, skipping the overwrite.
-4. **Git Ignore (`.gitignore`) Update**:
-    - Ensures that `.env` is added to your main project's `.gitignore` file to prevent sensitive information from being committed. It will create the `.gitignore` file if it doesn't exist.
+- **`cursor-init.sh`** - Sets up genai-specs for Cursor IDE
+- **`gemini-cli-init.sh`** - Sets up genai-specs for Gemini CLI
+
+### Cursor IDE Setup (`cursor-init.sh`)
+
+This script sets up genai-specs for use with Cursor IDE:
+
+1. **Submodule Verification**: Checks if the `.cursor` project is correctly configured as a Git submodule in your main repository
+2. **Directory Structure**: Verifies the `.cursor/rules` and `.cursor/guidelines` directories exist
+3. **Usage Instructions**: Provides guidance on how to reference rules in Cursor using `@./cursor/rules/filename.mdc`
+
+### Gemini CLI Setup (`gemini-cli-init.sh`)
+
+This script sets up genai-specs for use with Gemini CLI:
+
+1. **Submodule Verification**: Checks if the `genai-specs` project is correctly configured as a Git submodule in your main repository
+2. **Environment File (`.env`) Management**: Creates `.env` file with placeholder variables (`GOOGLE_CLOUD_PROJECT`, `GEMINI_MODEL`, `GEMINI_API_KEY`)
+3. **Gemini Settings File (`.gemini/settings.json`) Management**: Creates `.gemini/settings.json` with default configurations
+4. **Git Ignore (`.gitignore`) Update**: Ensures `.env` is added to `.gitignore`
 
 ### How to Use
 
-To run the initialization script, after this project is added as a submodule project, navigate to the `genai-specs` directory within your main project and execute the script:
+After adding genai-specs as a submodule to your main project, navigate to the genai-specs directory and run the appropriate script:
 
 ```bash
+# For Cursor IDE
+git submodule add git@github.com:betsalel-williamson/genai-specs.git .cursor
 cd genai-specs
-./init.sh
+./cursor-init.sh
+
+# For Gemini CLI  
+git submodule add git@github.com:betsalel-williamson/genai-specs.git
+cd genai-specs
+./gemini-cli-init.sh
 ```
 
 ## Acknowledgements
@@ -121,6 +138,9 @@ This steering system and development methodology draws from established practice
   [Augmented Coding: Beyond the Vibes](https://tidyfirst.substack.com/p/augmented-coding-beyond-the-vibes?open=false#§appendix-system-prompt)
 - **Paul Hammond** - Comprehensive development practices and AI collaboration patterns  
   [Claude Configuration](https://github.com/citypaul/.dotfiles/blob/main/claude/.claude/CLAUDE.md)
+- **DORA Community** - Amazing documentation about software development best practices as well as community support and encouragement.
+  [Community Website](https://dora.community/)
+  [DORA Practices Website](https://dora.dev)
 
 ### Engineering Principles
 
@@ -130,6 +150,5 @@ The core engineering principles synthesize best practices from:
 - Domain-driven design patterns
 - Functional programming principles
 - Modern software architecture patterns
-- [DORA Community](https://dora.community/) and [best practices](https://dora.dev/guides/).
 
 These influences have been adapted and integrated to create a cohesive system for AI-assisted development that maintains high code quality while enabling rapid, iterative progress.
