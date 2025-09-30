@@ -10,3 +10,4 @@ package-lock.json
 
 # Log files
 log.txt
+.cursor/
