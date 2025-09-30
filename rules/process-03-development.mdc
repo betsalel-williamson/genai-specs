@@ -45,15 +45,6 @@ Only commit when:
 - Commit messages clearly state whether the commit contains structural or behavioral changes
 - Use small, frequent commits rather than large, infrequent ones
 
-## Code Quality Standards
-
-- Remove duplication ruthlessly
-- Express intent clearly through naming and structure
-- Make dependencies explicit
-- Keep methods small and focused on a single responsibility
-- Minimize state and side effects
-- Use the simplest solution that could possibly work
-
 ## Refactoring Guidelines
 
 - Refactor only when tests are passing (in the "Green" phase)
@@ -61,3 +52,20 @@ Only commit when:
 - Make one refactoring change at a time
 - Run tests after each refactoring step
 - Prioritize refactorings that remove duplication or improve clarity
+
+## Testing Standards
+
+### Test Behavior, Not Implementation
+
+- Focus tests on observable outcomes and user-facing behavior rather than internal implementation details
+- Test the contract and behavior, not the internal mechanics
+
+### Pragmatic Mocking
+
+- Only mock dependencies when tests are expensive (slow I/O, network calls, complex setup)
+- For cheap tests (simple functions, local file system interactions), prefer real implementations to ensure higher fidelity and simpler test code
+
+### Comprehensive Coverage
+
+- All code paths must be tested, but focus on business behavior rather than achieving arbitrary coverage metrics
+- Test the important behaviors thoroughly, not just to hit coverage numbers

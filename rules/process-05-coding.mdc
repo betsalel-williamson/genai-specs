@@ -11,9 +11,10 @@ Universal coding practices that apply across all languages and technologies.
 
 ### Function Design
 
+- Use the simplest solution that could possibly work.
 - Keep functions small and focused on a single responsibility
 - Use descriptive names that clearly express intent
-- Prefer pure functions without side effects when possible
+- Prefer pure functions without side effects when possible. Always try to minimize state and side effects
 - Make dependencies explicit through parameters
 
 ### Data Patterns
@@ -30,7 +31,45 @@ Universal coding practices that apply across all languages and technologies.
 - Avoid generic names like **data**, **info**, **manager**
 - Use domain-specific terminology consistently
 
-## Test Data Factory Pattern
+## Code Quality Standards
+
+### General Principles
+
+- Express intent clearly through naming and structure
+
+### Duplication Management
+
+- Remove duplication ruthlessly, but only remove duplication of knowledge, not just code
+- Allow similar code when representing different business concepts
+- Extract shared behavior only when it represents the same domain concept
+- Prefer composition over inheritance
+
+### Dependency Management
+
+- Make dependencies explicit
+- Minimize coupling between components
+- Use dependency injection for testability
+- No circular dependencies
+
+## Error Handling & Validation
+
+### Explicit Error Management
+
+- Handle errors explicitly rather than letting them bubble up silently
+- Provide meaningful error messages that help with debugging
+- Use appropriate error types for different failure modes
+- Consider error boundaries and graceful degradation
+
+### Validation Patterns
+
+- Validate inputs at system boundaries
+- Use schema validation for external data
+- Fail fast with clear error messages
+- Separate validation logic from business logic
+
+## Testing Guidelines
+
+### Test Data Factory Pattern
 
 Use factory functions with optional overrides for consistent test data:
 
@@ -57,34 +96,6 @@ const user = createMockUser({ name: 'Custom Name' });
 - Compose factories for complex nested objects
 - Use consistent naming patterns across factories
 
-## Error Handling
+### File I/O in Tests
 
-### Explicit Error Management
-
-- Handle errors explicitly rather than letting them bubble up silently
-- Provide meaningful error messages that help with debugging
-- Use appropriate error types for different failure modes
-- Consider error boundaries and graceful degradation
-
-### Validation Patterns
-
-- Validate inputs at system boundaries
-- Use schema validation for external data
-- Fail fast with clear error messages
-- Separate validation logic from business logic
-
-## Code Quality Standards
-
-### Duplication Management
-
-- Remove duplication of knowledge, not just code
-- Allow similar code when representing different business concepts
-- Extract shared behavior only when it represents the same domain concept
-- Prefer composition over inheritance
-
-### Dependency Management
-
-- Make dependencies explicit
-- Minimize coupling between components
-- Use dependency injection for testability
-- Avoid circular dependencies
+For simple file input/output operations, prefer creating temporary files directly within tests rather than extensive mocking. This approach enhances test clarity and realism. Mocking should be reserved for complex interactions with external libraries or systems where setting up realistic test data is overly cumbersome or introduces unnecessary dependencies.

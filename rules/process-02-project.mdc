@@ -1,11 +1,27 @@
 ---
-description: Project Practices
+description: Project Organization Standards
 alwaysApply: true
 ---
 
-# Project Practices
+# Project Organization Standards
 
-General project practices that apply across all languages and technologies.
+Standards for organizing projects, files, and documentation across all languages and technologies.
+
+## File Organization Standards
+
+### Directory Structure
+
+- Use clear, descriptive directory names that reflect business domains
+- Keep related files grouped together
+- Separate concerns (tests, documentation, configuration)
+- Follow consistent patterns across projects
+
+### Naming Conventions
+
+- Use consistent naming patterns across the project
+- Prefer descriptive names over abbreviated ones
+- Follow language-specific conventions (kebab-case for files, camelCase for variables, etc.)
+- Use domain-specific terminology consistently
 
 ## Documentation Standards
 
@@ -18,27 +34,13 @@ Provide comprehensive documentation for configurations, including evaluation ins
 - **Principle**: Explain commands with glob patterns and output flags
 - **Principle**: Provide clear usage instructions
 
-## File Organization Standards
+### Documentation Structure
 
-### Directory Structure
+- **Reference Project Root for Paths**: All internal file paths referenced within documentation must be relative to the project root
+- **Avoid Absolute File Paths**: Ensure portability and consistency across different environments
+- **Include Practical Examples**: Show real usage with shell commands and expected outputs
 
-- Use clear, descriptive directory names that reflect business domains
-- Keep related files grouped together
-- Separate concerns (tests, documentation, configuration)
-
-### Naming Conventions
-
-- Use consistent naming patterns across the project
-- Prefer descriptive names over abbreviated ones
-- Follow language-specific conventions (kebab-case for files, camelCase for variables, etc.)
-
-## Testing Practices
-
-### File I/O in Tests
-
-For simple file input/output operations, prefer creating temporary files directly within tests rather than extensive mocking. This approach enhances test clarity and realism. Mocking should be reserved for complex interactions with external libraries or systems where setting up realistic test data is overly cumbersome or introduces unnecessary dependencies.
-
-## Spec Workflow
+## Spec Workflow Organization
 
 ### Steering File Organization
 
@@ -54,11 +56,11 @@ For simple file input/output operations, prefer creating temporary files directl
 
 ### Phase Reminders
 
-When working on specific phases, remember to include relevant standards or remind the coder to include them:
+When working on specific phases, remember to include relevant standards:
 
 - [Requirements phase](./standards-user-story.mdc)
 - [Design phase](./standards-design.mdc)
-- [Task creation)](./standards-task.mdc)
-- [Architecture)](./standards-architecture.mdc)
-- [Decisions)](./standards-decision.mdc)
-- [Guidelines)](./standards-guidelines.mdc)
+- [Task creation](./standards-task.mdc)
+- [Architecture](./standards-architecture.mdc)
+- [Decisions](./standards-decision.mdc)
+- [Guidelines](./standards-guidelines.mdc)

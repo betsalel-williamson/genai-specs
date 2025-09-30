@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Core Engineering Principles
 
-These principles guide all development work and must be considered in every spec.
+These fundamental principles guide all development work and must be considered in every decision.
 
 ## Product & User Principles
 
@@ -42,7 +42,7 @@ These principles guide all development work and must be considered in every spec
 - **Demand Loose Coupling**
   Components must interact through stable, well-defined interfaces (APIs, events). This allows components to develop, deploy, and scale independently.
 
-## Code & Implementation Principles
+## Implementation Principles
 
 - **Embrace Functional & Immutable Patterns**
   Utilize immutable data structures and functional operators (for example, map, filter, reduce) to promote immutability, reduce side effects, and improve code readability.
@@ -52,12 +52,3 @@ These principles guide all development work and must be considered in every spec
   Choose language features and patterns that are interoperable and stable across various versions of a language or different execution environments, promoting long-term maintainability and reducing compatibility issues.
 - **Clarity Over Cleverness**
   Prioritize clarity, commonality, and composability over conciseness or single-line power. Build rich behavior by composing simpler, more widely understood constructs.
-
-## Testing & Validation Principles
-
-- **Test Behavior, Not Implementation**
-  Focus tests on observable outcomes and user-facing behavior rather than internal implementation details.
-- **Pragmatic Mocking**
-  Only mock dependencies when tests are expensive (slow I/O, network calls, complex setup). For cheap tests (simple functions, local file system interactions), prefer real implementations to ensure higher fidelity and simpler test code.
-- **Comprehensive Coverage**
-  All code paths must be tested, but focus on business behavior rather than achieving arbitrary coverage metrics.
