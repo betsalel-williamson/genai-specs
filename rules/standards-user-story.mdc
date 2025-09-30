@@ -13,7 +13,7 @@ For effective UX work, each user story should begin with a clear definition of t
 
 **Structure:**
 
-- **Name:** A descriptive name for the persona (e.g., "Data Analyst Dave", "System Administrator Sarah").
+- **Name:** A descriptive name for the persona (e.g., "Data Analyst", "System Administrator").
 - **Description:** A brief paragraph outlining who this persona is, their role, their primary goals, and any relevant pain points or motivations related to the system.
 
 ## User Story Format

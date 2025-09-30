@@ -43,7 +43,7 @@ For simple file input/output operations, prefer creating temporary files directl
 ### Steering File Organization
 
 - **Always included**: Core principles that apply throughout development
-- **Manual inclusion**: Phase-specific standards (use `#filename` to include when needed)
+- **Manual inclusion**: Phase-specific standards (use `@filename.mdc` to include when needed)
 - **Conditional inclusion**: Technology-specific guidelines based on file patterns
 
 ### Context Efficiency
@@ -56,9 +56,9 @@ For simple file input/output operations, prefer creating temporary files directl
 
 When working on specific phases, remember to include relevant standards or remind the coder to include them:
 
-- Requirements phase: Use `#standards-user-story`
-- Design phase: Use `#standards-design`
-- Task creation: Use `#standards-task`
-- Architecture: Use `#standards-architecture`
-- Decisions: Use `#standards-decision`
-- Guidelines: Use `#standards-guidelines`
+- [Requirements phase](./standards-user-story.mdc)
+- [Design phase](./standards-design.mdc)
+- [Task creation)](./standards-task.mdc)
+- [Architecture)](./standards-architecture.mdc)
+- [Decisions)](./standards-decision.mdc)
+- [Guidelines)](./standards-guidelines.mdc)

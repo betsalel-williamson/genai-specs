@@ -7,7 +7,7 @@ alwaysApply: true
 
 Standards for creating and maintaining guideline documents.
 
-This document defines the format for "lessons learned" entries. Each lesson is a standalone Markdown file in `genai-specs/guidelines/<category>/`.
+This document defines the format for "lessons learned" entries. Each lesson is a standalone Markdown file in `../guidelines/<category>/` (relative to the rules directory).
 
 ## File Naming
 
