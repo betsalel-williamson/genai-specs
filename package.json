@@ -3,13 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo 'This is a placeholder for agent verification tests. To run these tests, an external framework would:' && \
-            echo '1. Programmatically invoke the Gemini CLI (or the underlying API of the agent).' && \
-            echo '2. Pass prompts and context (e.g., the content of steering/guidelines-verification-protocol.md).' && \
-            echo '3. Capture the agent\'s standard output.' && \
-            echo '4. Use a testing library (like Jest or Mocha) to assert that the captured output matches expected responses.' && \
-            echo 'Currently, no automated tests are configured to run here.' && exit 0",
-    "lint": "markdownlint-cli2 '**/*.md'",
+    "format": "markdownlint-cli2 '**/*.md'",
     "prepare": "husky && vale sync"
   },
   "repository": {
