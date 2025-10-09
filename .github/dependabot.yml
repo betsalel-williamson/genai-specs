@@ -9,4 +9,3 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
-    # You can add more options here, for example, `open-pull-requests-limit: 10`
