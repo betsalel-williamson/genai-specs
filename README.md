@@ -18,7 +18,7 @@ After importing the specs and adding the process and standards prompts to your c
 
 1. Design the system at a high-level. Create overall system architecture and make decisions.
 2. Start implementing features. Open a new branch and add your design documentation and tasks.
-    - If the feature is user-facing, add user-story documentation.
+   - If the feature is user-facing, add user-story documentation.
 3. When the information is reviewed and ready, implement the feature by completing tasks using a red-green-refactor/TDD approach.
 4. During this process, update documentation to ensure it matches the implementation.
 
