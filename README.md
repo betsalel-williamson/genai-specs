@@ -53,17 +53,7 @@ Want to learn more? Watch my presentation given to the DORA community on Septemb
 
 ### Technology Guidelines (Conditional Inclusion)
 
-These guidelines are loaded automatically when you work with specific file types. These files are located in the `rules/` folder with `.mdc` extensions:
-
-- [**guidelines-typescript.mdc**](rules/guidelines-typescript.mdc) - TypeScript development guidelines
-- [**guidelines-javascript.mdc**](rules/guidelines-javascript.mdc) - JavaScript development guidelines
-- [**guidelines-react.mdc**](rules/guidelines-react.mdc) - React development guidelines
-- [**guidelines-python.mdc**](rules/guidelines-python.mdc) - Python development guidelines
-- [**guidelines-docker.mdc**](rules/guidelines-docker.mdc) - Docker containerization guidelines
-- [**guidelines-testing.mdc**](rules/guidelines-testing.mdc) - Testing methodology guidelines
-- [**guidelines-pkl.mdc**](rules/guidelines-pkl.mdc) - PKL configuration guidelines
-- [**guidelines-highlightjs.mdc**](rules/guidelines-highlightjs.mdc) - Highlight.js syntax guidelines
-- [**guidelines-verification-protocol.mdc**](rules/guidelines-verification-protocol.mdc) - Verification and quality assurance guidelines
+Guidelines are supposed to be loaded automatically when you work with specific file types. These files are located in the `rules/` folder with `.mdc` extensions. There should be one `guidelines-{TOPIC}.mdc` document per topic.
 
 ### Detailed Guidelines Directory
 
@@ -77,7 +67,6 @@ The steering system supports a spec-driven development workflow:
 2. **Design** - Use `@./rules/standards-design.mdc` for technical design standards
 3. **Tasks** - Use `@./rules/standards-task.mdc` for implementation task standards
 4. **Implementation** - Technology guidelines auto-load based on file types
-5. **Review** - During testing, use `@./rules/guidelines-verification-protocol.mdc` to verify the agenic LLM system's behavior and validate its responses against expected outcomes based on the provided context. The `npm test` command should be used to perform these verification tests.
 
 ## Usage Examples (using Cursor flavor inclusion syntax)
 
@@ -92,7 +81,7 @@ The steering system supports a spec-driven development workflow:
 "Should we use microservices? @./rules/standards-decision.mdc @./rules/standards-architecture.mdc"
 
 # Working on verification and quality checks
-"Validate code quality @./rules/guidelines-verification-protocol.mdc"
+"Are you actually following the instructions? Test out @./rules/guidelines-verification-protocol.mdc and see what your responses are."
 ```
 
 ## Initialization Scripts
