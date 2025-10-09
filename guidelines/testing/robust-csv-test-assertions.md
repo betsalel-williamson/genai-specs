@@ -14,6 +14,6 @@ Prevents flaky CI failures caused by non-deterministic data ordering, leading to
 
 ## Takeaways
 
-* Always assume data order (rows and columns) in file exports (CSV, JSON, etc.) is non-deterministic unless explicitly guaranteed by the export mechanism.
-* Use robust data parsing libraries (for example, `pandas` for CSV/Excel, `json` for JSON) to load exported data into structured formats (DataFrames, dictionaries) for testing.
-* Perform assertions on the structured data using key-based lookups or filtering, rather than relying on line numbers or fixed column indices.
+- Always assume data order (rows and columns) in file exports (CSV, JSON, etc.) is non-deterministic unless explicitly guaranteed by the export mechanism.
+- Use robust data parsing libraries (for example, `pandas` for CSV/Excel, `json` for JSON) to load exported data into structured formats (DataFrames, dictionaries) for testing.
+- Perform assertions on the structured data using key-based lookups or filtering, rather than relying on line numbers or fixed column indices.

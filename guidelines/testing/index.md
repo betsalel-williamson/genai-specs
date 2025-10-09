@@ -2,6 +2,10 @@
 
 This directory contains testing best practices and guidelines.
 
+## Test Strategy
+
+- [Test Strategy](./test-strategy.md) - When to use unit, integration, and E2E tests
+
 ## Core Testing Principles
 
 - [Behavior-Driven Testing](./behavior-driven-testing.md) - Focus on behavior over implementation

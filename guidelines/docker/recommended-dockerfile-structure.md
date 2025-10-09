@@ -4,10 +4,10 @@ Follow a multi-stage build pattern for Node.js (with `pnpm`, `sqlite3`) and Pyth
 
 ## Key Stages & Purpose
 
-* **`base`:** Defines the base image (for example, `node:20-slim`, `python:3.12-slim`), sets the working directory, and includes common setup like enabling `corepack` for Node.js.
-* **`builder`:** This stage is for all build-time operations. It installs build dependencies (for example, `build-essential`, `python3` for native addons), copies source code, installs *all* project dependencies (including `devDependencies`), and performs the application build (for example, `pnpm run build`).
-* **`pruner` (Node.js specific):** For Node.js applications, this optional stage takes the `node_modules` from the `builder` stage and removes `devDependencies`, leaving only the production dependencies. This significantly reduces the final image size.
-* **`final`:** This is the lean production stage. It copies only the necessary artifacts (pruned `node_modules`, built application code) from previous stages. It sets up a non-root user for security, exposes application ports, and defines the `CMD` to run the application.
+- **`base`:** Defines the base image (for example, `node:20-slim`, `python:3.12-slim`), sets the working directory, and includes common setup like enabling `corepack` for Node.js.
+- **`builder`:** This stage is for all build-time operations. It installs build dependencies (for example, `build-essential`, `python3` for native addons), copies source code, installs _all_ project dependencies (including `devDependencies`), and performs the application build (for example, `pnpm run build`).
+- **`pruner` (Node.js specific):** For Node.js applications, this optional stage takes the `node_modules` from the `builder` stage and removes `devDependencies`, leaving only the production dependencies. This significantly reduces the final image size.
+- **`final`:** This is the lean production stage. It copies only the necessary artifacts (pruned `node_modules`, built application code) from previous stages. It sets up a non-root user for security, exposes application ports, and defines the `CMD` to run the application.
 
 ## Example Structure (Conceptual)
 

@@ -14,51 +14,51 @@ The solution uses a configuration-driven approach where each AI assistant is def
 
 ### Core Configuration Elements
 
-* **File Reference Pattern**: How to reference rules and guidelines
-* **Settings Location**: Where configuration files are stored
-* **Metadata Handling**: How frontmatter and title matter is processed
-* **Directory Structure**: Required directory layout
-* **File Extensions**: Supported file types and extensions
+- **File Reference Pattern**: How to reference rules and guidelines
+- **Settings Location**: Where configuration files are stored
+- **Metadata Handling**: How frontmatter and title matter is processed
+- **Directory Structure**: Required directory layout
+- **File Extensions**: Supported file types and extensions
 
 ### Configuration Schema
 
 ```yaml
 # Example: cursor-config.yaml
 platform: cursor
-name: "Cursor IDE"
-version: "1.0"
+name: 'Cursor IDE'
+version: '1.0'
 
 file_references:
-  pattern: "@{base_path}/{category}/{filename}"
-  base_path: ".cursor"
+  pattern: '@{base_path}/{category}/{filename}'
+  base_path: '.cursor'
   categories:
-    rules: "rules"
-    guidelines: "guidelines"
+    rules: 'rules'
+    guidelines: 'guidelines'
   examples:
-    - "@.cursor/rules/standards-user-story.mdc"
-    - "@.cursor/guidelines/typescript/index.md"
+    - '@.cursor/rules/standards-user-story.mdc'
+    - '@.cursor/guidelines/typescript/index.md'
 
 settings:
-  location: ".cursor/rules"
-  format: "directory"
-  file_extension: ".mdc"
-  metadata_format: "frontmatter"
+  location: '.cursor/rules'
+  format: 'directory'
+  file_extension: '.mdc'
+  metadata_format: 'frontmatter'
 
 metadata:
   frontmatter:
     enabled: true
-    format: "yaml"
-    required_fields: ["description"]
-    optional_fields: ["alwaysApply", "globs"]
-  
+    format: 'yaml'
+    required_fields: ['description']
+    optional_fields: ['alwaysApply', 'globs']
+
 directory_structure:
   required:
-    - ".cursor/rules"
-    - ".cursor/guidelines"
+    - '.cursor/rules'
+    - '.cursor/guidelines'
   optional:
-    - ".cursor"
+    - '.cursor'
 
-init_script: "cursor-init.sh"
+init_script: 'cursor-init.sh'
 ```
 
 ### Translation Engine
@@ -75,28 +75,28 @@ The translation engine reads these configurations and:
 
 ### 3.1. API Contracts
 
-* **Configuration Files**: Platform-specific YAML/JSON configurations
-  * `configs/cursor.yaml` - Cursor platform configuration
-  * `configs/gemini.yaml` - Gemini platform configuration
-  * `configs/kiro.yaml` - Kiro platform configuration
-  * `configs/claude.yaml` - Claude platform configuration
+- **Configuration Files**: Platform-specific YAML/JSON configurations
+  - `configs/cursor.yaml` - Cursor platform configuration
+  - `configs/gemini.yaml` - Gemini platform configuration
+  - `configs/kiro.yaml` - Kiro platform configuration
+  - `configs/claude.yaml` - Claude platform configuration
 
-* **Translation Engine**: Generic engine that reads configurations
-  * `translate-specs --platform cursor --input genai-specs --output .cursor`
-  * `translate-specs --platform gemini --input genai-specs --output .gemini`
+- **Translation Engine**: Generic engine that reads configurations
+  - `translate-specs --platform cursor --input genai-specs --output .cursor`
+  - `translate-specs --platform gemini --input genai-specs --output .gemini`
 
 ### 3.2. Data Models
 
-* **Platform Configuration Schema**: Standardized format for describing AI assistant requirements
-* **Translation Rules**: Mappings between genai-specs format and target platforms
-* **Validation Schema**: Platform-specific validation rules
+- **Platform Configuration Schema**: Standardized format for describing AI assistant requirements
+- **Translation Rules**: Mappings between genai-specs format and target platforms
+- **Validation Schema**: Platform-specific validation rules
 
 ### 3.3. Component Responsibilities
 
-* **Configuration Parser**: Reads and validates platform configurations
-* **Translation Engine**: Applies configurations to transform genai-specs
-* **File Generator**: Creates target platform files and directories
-* **Validation Module**: Ensures output meets platform requirements
+- **Configuration Parser**: Reads and validates platform configurations
+- **Translation Engine**: Applies configurations to transform genai-specs
+- **File Generator**: Creates target platform files and directories
+- **Validation Module**: Ensures output meets platform requirements
 
 ## 4. Configuration Examples
 
@@ -105,15 +105,15 @@ The translation engine reads these configurations and:
 ```yaml
 platform: cursor
 file_references:
-  pattern: "@{base_path}/{category}/{filename}"
-  base_path: ".cursor"
+  pattern: '@{base_path}/{category}/{filename}'
+  base_path: '.cursor'
 settings:
-  location: ".cursor/rules"
-  format: "directory"
+  location: '.cursor/rules'
+  format: 'directory'
 metadata:
   frontmatter:
     enabled: true
-    format: "yaml"
+    format: 'yaml'
 ```
 
 ### Gemini Configuration
@@ -121,15 +121,15 @@ metadata:
 ```yaml
 platform: gemini
 file_references:
-  pattern: "#{filename}"
-  base_path: ""
+  pattern: '#{filename}'
+  base_path: ''
 settings:
-  location: ".gemini/settings.json"
-  format: "json"
+  location: '.gemini/settings.json'
+  format: 'json'
 metadata:
   frontmatter:
     enabled: false
-    format: "none"
+    format: 'none'
 ```
 
 ### Kiro Configuration (Example)
@@ -137,15 +137,15 @@ metadata:
 ```yaml
 platform: kiro
 file_references:
-  pattern: "include {filename}"
-  base_path: "configs"
+  pattern: 'include {filename}'
+  base_path: 'configs'
 settings:
-  location: ".kiro/config.yaml"
-  format: "yaml"
+  location: '.kiro/config.yaml'
+  format: 'yaml'
 metadata:
   frontmatter:
     enabled: true
-    format: "yaml"
+    format: 'yaml'
 ```
 
 ## 5. Benefits

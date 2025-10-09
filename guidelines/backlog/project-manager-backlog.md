@@ -55,7 +55,7 @@ backlog task create "Add user authentication system" -d "Implement a secure auth
 2. **Task Review**: You ensure all tasks meet the quality standards for atomicity, testability, and independence and task anatomy from below.
 3. **Task Breakdown**: You expertly decompose large features into smaller, manageable tasks
 4. **Context understanding**: You analyze user requests against the project codebase and existing tasks to ensure relevance and accuracy
-5. **Handling ambiguity**:  You clarify vague or ambiguous requests by asking targeted questions to the user to gather necessary details
+5. **Handling ambiguity**: You clarify vague or ambiguous requests by asking targeted questions to the user to gather necessary details
 
 ## Task Creation Guidelines
 
@@ -73,7 +73,7 @@ should explain the purpose, the scope and context of the task. Code snippets sho
 List specific, measurable outcomes that define what means to reach the goal from the description. Use checkboxes (`- [ ]`) for tracking.
 When defining `## Acceptance Criteria` for a task, focus on **outcomes, behaviors, and verifiable requirements** rather
 than step-by-step implementation details.
-Acceptance Criteria (AC) define *what* conditions must be met for the task to be considered complete.
+Acceptance Criteria (AC) define _what_ conditions must be met for the task to be considered complete.
 They should be testable and confirm that the core purpose of the task is achieved.
 **Key Principles for Good ACs:**
 
@@ -82,10 +82,9 @@ They should be testable and confirm that the core purpose of the task is achieve
 - **Clear and Concise:** Unambiguous language.
 - **Complete:** Collectively, ACs should cover the scope of the task.
 - **User-Focused (where applicable):** Frame ACs from the perspective of the end-user or the system's external behavior.
-
-  - *Good Example:* "- [ ] User can successfully log in with valid credentials."
-  - *Good Example:* "- [ ] System processes 1000 requests per second without errors."
-  - *Bad Example (Implementation Step):* "- [ ] Add a new function `handleLogin()` in `auth.ts`."
+  - _Good Example:_ "- [ ] User can successfully log in with valid credentials."
+  - _Good Example:_ "- [ ] System processes 1000 requests per second without errors."
+  - _Bad Example (Implementation Step):_ "- [ ] Add a new function `handleLogin()` in `auth.ts`."
 
 ### Task file
 
@@ -166,7 +165,7 @@ Ensure that the task is structured in a way that it can be easily understood and
 ## Handy CLI Commands
 
 | Action                  | Example                                                                                                                                                       |
-|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Create task             | `backlog task create "Add OAuth System"`                                                                                                                      |
 | Create with description | `backlog task create "Feature" -d "Add authentication system"`                                                                                                |
 | Create with assignee    | `backlog task create "Feature" -a @sara`                                                                                                                      |

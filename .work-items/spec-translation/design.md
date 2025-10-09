@@ -14,27 +14,27 @@ The proposed solution uses a configuration-driven approach that describes how ea
 
 ### Core Configuration Elements
 
-* **File Reference Pattern**: How to reference rules and guidelines (`@.cursor/rules/file.mdc` vs `#filename`)
-* **Settings Location**: Where configuration files are stored (`.cursor/rules` vs `.gemini/settings.json`)
-* **Metadata Handling**: How frontmatter and title matter is processed (YAML frontmatter vs JSON properties)
-* **Directory Structure**: Required directory layout for each platform
-* **File Extensions**: Supported file types and extensions
+- **File Reference Pattern**: How to reference rules and guidelines (`@.cursor/rules/file.mdc` vs `#filename`)
+- **Settings Location**: Where configuration files are stored (`.cursor/rules` vs `.gemini/settings.json`)
+- **Metadata Handling**: How frontmatter and title matter is processed (YAML frontmatter vs JSON properties)
+- **Directory Structure**: Required directory layout for each platform
+- **File Extensions**: Supported file types and extensions
 
 ### Version Management Strategy
 
 Since we don't control the external standards and APIs may change, the system uses version-specific configurations:
 
-* **Version-Specific Configs**: `configs/cursor.v1.0.yaml`, `configs/gemini.v1.0.yaml`, etc.
-* **Version Compatibility Matrix**: Clear documentation of which tool versions are supported
-* **Brittleness Mitigation**: Fallback configurations and validation against known working examples
-* **Community-Driven Discovery**: Reverse engineering from working examples rather than relying on potentially outdated documentation
+- **Version-Specific Configs**: `configs/cursor.v1.0.yaml`, `configs/gemini.v1.0.yaml`, etc.
+- **Version Compatibility Matrix**: Clear documentation of which tool versions are supported
+- **Brittleness Mitigation**: Fallback configurations and validation against known working examples
+- **Community-Driven Discovery**: Reverse engineering from working examples rather than relying on potentially outdated documentation
 
 ### Core Components
 
-* **Configuration-Driven Translation Engine**: Generic engine that reads platform configurations
-* **Platform-Specific Init Scripts**: Each AI assistant gets its own init script that uses the translation engine
-* **Version-Specific Configuration Files**: Declarative descriptions of how each platform version works
-* **Validation Module**: Ensures translated specs maintain their intended functionality
+- **Configuration-Driven Translation Engine**: Generic engine that reads platform configurations
+- **Platform-Specific Init Scripts**: Each AI assistant gets its own init script that uses the translation engine
+- **Version-Specific Configuration Files**: Declarative descriptions of how each platform version works
+- **Validation Module**: Ensures translated specs maintain their intended functionality
 
 ### Architecture
 
@@ -68,43 +68,43 @@ genai-specs/
 
 ### 3.1. API Contracts
 
-* **Translation Engine**: Generic engine that reads platform configurations
-  * `translate-specs.sh --platform cursor --version 1.0 --input genai-specs --output .cursor`
-  * `translate-specs.sh --platform gemini --version 1.0 --input genai-specs --output .gemini`
+- **Translation Engine**: Generic engine that reads platform configurations
+  - `translate-specs.sh --platform cursor --version 1.0 --input genai-specs --output .cursor`
+  - `translate-specs.sh --platform gemini --version 1.0 --input genai-specs --output .gemini`
 
-* **Init Script Interface**: Each platform init script uses the translation engine
-  * `./cursor-init.sh` - Uses `configs/cursor.v1.0.yaml` to translate genai-specs to Cursor format
-  * `./kiro-init.sh` - Uses `configs/kiro.v1.0.yaml` to translate genai-specs to Kiro format
-  * `./gemini-cli-init.sh` - Uses `configs/gemini.v1.0.yaml` to translate genai-specs to Gemini format
-  * `./claude-init.sh` - Uses `configs/claude.v1.0.yaml` to translate genai-specs to Claude format
+- **Init Script Interface**: Each platform init script uses the translation engine
+  - `./cursor-init.sh` - Uses `configs/cursor.v1.0.yaml` to translate genai-specs to Cursor format
+  - `./kiro-init.sh` - Uses `configs/kiro.v1.0.yaml` to translate genai-specs to Kiro format
+  - `./gemini-cli-init.sh` - Uses `configs/gemini.v1.0.yaml` to translate genai-specs to Gemini format
+  - `./claude-init.sh` - Uses `configs/claude.v1.0.yaml` to translate genai-specs to Claude format
 
 ### 3.2. Data Models
 
-* **Platform Configuration Schema**: Declarative format for describing AI assistant requirements
-* **Version-Specific Configurations**: Platform configurations tied to specific tool versions
-* **Translation Rules**: Mappings between genai-specs format and target platforms
-* **Validation Schema**: Platform-specific validation rules and compatibility matrices
+- **Platform Configuration Schema**: Declarative format for describing AI assistant requirements
+- **Version-Specific Configurations**: Platform configurations tied to specific tool versions
+- **Translation Rules**: Mappings between genai-specs format and target platforms
+- **Validation Schema**: Platform-specific validation rules and compatibility matrices
 
 ### 3.3. Component Responsibilities
 
-* **Translation Engine**: Generic engine that reads platform configurations and performs translations
-* **Platform Init Scripts**: Handle submodule verification and call translation engine with appropriate config
-* **Configuration Files**: Declarative descriptions of how each platform version handles file references, settings, and metadata
-* **Validation Module**: Ensures translated specs maintain functionality with target platform versions
+- **Translation Engine**: Generic engine that reads platform configurations and performs translations
+- **Platform Init Scripts**: Handle submodule verification and call translation engine with appropriate config
+- **Configuration Files**: Declarative descriptions of how each platform version handles file references, settings, and metadata
+- **Validation Module**: Ensures translated specs maintain functionality with target platform versions
 
 ## 4. Alternatives Considered
 
-* **Hardcoded Translation Logic**: Embedding platform-specific logic directly in init scripts. Rejected in favor of configuration-driven approach for better maintainability and extensibility.
-* **API-Based Discovery**: Relying on official APIs or documentation. Rejected due to brittleness and lack of control over external standards.
-* **Manual Conversion**: Manually recreating specs for each platform. Rejected due to maintenance overhead and potential inconsistencies.
-* **Single Universal Format**: Creating one format that works everywhere. Rejected as different platforms have specific requirements and capabilities.
-* **Platform-Specific Scripts**: Separate scripts for each conversion. Rejected in favor of unified configuration-driven approach for better maintainability.
+- **Hardcoded Translation Logic**: Embedding platform-specific logic directly in init scripts. Rejected in favor of configuration-driven approach for better maintainability and extensibility.
+- **API-Based Discovery**: Relying on official APIs or documentation. Rejected due to brittleness and lack of control over external standards.
+- **Manual Conversion**: Manually recreating specs for each platform. Rejected due to maintenance overhead and potential inconsistencies.
+- **Single Universal Format**: Creating one format that works everywhere. Rejected as different platforms have specific requirements and capabilities.
+- **Platform-Specific Scripts**: Separate scripts for each conversion. Rejected in favor of unified configuration-driven approach for better maintainability.
 
 ## 5. Out of Scope
 
-* Real-time synchronization between platforms
-* Automatic format detection from existing projects
-* Integration with specific AI assistant APIs
-* Custom format creation beyond the supported platforms
-* Automatic version detection and configuration selection
-* Community-driven configuration discovery tools
+- Real-time synchronization between platforms
+- Automatic format detection from existing projects
+- Integration with specific AI assistant APIs
+- Custom format creation beyond the supported platforms
+- Automatic version detection and configuration selection
+- Community-driven configuration discovery tools
