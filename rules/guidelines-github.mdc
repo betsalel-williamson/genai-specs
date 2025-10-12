@@ -1,0 +1,9 @@
+---
+description: GitHub Guidelines
+globs: ['.github/**/*.yml', '.github/**/*.yaml', 'Makefile']
+alwaysApply: false
+---
+
+# GitHub Guidelines
+
+@../guidelines/github/index.md

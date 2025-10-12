@@ -1,0 +1,9 @@
+---
+description: iOS Guidelines
+globs: '**/*.swift'
+alwaysApply: false
+---
+
+# iOS Guidelines
+
+@../guidelines/ios/index.md

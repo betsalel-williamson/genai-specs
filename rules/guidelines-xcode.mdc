@@ -1,0 +1,9 @@
+---
+description: Xcode Guidelines
+globs: '**/*.swift'
+alwaysApply: false
+---
+
+# Xcode Guidelines
+
+@../guidelines/xcode/index.md
