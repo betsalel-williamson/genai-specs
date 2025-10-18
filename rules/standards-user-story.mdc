@@ -47,7 +47,7 @@ Use Easy Approach to Requirements Syntax (EARS) for precision, focusing on user-
 
 - ✅ WHEN I view Pkl code THEN I SHALL see different code elements in different colors
 - ❌ WHEN Pkl code is processed THEN the system SHALL apply syntax highlighting rules
-- ✅ WHEN I scan the code THEN I SHALL quickly identify different language constructs  
+- ✅ WHEN I scan the code THEN I SHALL quickly identify different language constructs
 - ❌ WHEN the parser runs THEN it SHALL tokenize keywords and apply CSS classes
 
 ## User Persona Guidelines
@@ -68,11 +68,22 @@ The "so that" clause must:
 
 ## Success Metrics
 
-Include measurable success criteria:
+Include verifiable success criteria that can be easily tested:
 
-- **Primary Metric**: The key metric that validates the story's value
-- **Secondary Metrics**: Additional metrics to monitor for intended/unintended consequences
-- Use quantifiable measures when possible (for example, "5% decrease in error rate")
+- **Primary Metric**: The key metric that validates the story's value and can be verified through testing
+- **Secondary Metrics**: Additional metrics that can be objectively verified through user testing or automated tests
+- **Verification Requirements**: All metrics must be testable with simple yes/no or pass/fail criteria
+- **Avoid Unverifiable Metrics**: Do not include metrics that require complex analytics, user tracking, or long-term data collection
+
+**Good Examples:**
+- ✅ "Users can successfully complete the primary action" (verifiable through testing)
+- ✅ "Error messages appear for invalid inputs" (verifiable through testing)
+- ✅ "Feature works across supported browsers" (verifiable through testing)
+
+**Bad Examples:**
+- ❌ "95% of users complete the action successfully" (requires analytics tracking)
+- ❌ "Users complete the action in under 3 seconds" (requires performance measurement)
+- ❌ "80% user adoption rate" (requires long-term usage tracking)
 
 ## Document Creation and Storage
 
