@@ -5,7 +5,7 @@ alwaysApply: true
 
 # User Story Standards
 
-User stories must capture end-user value and follow the standard format.
+User stories must capture end-user value and follow the standard format. They focus on what users experience and achieve, not on technical implementation details. Technical requirements belong in design documents, not user stories.
 
 ## User Persona Definition
 
@@ -35,6 +35,8 @@ Acceptance criteria must be:
 - **Complete**: Cover all aspects of the user story
 - **Testable**: Can be validated through user-facing tests
 
+**Important**: User stories are NOT the place for technical requirements. Configuration flags, API specifications, database schemas, and implementation details belong in design documents. User stories focus exclusively on end-user value and experience.
+
 ## EARS Format for Acceptance Criteria
 
 Use Easy Approach to Requirements Syntax (EARS) for precision, focusing on user-observable outcomes:
@@ -49,6 +51,13 @@ Use Easy Approach to Requirements Syntax (EARS) for precision, focusing on user-
 - ❌ WHEN Pkl code is processed THEN the system SHALL apply syntax highlighting rules
 - ✅ WHEN I scan the code THEN I SHALL quickly identify different language constructs
 - ❌ WHEN the parser runs THEN it SHALL tokenize keywords and apply CSS classes
+
+**User Story vs Technical Requirements Examples:**
+
+- ✅ User Story: "WHEN I open the timer application THEN I SHALL see a clean settings interface"
+- ❌ Technical Requirement: "WHEN the application loads THEN the system SHALL hide audio testing controls via configuration flag"
+- ✅ User Story: "WHEN I need to troubleshoot audio issues THEN I SHALL be able to access audio testing functionality"
+- ❌ Technical Requirement: "WHEN the environment variable is set THEN the system SHALL render conditional UI elements"
 
 ## User Persona Guidelines
 

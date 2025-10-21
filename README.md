@@ -18,7 +18,8 @@ After importing the specs and adding the process and standards prompts to your c
 
 1. Design the system at a high-level. Create overall system architecture and make decisions.
 2. Start implementing features. Open a new branch and add your design documentation and tasks.
-   - If the feature is user-facing, add user-story documentation.
+   - If the feature is user-facing, add user-story documentation focused on end-user value.
+   - Add design documentation for technical requirements and implementation details.
 3. When the information is reviewed and ready, implement the feature by completing tasks using a red-green-refactor/TDD approach.
 4. During this process, update documentation to ensure it matches the implementation.
 
@@ -44,8 +45,8 @@ Want to learn more? Watch my presentation given to the DORA community on Septemb
 
 ### Standards Files (Always Included)
 
-- [**standards-user-story.mdc**](rules/standards-user-story.mdc) - Requirements phase standards
-- [**standards-design.mdc**](rules/standards-design.mdc) - Design phase standards
+- [**standards-user-story.mdc**](rules/standards-user-story.mdc) - End-user value and experience standards
+- [**standards-design.mdc**](rules/standards-design.mdc) - Technical requirements and implementation design standards
 - [**standards-task.mdc**](rules/standards-task.mdc) - Task creation standards
 - [**standards-architecture.mdc**](rules/standards-architecture.mdc) - System architecture documentation
 - [**standards-decision.mdc**](rules/standards-decision.mdc) - Architecture Decision Records (ADRs)
@@ -63,16 +64,21 @@ The [**guidelines/{category}**](guidelines/) directory contains organized, detai
 
 The steering system supports a spec-driven development workflow:
 
-1. **Requirements** - Use `@./rules/standards-user-story.mdc` for user story standards
-2. **Design** - Use `@./rules/standards-design.mdc` for technical design standards
+1. **User Stories** - Use `@./rules/standards-user-story.mdc` for end-user value and experience documentation
+2. **Technical Design** - Use `@./rules/standards-design.mdc` for technical requirements and implementation details
 3. **Tasks** - Use `@./rules/standards-task.mdc` for implementation task standards
 4. **Implementation** - Technology guidelines auto-load based on file types
+
+**Important Distinction**: User stories focus on end-user value and experience, while design documents contain technical requirements, API specifications, configuration details, and implementation approaches.
 
 ## Usage Examples (using Cursor flavor inclusion syntax)
 
 ```bash
-# Working on requirements
-"Create requirements for user authentication @./rules/standards-user-story.mdc"
+# Working on user stories (end-user value)
+"Create user story for user authentication @./rules/standards-user-story.mdc"
+
+# Working on technical design (implementation details)
+"Create technical design for user authentication @./rules/standards-design.mdc"
 
 # Working on TypeScript implementation
 # (guidelines-typescript.mdc automatically included when editing .ts files)
