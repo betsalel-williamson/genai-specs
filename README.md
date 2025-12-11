@@ -125,7 +125,9 @@ After adding genai-specs as a submodule to your main project, go to the genai-sp
 git submodule add git@github.com:betsalel-williamson/genai-specs.git .cursor
 cd .cursor
 ./cursor-init.sh
+```
 
+```
 # For Gemini CLI
 git submodule add git@github.com:betsalel-williamson/genai-specs.git
 cd genai-specs
