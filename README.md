@@ -1,31 +1,14 @@
 # Genai Spec System Documentation
 
-This directory contains a system for AI-assisted development. The system provides guidance that automatically includes relevant standards and guidelines based on the work being performed.
+> **Archived.** This repository is no longer maintained or recommended for import into other projects.
+> AI coding tools have progressed significantly since this was published. The strict rule-steering
+> approach here is largely superseded by better native tooling—but the underlying ideas remain valuable.
 
-This project is designed to be imported as a Git submodule into other repositories.
+## What This Was
 
-This system works with various AI coding assistants (e.g., Claude, Cursor, Gemini, Kiro) and provides instructions for spec-driven development.
-
-## How the System Works
-
-The system uses three ways to provide relevant context:
-
-- **Always Included**: Core principles that apply to all development work
-- **Conditional Inclusion**: Technology-specific guidelines loaded when working with certain file types
-- **Manual Inclusion**: Specialized standards loaded when you request them using `@./rules/filename.mdc` in chat
-
-After importing the specs and adding the process and standards prompts to your context, follow this workflow:
-
-1. Design the system at a high-level. Create overall system architecture and make decisions.
-2. Start implementing features. Open a new branch and add your design documentation and tasks.
-   - If the feature is user-facing, add user-story documentation focused on end-user value.
-   - Add design documentation for technical requirements and implementation details.
-3. When the information is reviewed and ready, implement the feature by completing tasks using a red-green-refactor/TDD approach.
-4. During this process, update documentation to ensure it matches the implementation.
+This repository was a spec-driven system for AI-assisted development. It provided standards and guidelines through `.mdc` rule files that could be imported as a Git submodule and wired into coding assistants (Cursor, Gemini CLI, and others). The system used three inclusion strategies—always-on core rules, conditional loading by file type, and manual `@filename` references—to steer LLM behavior during development.
 
 ![Spec Driven Workflow with AI Agent](./Spec%20Driven%20Workflow%20with%20AI%20Agent.png)
-
-Important: LLMs tend to say "yes" to requests and add scope creep even when not prompted. Work within a value stream management framework to ensure that the features you are working on are worth the time and effort. The feature may need to be broken down into multiple smaller features.
 
 Want to learn more? Watch my presentation given to the DORA community on September 30, 2025.
 
@@ -33,102 +16,95 @@ Want to learn more? Watch my presentation given to the DORA community on Septemb
 
 [Link to presentation slides](https://docs.google.com/presentation/d/1nIUlmhMPMR-9znfg_rz1dVizWQVJ8rxn2JWSLxGEVMY/edit?usp=sharing)
 
-## Directory Structure
+## Why It Is Archived
 
-### Core Process Files (Always Included)
+AI coding assistants have matured substantially since this system was published. Tools like Cursor, Claude, and Gemini now handle planning, context management, and implementation far better than when this repo was built. Importing a large, always-on ruleset into every project adds friction and stale constraints. The specific `.mdc` files and init scripts reflect a point-in-time workflow—not a current best practice. I no longer import these strict rules into my repos.
 
-- [**process-01-core.mdc**](rules/process-01-core.mdc) - Fundamental engineering principles
-- [**process-02-project.mdc**](rules/process-02-project.mdc) - Project practices and spec driven workflow
-- [**process-03-development.mdc**](rules/process-03-development.mdc) - TDD methodology and commit discipline
-- [**process-04-operational.mdc**](rules/process-04-operational.mdc) - Communication and quality standards
-- [**process-05-coding.mdc**](rules/process-05-coding.mdc) - Universal coding practices
+## What Still Applies
 
-### Standards Files (Always Included)
+These lessons remain useful even as the tooling evolves:
 
-- [**standards-user-story.mdc**](rules/standards-user-story.mdc) - End-user value and experience standards
-- [**standards-design.mdc**](rules/standards-design.mdc) - Technical requirements and implementation design standards
-- [**standards-task.mdc**](rules/standards-task.mdc) - Task creation standards
-- [**standards-architecture.mdc**](rules/standards-architecture.mdc) - System architecture documentation
-- [**standards-decision.mdc**](rules/standards-decision.mdc) - Architecture Decision Records (ADRs)
-- [**standards-guidelines.mdc**](rules/standards-guidelines.mdc) - Guideline document standards
+### Spec-flow: document before you code
 
-### Technology Guidelines (Conditional Inclusion)
+The key to working with LLMs to code is documenting your ideas in phases before asking the model to implement. Walk through requirements, design, and tasks—then implement. This spec-flow approach reduces scope creep and gives the LLM a clear contract to work against.
 
-Guidelines are supposed to be loaded automatically when you work with specific file types. These files are located in the `rules/` folder with `.mdc` extensions. There should be one `guidelines-{TOPIC}.mdc` document per topic.
+User stories capture end-user value and experience; design documents hold technical requirements, API specifications, and implementation details. Keep that separation when you document.
 
-### Detailed Guidelines Directory
+Example layout in this repo:
 
-The [**guidelines/{category}**](guidelines/) directory contains organized, detailed guidelines that are referenced by the rules files.
+```text
+.work-items/{feature_name}/
+├── user-story.md
+├── design.md
+└── task.md
+```
 
-## Spec Workflow
+```mermaid
+flowchart LR
+  ideas[DocumentIdeas] --> req[Requirements]
+  req --> design[Design]
+  design --> tasks[Tasks]
+  tasks --> impl[Implementation]
+  ideas -.->|"shard by phase/topic"| context[LeanContext]
+  context --> impl
+```
 
-The steering system supports a spec-driven development workflow:
+Important: LLMs tend to say "yes" to requests and add scope creep even when not prompted. Work within a value stream management framework to ensure that the features you are working on are worth the time and effort. The feature may need to be broken down into multiple smaller features.
 
-1. **User Stories** - Use `@./rules/standards-user-story.mdc` for end-user value and experience documentation
-2. **Technical Design** - Use `@./rules/standards-design.mdc` for technical requirements and implementation details
-3. **Tasks** - Use `@./rules/standards-task.mdc` for implementation task standards
-4. **Implementation** - Technology guidelines auto-load based on file types
+### Sharding: keep context lean
 
-**Important Distinction**: User stories focus on end-user value and experience, while design documents contain technical requirements, API specifications, configuration details, and implementation approaches.
+Split guidance into focused, load-on-demand documents rather than one monolithic prompt. This prevents overloading the LLM with context it does not need for the current task.
 
-## Usage Examples (using Cursor flavor inclusion syntax)
+This repo modeled that pattern through:
+
+- **Always included** — core principles in `rules/process-*.mdc`
+- **Manual inclusion** — phase-specific standards loaded on demand (for example, `@./rules/standards-design.mdc`)
+- **Conditional inclusion** — technology guidelines loaded when working with certain file types
+- **Deep sharding** — topic-specific detail in [`guidelines/`](guidelines/) referenced by thinner rule files
+
+See [process-02-project.mdc](rules/process-02-project.mdc) for the original context-efficiency rationale.
+
+### Structured prompts over strict rules
+
+Rather than permanently importing rigid always-on rules into every repo, use intentional, phase-specific prompts to guide planning and implementation. The standards files in this repo remain useful as **prompt templates** for building plans—not as permanent project configuration:
+
+1. **User stories** — [standards-user-story.mdc](rules/standards-user-story.mdc) for end-user value and experience
+2. **Technical design** — [standards-design.mdc](rules/standards-design.mdc) for requirements and implementation details
+3. **Tasks** — [standards-task.mdc](rules/standards-task.mdc)
+4. **Architecture & decisions** — [standards-architecture.mdc](rules/standards-architecture.mdc), [standards-decision.mdc](rules/standards-decision.mdc)
+
+Example prompts you can adapt:
 
 ```bash
 # Working on user stories (end-user value)
-"Create user story for user authentication @./rules/standards-user-story.mdc"
+"Create user story for user authentication using the format in standards-user-story.mdc"
 
 # Working on technical design (implementation details)
-"Create technical design for user authentication @./rules/standards-design.mdc"
+"Create technical design for user authentication using standards-design.mdc"
 
-# Working on TypeScript implementation
-# (guidelines-typescript.mdc automatically included when editing .ts files)
-
-# Need architecture decision
-"Should we use microservices? @./rules/standards-decision.mdc @./rules/standards-architecture.mdc"
-
-# Working on verification and quality checks
-"Are you actually following the instructions? Test out @./rules/guidelines-verification-protocol.mdc and see what your responses are."
+# Need an architecture decision
+"Should we use microservices? Use the ADR format from standards-decision.mdc"
 ```
 
-## Initialization Scripts
+## How to Use This Repo Today
 
-Platform-specific setup scripts are provided to configure the necessary files for using these specs with different AI coding assistants.
+- **Browse** standards and guidelines as reference material, or copy snippets into your own prompts
+- **Do not** treat [cursor-init.sh](cursor-init.sh) or [gemini-cli-init.sh](gemini-cli-init.sh) as recommended setup
+- **Prefer** project-specific structured prompts tailored to your stack and current tooling
 
-### Available Scripts
+### Historical setup (deprecated)
 
-- **`cursor-init.sh`** - Sets up genai-specs for Cursor IDE
-- **`gemini-cli-init.sh`** - Sets up genai-specs for Gemini CLI
+This repo was originally imported as a Git submodule with platform-specific init scripts. That workflow is no longer recommended. The scripts remain in the repository for anyone maintaining legacy imports:
 
-### Cursor IDE Setup (`cursor-init.sh`)
+- [cursor-init.sh](cursor-init.sh) — Cursor IDE submodule setup
+- [gemini-cli-init.sh](gemini-cli-init.sh) — Gemini CLI submodule setup
 
-This script configures genai-specs for use with Cursor IDE:
+## Repository Contents
 
-1. **Submodule Verification**: Checks if the `.cursor` project is correctly configured as a Git submodule in your main repository
-2. **Directory Structure**: Verifies the `.cursor/rules` and `.cursor/guidelines` directories exist
-3. **Usage Instructions**: Provides guidance on how to reference rules in Cursor using `@./cursor/rules/filename.mdc`
-
-### Gemini CLI Setup (`gemini-cli-init.sh`)
-
-This script configures genai-specs for use with Gemini CLI:
-
-1. **Submodule Verification**: Checks if the `genai-specs` project is correctly configured as a Git submodule in your main repository
-2. **Environment File (`.env`) Management**: Creates `.env` file with placeholder variables (`GOOGLE_CLOUD_PROJECT`, `GEMINI_MODEL`, `GEMINI_API_KEY`)
-3. **Gemini Settings File (`.gemini/settings.json`) Management**: Creates `.gemini/settings.json` with default configurations
-4. **Git Ignore (`.gitignore`) Update**: Ensures `.env` is added to `.gitignore`
-
-### How to Use
-
-After adding genai-specs as a submodule to your main project, go to the genai-specs directory and run the appropriate script:
-
-```bash
-# For Cursor IDE
-git submodule add https://github.com/betsalel-williamson/genai-specs.git .cursor && ./.cursor/cursor-init.sh
-```
-
-```
-# For Gemini CLI
-git submodule add https://github.com/betsalel-williamson/genai-specs.git && ./.genai-specs/gemini-cli-init.sh
-```
+- [`rules/process-*.mdc`](rules/) — process and engineering principles
+- [`rules/standards-*.mdc`](rules/) — spec-phase templates (user story, design, task, architecture, ADR)
+- [`rules/guidelines-*.mdc`](rules/) + [`guidelines/`](guidelines/) — topic-sharded deep dives
+- [`.work-items/`](.work-items/) — example spec-flow artifacts
 
 ## Acknowledgements
 
