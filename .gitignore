@@ -10,5 +10,10 @@ package-lock.json
 
 # Log files
 log.txt
+
+# Local AI tooling artifacts
+.specstory/
+
+# Cursor (when this repo is imported as a submodule)
 .cursor/
 plans/
