@@ -1,0 +1,5 @@
+{
+  "name": "genai-specs",
+  "install": "./scripts/cloud-agent-setup.sh",
+  "start": "./scripts/cloud-agent-start.sh"
+}

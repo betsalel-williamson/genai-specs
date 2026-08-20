@@ -15,5 +15,7 @@ log.txt
 .specstory/
 
 # Cursor (when this repo is imported as a submodule)
-.cursor/
+.cursor/*
+# Keep the Cloud Agent environment config tracked
+!.cursor/environment.json
 plans/

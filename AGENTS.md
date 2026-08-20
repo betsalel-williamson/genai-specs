@@ -18,9 +18,21 @@ and running the prose/markdown linting toolchain over them.
   `markdownlint-cli2` and `vale` before each commit.
 
 The `prepare` npm script runs `husky && vale sync`, so `npm install` requires
-the `vale` binary to already be present on `PATH` (it is installed into the
-base environment). `vale sync` downloads the `Google` style package into
-`.vale/Google` (git-ignored).
+the `vale` binary to already be present on `PATH`. `vale sync` downloads the
+`Google` style package into `.vale/Google` (git-ignored).
+
+### Environment setup (self-contained)
+
+The Cloud Agent environment is wired in `.cursor/environment.json`:
+
+- `install` → `./scripts/cloud-agent-setup.sh`: idempotently installs the
+  pinned `vale` binary (it is not an npm package) and then runs `npm install`.
+- `start` → `./scripts/cloud-agent-start.sh`: a readiness check that verifies
+  `vale` and `markdownlint-cli2` are available (there is no long-running
+  service to start).
+
+Re-run `./scripts/cloud-agent-setup.sh` at any time to (re)install the full
+toolchain — it does not depend on any manual/agent steps.
 
 ### Gotchas
 
