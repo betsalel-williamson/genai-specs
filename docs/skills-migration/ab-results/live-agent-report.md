@@ -9,8 +9,8 @@ Subagent-run live scenarios from `eval/sdlc/*` comparing:
 
 | Arm | Assertions passed | Total | Pass rate |
 |-----|-------------------|-------|-----------|
-| A (legacy rules) | 18 | 18 | 100% |
-| B (skills) | 18 | 18 | 100% |
+| A (legacy rules) | 15 | 15 | 100% |
+| B (skills) | 15 | 15 | 100% |
 
 **Gate:** Arm B pass rate ≥ Arm A → **PASS (tie)**
 
