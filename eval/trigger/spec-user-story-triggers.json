@@ -1,0 +1,21 @@
+{
+  "skill": "spec-user-story",
+  "evals": [
+    {"query": "Help me write a user story for onboarding new team members", "should_trigger": true},
+    {"query": "Draft acceptance criteria for a mobile checkout flow from the user's perspective", "should_trigger": true},
+    {"query": "We need EARS-format requirements for password reset", "should_trigger": true},
+    {"query": "Define a persona for our analytics dashboard users", "should_trigger": true},
+    {"query": "Write user-facing acceptance tests for the settings screen", "should_trigger": true},
+    {"query": "Create a user story — avoid technical implementation details", "should_trigger": true},
+    {"query": "Capture end-user value for search autocomplete", "should_trigger": true},
+    {"query": "User story for export feature with verifiable success metrics", "should_trigger": true},
+    {"query": "Fix the TypeScript any errors in auth.ts", "should_trigger": false},
+    {"query": "Write a Dockerfile for production deployment", "should_trigger": false},
+    {"query": "Create an ADR for database selection", "should_trigger": false},
+    {"query": "Refactor this React hook to use useMemo", "should_trigger": false},
+    {"query": "Run markdownlint on the docs folder", "should_trigger": false},
+    {"query": "Break this feature into ACID task steps", "should_trigger": false},
+    {"query": "Optimize Docker multi-stage build cache", "should_trigger": false},
+    {"query": "Add unit tests for the CSV parser", "should_trigger": false}
+  ]
+}

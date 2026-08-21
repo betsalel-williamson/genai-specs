@@ -1,9 +1,12 @@
 ---
-description: iOS Guidelines
-globs: '**/*.swift'
+description: DEPRECATED — use skills/domains/ios/SKILL.md
 alwaysApply: false
 ---
 
-# iOS Guidelines
+# Deprecated
 
-@../guidelines/ios/index.md
+This rule was migrated to an Agent Skill. Use `skills/domains/ios/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: iOS Guidelines

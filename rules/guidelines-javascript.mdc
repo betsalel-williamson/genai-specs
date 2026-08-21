@@ -1,9 +1,12 @@
 ---
-description: JavaScript Guidelines
-globs: '**/*.js'
+description: DEPRECATED — use skills/domains/javascript/SKILL.md
 alwaysApply: false
 ---
 
-# JavaScript Guidelines
+# Deprecated
 
-@../guidelines/javascript/index.md
+This rule was migrated to an Agent Skill. Use `skills/domains/javascript/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: JavaScript Guidelines

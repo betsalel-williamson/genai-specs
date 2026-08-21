@@ -1,9 +1,12 @@
 ---
-description: Highlight.js Guidelines
-globs: '**/*.{js,ts,jsx,tsx}'
+description: DEPRECATED — use skills/domains/highlightjs/SKILL.md
 alwaysApply: false
 ---
 
-# Highlight.js Guidelines
+# Deprecated
 
-@../guidelines/highlightjs/index.md
+This rule was migrated to an Agent Skill. Use `skills/domains/highlightjs/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: Highlight.js Guidelines

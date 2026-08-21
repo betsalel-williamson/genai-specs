@@ -1,9 +1,12 @@
 ---
-description: Swift Guidelines
-globs: '**/*.swift'
+description: DEPRECATED — use skills/domains/swift/SKILL.md
 alwaysApply: false
 ---
 
-# Swift Guidelines
+# Deprecated
 
-@../guidelines/swift/index.md
+This rule was migrated to an Agent Skill. Use `skills/domains/swift/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: Swift Guidelines

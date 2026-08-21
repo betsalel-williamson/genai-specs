@@ -1,8 +1,26 @@
 # Genai Spec System Documentation
 
-> **Archived.** This repository is no longer maintained or recommended for import into other projects.
-> AI coding tools have progressed significantly since this was published. The strict rule-steering
-> approach here is largely superseded by better native tooling—but the underlying ideas remain valuable.
+> **Archived — skills migration in progress.** Legacy `.mdc` rule import is deprecated.
+> Use the Agent Skills library under [`skills/`](skills/) instead. Tracking:
+> [Issue #5](https://github.com/betsalel-williamson/genai-specs/issues/5).
+
+## SDLC Agent Skills (recommended)
+
+This repository now ships a progressive-disclosure **Agent Skills** library for general software development lifecycle work:
+
+- **Meta:** `skills/_meta/` — discovery, markdown context protocol, skill authoring (vendored Anthropic `skill-creator` + Cursor `create-skill`)
+- **Spec-flow:** `skills/sdlc/` — user stories, design, tasks, architecture, ADRs
+- **Engineering:** `skills/engineering/` — principles, TDD/Tidy First, coding standards
+- **Domains:** `skills/domains/` — path-scoped stack guidelines (`references/` shards)
+- **Verification:** `skills/verification/` — agent behavioral verification
+
+Migration docs: [`docs/skills-migration/`](docs/skills-migration/). Refresh skills from legacy sources:
+
+```bash
+./scripts/translate-specs-to-skills.sh
+```
+
+Legacy `rules/*.mdc` files are deprecation stubs pointing to skills. Original guideline shards remain in `guidelines/` during transition.
 
 ## What This Was
 

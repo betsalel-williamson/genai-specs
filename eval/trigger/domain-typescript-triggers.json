@@ -1,0 +1,15 @@
+{
+  "skill": "domain-typescript",
+  "evals": [
+    {"query": "Review this TypeScript module for strict mode violations", "should_trigger": true},
+    {"query": "Replace any with unknown in our API client", "should_trigger": true},
+    {"query": "Set up test data factories for TS unit tests", "should_trigger": true},
+    {"query": "Configure module resolution for our TS monorepo", "should_trigger": true},
+    {"query": "Schema-first development for this Zod DTO", "should_trigger": true},
+    {"query": "Write a user story for billing notifications", "should_trigger": false},
+    {"query": "Create an ADR for message queue choice", "should_trigger": false},
+    {"query": "Dockerfile slim image best practices", "should_trigger": false},
+    {"query": "Swift concurrency MainActor crash", "should_trigger": false},
+    {"query": "Pkl templating for CI config", "should_trigger": false}
+  ]
+}

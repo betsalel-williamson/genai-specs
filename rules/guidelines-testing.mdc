@@ -1,9 +1,12 @@
 ---
-description: Testing Guidelines
-globs: '**/*.test.*'
-alwaysApply: true
+description: DEPRECATED — use skills/domains/testing/SKILL.md
+alwaysApply: false
 ---
 
-# Testing Guidelines
+# Deprecated
 
-@../guidelines/testing/index.md
+This rule was migrated to an Agent Skill. Use `skills/domains/testing/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: Testing Guidelines

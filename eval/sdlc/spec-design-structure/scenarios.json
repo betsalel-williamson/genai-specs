@@ -1,0 +1,14 @@
+{
+  "skill": "spec-design",
+  "arm": "baseline",
+  "scenarios": [
+    {
+      "id": "design-structure",
+      "prompt": "Create a technical design for webhook retry logic in a payments service.",
+      "assertions": [
+        "Includes Objective, Technical Design, Key Changes, Alternatives, Out of Scope",
+        "References architecture alignment explicitly"
+      ]
+    }
+  ]
+}

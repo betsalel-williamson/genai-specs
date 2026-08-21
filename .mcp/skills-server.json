@@ -1,0 +1,15 @@
+{
+  "description": "Optional MCP skills server configuration for genai-specs SDLC skills",
+  "skillsRoot": "./skills",
+  "recommendedTools": ["listSkills", "getSkill", "readSkillFile"],
+  "documentation": "docs/skills-migration/mcp-setup.md",
+  "exampleCursorMcpJson": {
+    "mcpServers": {
+      "genai-specs-skills": {
+        "comment": "Replace with your MCP skills server package and absolute skills path",
+        "command": "npx",
+        "args": ["-y", "@dunialabs/mcp-skills", "/path/to/genai-specs/skills"]
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+---
+name: spec-task-breakdown
+description: Use when breaking features into tasks, writing task.md files, ACID step breakdowns, or planning incremental implementation work.
+---
+
+# Task Standards
+## Required sub-skills
+
+**REQUIRED SUB-SKILL:** Use `writing-plans` when producing implementation plans from tasks.
+
+
+Tasks must be granular, technical work items that implement user stories through code.
+
+## Task Requirements
+
+Each task must:
+
+- **Be Actionable by Code**: Focus only on writing, modifying, or testing code
+- **Build Incrementally**: Each task builds on previous tasks with no orphaned code
+- **Reference Requirements**: Link back to specific requirements from the requirements document
+- **Be Independently Testable**: Can be verified through automated tests
+- **Follow TDD**: Implement using Red-Green-Refactor cycle
+
+## Task Structure
+
+Tasks should include:
+
+- **Clear Objective**: What specific code needs to be written/modified
+- **Acceptance Criteria**: Verifiable technical outcomes
+- **Requirements Traceability**: References to specific requirements
+- **Test Strategy**: How the task will be validated
+
+## Task Completion and Verification
+
+- **Do NOT mark tasks as complete until ALL acceptance criteria have been fully verified.**
+- Verification must involve executing the defined test strategy and confirming the expected outcomes.
+- Prematurely marking tasks as complete can lead to incomplete work and hinder project progress.
+
+## Task Sequencing
+
+- **Start with Infrastructure**: Set up project structure and core interfaces first
+- **Implement Core Logic**: Build fundamental functionality before features
+- **Add Integration**: Wire components together incrementally
+- **Validate Early**: Include testing tasks throughout, not just at the end
+
+## Excluded Task Types
+
+Do NOT include tasks for:
+
+- User acceptance testing or user feedback gathering
+- Deployment to production or staging environments
+- Performance metrics gathering or analysis
+- User training or documentation creation
+- Business process changes
+- Marketing or communication activities
+- Manual testing of end-to-end flows (use automated tests instead)
+
+## Task Granularity
+
+- Each task should be completable in 1-4 hours
+- Complex features should be broken into multiple tasks
+- Each task should result in working, tested code
+- Avoid tasks that require multiple days of work
+
+**Storage Location:**
+User story documents for specific features or work items should be stored within the `.work-items/{feature_name}/` directory, named `task.md`. For example, a user story document for the `pkl-highlighting` feature would be located at `.work-items/pkl-highlighting/task.md`. This structure ensures that user story documents are co-located with their related requirements and tasks, providing a clear, scalable, and traceable organization for project specifications.
+
+---
+
+## Task Breakdown Methodology: Sequential, ACID-Compliant Steps
+
+To ensure clarity, maintainability, and safe incremental development, complex tasks will be broken down into a series of sequential, ACID-compliant steps. Each step will be documented in its own markdown file within the feature's task directory.
+
+**Principles:**
+
+- **Atomic:** Each step is a single, indivisible unit of work. It either completes entirely or not at all.
+- **Consistent:** Each step, upon completion, leaves the system in a valid state, adhering to all defined invariants.
+- **Isolated:** The execution of one step does not interfere with other concurrent or subsequent steps. Changes made by a step are not visible until it is fully committed.
+- **Durable:** Once a step is completed and committed, its changes are permanent and survive system failures.
+
+**Structure:**
+
+Within a feature's task directory (e.g., `.work-items/<feature_name>/`), individual task steps will be represented as sequentially numbered markdown files:
+
+```txt
+/.work-items/<feature_name>/
+├── task.md (overall task description)
+├── 01_step_description.md
+├── 02_another_step.md
+└── ...
+```
+
+Each `0X_step_description.md` file will contain:
+
+- A clear objective for that specific step.
+- Detailed acceptance criteria for the step.
+- A focused test strategy to verify the step's completion.
+- Any specific implementation details or considerations for that step.
+
+This approach allows for granular tracking of progress, easier rollback if a step introduces issues, and a more structured development workflow.
+
+---

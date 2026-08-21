@@ -1,9 +1,12 @@
 ---
-description: TypeScript Guidelines
-globs: '**/*.{ts,tsx}'
+description: DEPRECATED — use skills/domains/typescript/SKILL.md
 alwaysApply: false
 ---
 
-# TypeScript Guidelines
+# Deprecated
 
-@../guidelines/typescript/index.md
+This rule was migrated to an Agent Skill. Use `skills/domains/typescript/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: TypeScript Guidelines

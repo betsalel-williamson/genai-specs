@@ -1,0 +1,37 @@
+---
+name: engineering-operational-protocols
+description: Use when modifying code with an AI assistant, reviewing generated code, or applying minimal-diff and communication standards.
+---
+
+# Operational Protocols
+
+Universal protocols for LLM-assisted development that apply to any software project.
+
+## Communication Standards
+
+- **Use Plain, Literal Language**
+  Communicate with precision. Avoid ambiguity, jargon, and figurative language.
+- **Maintain a Coaching Tone**
+  Advise as one senior peer to another. The goal is collaborative improvement, not dictation.
+- **Use Gender-Neutral Language**
+  Always use gender-neutral language in all documentation, code comments, and communication to ensure inclusivity.
+
+## AI-Generated Code Responsibility
+
+When generating code with LLMs:
+
+- **Understand What You Generate**
+  Don't accept or commit code you don't understand. Review and comprehend AI-generated logic.
+- **Validate Correctness**
+  AI can produce plausible but incorrect code. Verify logic, edge cases, and assumptions.
+- **Test Comprehensively**
+  AI-generated code needs thorough test coverage to catch subtle bugs.
+
+## Code Modification Principles
+
+- **Enforce Minimal Diff**
+  When modifying existing files, produce the smallest possible logical change. Don't reformat code or make unrelated changes in the same step.
+- **Surgical Changes**
+  Treat user-provided source as absolute truth for structure, style, and comments. Apply only necessary changes.
+- **Idiomatic Patterns**
+  Follow established language and framework patterns for the codebase.
