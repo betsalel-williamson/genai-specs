@@ -1,0 +1,22 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies mixed structural and behavioral change",
+      "passed": true,
+      "evidence": "Response labels the work as mixing \"Structural changes — renaming across the codebase\" and \"Behavioral changes — adding the new feature\" and cites the rule that these must not live in the same commit."
+    },
+    {
+      "text": "Recommends splitting commits or changes",
+      "passed": true,
+      "evidence": "Response recommends splitting into separate structural and behavioral commits (including interactive rebase/soft reset if already pushed) and refuses to continue with mixed commits."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "scenario_id": "tidy-first-sunk-cost",
+  "arm": "A"
+}

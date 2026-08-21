@@ -1,9 +1,12 @@
 ---
-description: Python Guidelines
-globs: '**/*.py'
+description: DEPRECATED — use skills/domains/domain-python/SKILL.md
 alwaysApply: false
 ---
 
-# Python Guidelines
+# Deprecated
 
-@../guidelines/python/index.md
+This rule was migrated to an Agent Skill. Use `skills/domains/domain-python/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: DEPRECATED — use skills/domains/python/SKILL.md

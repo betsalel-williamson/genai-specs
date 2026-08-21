@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "Separates structural rename from behavioral login change",
+      "passed": true,
+      "evidence": "Response documents two distinct phases: Step 2 renames UserService to AccountService with tests passing before/after (structural), then Step 3 adds login via TDD (behavioral). Git log shows separate commits 6443c96 (structural rename) and 7af34bc (behavioral login)."
+    },
+    {
+      "text": "Does not mix structural and behavioral changes in one commit description",
+      "passed": true,
+      "evidence": "Commit messages are explicitly typed: 'refactor(structural): rename UserService to AccountService' contains only rename language, and 'feat(behavioral): add login method to AccountService' contains only login feature language. No commit description combines both change types."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}

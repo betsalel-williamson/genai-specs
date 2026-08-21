@@ -1,0 +1,14 @@
+{
+  "expectations": [
+    {
+      "text": "Defines a named persona with description",
+      "passed": true,
+      "evidence": "Persona section defines **Name:** Operations Analyst and a **Description:** paragraph outlining Jordan's role, goals, and pain points related to exporting report data."
+    },
+    {
+      "text": "Success metrics are verifiable without analytics infrastructure",
+      "passed": true,
+      "evidence": "Primary and secondary metrics use pass/fail manual test criteria (e.g. \"confirm the rows and column headers match what was displayed on screen (pass/fail)\") and explicitly state verification \"without analytics tracking or long-term usage measurement\"."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "eval_id": "spec-user-story-shape",
+  "eval_name": "spec-user-story-shape",
+  "assertions": [
+    {"text": "Uses As a / I want / so that structure", "type": "behavioral"},
+    {"text": "Acceptance criteria avoid technical implementation details", "type": "behavioral"},
+    {"text": "Uses EARS-style user-observable criteria", "type": "behavioral"}
+  ]
+}

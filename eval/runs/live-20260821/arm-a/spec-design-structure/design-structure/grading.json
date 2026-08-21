@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "Includes Objective, Technical Design, Key Changes, Alternatives, Out of Scope",
+      "passed": true,
+      "evidence": "response.md contains all five required top-level sections: '## 1. Objective', '## 2. Technical Design', '## 3. Key Changes' (with subsections 3.1 API Contracts, 3.2 Data Models, 3.3 Component Responsibilities), '## 4. Alternatives Considered', and '## 5. Out of Scope'."
+    },
+    {
+      "text": "References architecture alignment explicitly",
+      "passed": true,
+      "evidence": "Section 2 includes a dedicated 'Architecture alignment:' paragraph that explicitly references `standards-architecture.md` and maps design decisions to architecture principles (async side effects, idempotency, observability, fail-safe degradation)."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}

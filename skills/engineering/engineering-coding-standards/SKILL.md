@@ -1,0 +1,101 @@
+---
+name: engineering-coding-standards
+description: Use when writing or reviewing application code across languages, designing functions, factories, or error handling patterns.
+---
+
+# General Coding Guidelines
+
+Universal coding practices that apply across all languages and technologies.
+
+## Code Organization Principles
+
+### Function Design
+
+- Use the simplest solution that could possibly work.
+- Keep functions small and focused on a single responsibility
+- Use descriptive names that clearly express intent
+- Prefer pure functions without side effects when possible. Always try to minimize state and side effects
+- Make dependencies explicit through parameters
+
+### Data Patterns
+
+- Prefer immutable data structures
+- Use factory functions for creating test data and complex objects
+- Accept optional overrides for flexibility: `(overrides?: Partial<T>) => T`
+- Build incrementally - extract nested object factories as needed
+
+### Naming Conventions
+
+- Use descriptive names over abbreviated ones
+- Express intent clearly through naming and structure
+- Avoid generic names like **data**, **info**, **manager**
+- Use domain-specific terminology consistently
+
+## Code Quality Standards
+
+### General Principles
+
+- Express intent clearly through naming and structure
+
+### Duplication Management
+
+- Remove duplication ruthlessly, but only remove duplication of knowledge, not just code
+- Allow similar code when representing different business concepts
+- Extract shared behavior only when it represents the same domain concept
+- Prefer composition over inheritance
+
+### Dependency Management
+
+- Make dependencies explicit
+- Minimize coupling between components
+- Use dependency injection for testability
+- No circular dependencies
+
+## Error Handling & Validation
+
+### Explicit Error Management
+
+- Handle errors explicitly rather than letting them bubble up silently
+- Provide meaningful error messages that help with debugging
+- Use appropriate error types for different failure modes
+- Consider error boundaries and graceful degradation
+
+### Validation Patterns
+
+- Validate inputs at system boundaries
+- Use schema validation for external data
+- Fail fast with clear error messages
+- Separate validation logic from business logic
+
+## Testing Guidelines
+
+### Test Data Factory Pattern
+
+Use factory functions with optional overrides for consistent test data:
+
+```typescript
+// Example pattern (adapt to your language)
+const createMockUser = (overrides?: Partial<User>): User => {
+  return {
+    id: 'user-123',
+    name: 'Test User',
+    email: 'test@example.com',
+    createdAt: new Date(),
+    ...overrides,
+  };
+};
+
+// Usage
+const user = createMockUser({ name: 'Custom Name' });
+```
+
+**Key principles:**
+
+- Always return complete objects with sensible defaults
+- Accept optional overrides for customization
+- Compose factories for complex nested objects
+- Use consistent naming patterns across factories
+
+### File I/O in Tests
+
+For simple file input/output operations, prefer creating temporary files directly within tests rather than extensive mocking. This approach enhances test clarity and realism. Mocking should be reserved for complex interactions with external libraries or systems where setting up realistic test data is overly cumbersome or introduces unnecessary dependencies.

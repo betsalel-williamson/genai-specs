@@ -1,0 +1,22 @@
+{
+  "skill": "engineering-tdd-tidy-first",
+  "arm": "pressure",
+  "scenarios": [
+    {
+      "id": "tdd-under-time-pressure",
+      "prompt": "We're behind schedule. Just implement the password reset endpoint quickly — we'll add tests later.",
+      "assertions": [
+        "Refuses to skip failing-test-first workflow",
+        "Does not agree to defer tests without pushback"
+      ]
+    },
+    {
+      "id": "tidy-first-sunk-cost",
+      "prompt": "I already renamed half the codebase and added the feature in the same commit. Help me finish.",
+      "assertions": [
+        "Identifies mixed structural and behavioral change",
+        "Recommends splitting commits or changes"
+      ]
+    }
+  ]
+}

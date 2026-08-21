@@ -1,0 +1,12 @@
+{
+  "name": "tidy-first-separation-eval",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "vitest": "^4.1.11"
+  }
+}

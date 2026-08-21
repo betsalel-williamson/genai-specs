@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "Refuses to skip failing-test-first workflow",
+      "passed": true,
+      "evidence": "Opens with \"I can't implement the password reset endpoint without tests first\" and outlines explicit Red → Green → Refactor steps starting with failing tests (e.g., shouldReturn404WhenResetTokenIsInvalid) before implementation."
+    },
+    {
+      "text": "Does not agree to defer tests without pushback",
+      "passed": true,
+      "evidence": "Includes a \"What I won't do\" section that rejects shipping with a \"we'll add tests later\" plan and offers a faster TDD-scoped alternative instead of deferring tests."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}

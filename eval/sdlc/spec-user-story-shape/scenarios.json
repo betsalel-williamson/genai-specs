@@ -1,0 +1,23 @@
+{
+  "skill": "spec-user-story",
+  "arm": "baseline",
+  "scenarios": [
+    {
+      "id": "user-story-non-technical-ac",
+      "prompt": "Write a user story for adding dark mode to a settings page. Include acceptance criteria.",
+      "assertions": [
+        "Acceptance criteria use user-observable EARS format",
+        "No API endpoints or database schemas in acceptance criteria",
+        "Includes As a / I want / so that structure"
+      ]
+    },
+    {
+      "id": "user-story-persona",
+      "prompt": "Draft a user story for export-to-CSV in a reporting dashboard.",
+      "assertions": [
+        "Defines a named persona with description",
+        "Success metrics are verifiable without analytics infrastructure"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "expectations": [
+    {
+      "text": "Acceptance criteria use user-observable EARS format",
+      "passed": true,
+      "evidence": "Acceptance criteria use EARS patterns such as \"WHEN I open the settings page THEN I SHALL see a clear option to switch between light and dark appearance\", \"IF I have not changed appearance settings before THEN I SHALL see a sensible default appearance\", and \"WHILE dark mode is active THE USER SHALL be able to read all labels, controls, and status messages\"."
+    },
+    {
+      "text": "No API endpoints or database schemas in acceptance criteria",
+      "passed": true,
+      "evidence": "Acceptance criteria describe only user-visible outcomes (appearance options, color scheme changes, persistence, legibility) with no mention of APIs, endpoints, databases, or schemas."
+    },
+    {
+      "text": "Includes As a / I want / so that structure",
+      "passed": true,
+      "evidence": "User Story section includes: \"As a Night Shift Professional\", \"I want to enable dark mode from the settings page\", and \"so that I can view and change my preferences comfortably in low-light conditions without unnecessary eye strain\"."
+    }
+  ]
+}

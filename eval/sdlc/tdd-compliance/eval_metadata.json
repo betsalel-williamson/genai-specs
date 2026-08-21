@@ -1,0 +1,8 @@
+{
+  "eval_id": "tdd-compliance",
+  "eval_name": "tdd-compliance",
+  "assertions": [
+    {"text": "Failing test requested or written before implementation", "type": "behavioral"},
+    {"text": "Structural and behavioral changes not combined in one commit", "type": "behavioral"}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "eval_id": "spec-design-structure",
+  "eval_name": "spec-design-structure",
+  "assertions": [
+    {"text": "Includes required design document sections", "type": "behavioral"},
+    {"text": "References architecture alignment", "type": "behavioral"}
+  ]
+}

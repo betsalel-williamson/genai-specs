@@ -4,6 +4,8 @@
   "description": "",
   "scripts": {
     "format": "markdownlint-cli2 '**/*.md'",
+    "validate:skills": "python3 scripts/validate-skills.py",
+    "eval:matrix": "bash eval/harness/run_matrix.sh",
     "prepare": "husky && vale sync"
   },
   "repository": {

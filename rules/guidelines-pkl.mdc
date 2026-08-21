@@ -1,8 +1,12 @@
 ---
-description: Pkl Language Guidelines
-globs: '**/*.pkl'
+description: DEPRECATED — use skills/domains/domain-pkl/SKILL.md
 alwaysApply: false
 ---
-# Pkl Language Guidelines
 
-@../guidelines/pkl/index.md
+# Deprecated
+
+This rule was migrated to an Agent Skill. Use `skills/domains/domain-pkl/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: DEPRECATED — use skills/domains/pkl/SKILL.md

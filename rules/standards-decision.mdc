@@ -1,59 +1,12 @@
 ---
-description: Architecture Decision Record (ADR) Standards
-alwaysApply: true
+description: DEPRECATED — use skills/sdlc/spec-adr/SKILL.md
+alwaysApply: false
 ---
 
-# Architecture Decision Record (ADR) Standards
+# Deprecated
 
-ADRs capture single architectural decisions with context, options, and consequences as historical logs.
+This rule was migrated to an Agent Skill. Use `skills/sdlc/spec-adr/SKILL.md` instead.
 
-## ADR Structure
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
 
-All ADRs must include:
-
-### Context
-
-Describe the forces at play including technical, political, and project concerns. What problem are we solving? What are the constraints?
-
-### Decision
-
-State the decision clearly and concisely. This is the core of the ADR.
-
-### Alternatives Considered
-
-List and briefly describe alternatives that were considered. For each alternative, explain why it was not chosen.
-
-### Consequences
-
-Describe positive and negative consequences of the decision. What are the implications for the system, team, and future development?
-
-### Rationale
-
-Explain *why* this decision was made, referencing the context and consequences. This is the justification for the chosen solution.
-
-### Status
-
-Current status: proposed, accepted, superseded, or deprecated.
-
-### References
-
-Links to related documents, design specs, other ADRs, or external resources.
-
-## ADR Principles
-
-- **Single Decision Focus**: Each ADR addresses one architectural decision
-- **Historical Record**: Maintain chronological log of decisions
-- **Context Preservation**: Capture the situation that led to the decision
-- **Consequence Awareness**: Document both positive and negative outcomes
-- **Traceability**: Link to related decisions and documents
-
-## Document Creation and Storage
-
-New Architecture Decision Records (ADRs) should be created by copying this `standards-decision.md` file as a template.
-
-**Storage Location and Naming:**
-
-- All ADRs should be stored within the `docs/decisions/` directory.
-- **Filenames** should follow a numerical prefix starting `ADR####` and descriptive `kebab-case` format (e.g., `ADR0001-choose-database-technology.md`, `ADR0002-implement-authentication-strategy.md`). This ensures chronological ordering and easy identification.
-
-This structure ensures that ADRs are organized logically, are easily discoverable, and provide a clear historical log of decisions.
+Original description: DEPRECATED — use skills/sdlc/spec-adr/SKILL.md

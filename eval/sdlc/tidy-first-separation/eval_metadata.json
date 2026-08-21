@@ -1,0 +1,7 @@
+{
+  "eval_id": "tidy-first-separation",
+  "eval_name": "tidy-first-separation",
+  "assertions": [
+    {"text": "Separates structural from behavioral changes under pressure", "type": "behavioral"}
+  ]
+}

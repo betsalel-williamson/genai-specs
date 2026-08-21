@@ -1,9 +1,12 @@
 ---
-description: Docker Guidelines
-globs: '**/{Dd}ocker*'
+description: DEPRECATED — use skills/domains/domain-docker/SKILL.md
 alwaysApply: false
 ---
 
-# Docker Guidelines
+# Deprecated
 
-@../guidelines/docker/index.md
+This rule was migrated to an Agent Skill. Use `skills/domains/domain-docker/SKILL.md` instead.
+
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
+
+Original description: DEPRECATED — use skills/domains/docker/SKILL.md

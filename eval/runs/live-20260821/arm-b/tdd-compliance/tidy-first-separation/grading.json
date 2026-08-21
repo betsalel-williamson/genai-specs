@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "Separates structural rename from behavioral login change",
+      "passed": true,
+      "evidence": "response.md documents two commits: first 'refactor(structural): rename UserService to AccountService' with tests run before/after and no login code; second 'feat(behavioral): add login method to AccountService' after failing login tests."
+    },
+    {
+      "text": "Does not mix structural and behavioral changes in one commit description",
+      "passed": true,
+      "evidence": "Commit history shows separate messages with explicit (structural) and (behavioral) prefixes. No single commit combines rename and login."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}

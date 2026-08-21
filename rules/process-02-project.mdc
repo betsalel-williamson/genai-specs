@@ -1,66 +1,12 @@
 ---
-description: Project Organization Standards
-alwaysApply: true
+description: DEPRECATED — use skills/engineering/project-organization/SKILL.md
+alwaysApply: false
 ---
 
-# Project Organization Standards
+# Deprecated
 
-Standards for organizing projects, files, and documentation across all languages and technologies.
+This rule was migrated to an Agent Skill. Use `skills/engineering/project-organization/SKILL.md` instead.
 
-## File Organization Standards
+See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
 
-### Directory Structure
-
-- Use clear, descriptive directory names that reflect business domains
-- Keep related files grouped together
-- Separate concerns (tests, documentation, configuration)
-- Follow consistent patterns across projects
-
-### Naming Conventions
-
-- Use consistent naming patterns across the project
-- Prefer descriptive names over abbreviated ones
-- Follow language-specific conventions (kebab-case for files, camelCase for variables, etc.)
-- Use domain-specific terminology consistently
-
-## Documentation Standards
-
-### Clear Documentation and Usage Examples
-
-Provide comprehensive documentation for configurations, including evaluation instructions and common use cases.
-
-- **Principle**: Use Markdown (`.md`) for documentation in this project
-- **Principle**: Include practical examples with shell commands
-- **Principle**: Explain commands with glob patterns and output flags
-- **Principle**: Provide clear usage instructions
-
-### Documentation Structure
-
-- **Reference Project Root for Paths**: All internal file paths referenced within documentation must be relative to the project root
-- **Avoid Absolute File Paths**: Ensure portability and consistency across different environments
-- **Include Practical Examples**: Show real usage with shell commands and expected outputs
-
-## Spec Workflow Organization
-
-### Steering File Organization
-
-- **Always included**: Core principles that apply throughout development
-- **Manual inclusion**: Phase-specific standards (use `@filename.mdc` to include when needed)
-- **Conditional inclusion**: Technology-specific guidelines based on file patterns
-
-### Context Efficiency
-
-- Keep steering context lean by using appropriate inclusion strategies
-- Only load standards when they're actually needed for the current work
-- Use manual inclusion for specialized or phase-specific guidance
-
-### Phase Reminders
-
-When working on specific phases, remember to include relevant standards:
-
-- [Requirements phase](./standards-user-story.mdc)
-- [Design phase](./standards-design.mdc)
-- [Task creation](./standards-task.mdc)
-- [Architecture](./standards-architecture.mdc)
-- [Decisions](./standards-decision.mdc)
-- [Guidelines](./standards-guidelines.mdc)
+Original description: DEPRECATED — use skills/engineering/project-organization/SKILL.md

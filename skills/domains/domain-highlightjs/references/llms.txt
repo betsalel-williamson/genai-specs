@@ -1,0 +1,1547 @@
+========================
+CODE SNIPPETS
+========================
+TITLE: Initializing LED Pin Mode in Arduino Setup
+DESCRIPTION: The `setup()` function runs once when the Arduino board starts or resets. It configures the specified LED pin as an `OUTPUT`, preparing it to send electrical signals to control the LED. This is a prerequisite for using `digitalWrite()` on that pin.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/arduino/default.expect.txt#_snippet_1
+
+LANGUAGE: Arduino
+CODE:
+```
+void setup() {
+  pinMode(led, OUTPUT);
+}
+```
+
+----------------------------------------
+
+TITLE: Installing Node.js Dependencies (npm)
+DESCRIPTION: This command is executed during the release process to synchronize the `package-lock.json` file with `package.json`, ensuring all project dependencies are correctly installed and their versions are locked. It's a crucial step after updating version numbers.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/MAINTAINERS_GUIDE.md#_snippet_0
+
+LANGUAGE: Shell
+CODE:
+```
+npm install
+```
+
+----------------------------------------
+
+TITLE: Loop Initialization in Fortran
+DESCRIPTION: This snippet demonstrates a 'for' loop initialization, iterating from 'start' to 'stop' with a step determined by 'bar(5)'. It illustrates basic control flow syntax.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/gauss/keywords.txt#_snippet_0
+
+LANGUAGE: Fortran
+CODE:
+```
+for i(start, stop, bar(5));
+```
+
+----------------------------------------
+
+TITLE: Viewing First Line of .travis.yml (Bash)
+DESCRIPTION: This snippet shows how to use `cat` and `head` commands in Bash to display the first line of a `.travis.yml` file. It's useful for quickly inspecting configuration files, especially in CI/CD contexts like Travis CI, to identify the primary language or setup.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/shell/command-continuation.expect.txt#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+/bin/cat \.travis.yml\
+ -b | head -n1
+```
+
+----------------------------------------
+
+TITLE: Setting SAS Options and Logging Start Time
+DESCRIPTION: This snippet initializes the SAS session by logging the program's start time to the SAS log and setting global SAS system options. It configures error reporting to a maximum of 20 prints and enables detailed timer information after each step execution.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/sas/default.txt#_snippet_0
+
+LANGUAGE: SAS
+CODE:
+```
+%put Started at %sysfunc(putn(%sysfunc(datetime()), datetime.));
+options
+    errors = 20  /* Maximum number of prints of repeat errors */
+    fullstimer   /* Detailed timer after each step execution  */
+;
+```
+
+----------------------------------------
+
+TITLE: Implementing NSIS Initialization Function
+DESCRIPTION: This snippet defines the .onInit function, which is executed at the beginning of the installer. It uses DetailPrint to display messages, demonstrating variable usage ($(^InstallBtn)) and various string escaping techniques for newlines and dollar signs.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/nsis/default.txt#_snippet_6
+
+LANGUAGE: NSIS
+CODE:
+```
+Function .onInit
+  DetailPrint "The install button reads $(^InstallBtn)"
+  DetailPrint 'Here comes a$\n$\rline-break!'
+  DetailPrint `Escape the dollar-sign: $$`
+FunctionEnd
+```
+
+----------------------------------------
+
+TITLE: Defining the 'blog' Command Handler in LiveCode
+DESCRIPTION: This LiveCode command handler named 'blog' demonstrates basic operations: assigning 'Hello World!' to `sTest`, defining a list of helper modules ('form,url,asset') in `tHelpers`, and then calling `rigLoadHelper` to load them. It includes examples of both single-line and block comments.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/livecodeserver/default.expect.txt#_snippet_1
+
+LANGUAGE: LiveCode
+CODE:
+```
+command blog
+  -- simple comment
+  put "Hello World!" into sTest
+  # ANOTHER COMMENT
+  put "form,url,asset" into tHelpers
+  rigLoadHelper tHelpers
+end blog
+```
+
+----------------------------------------
+
+TITLE: Initializing Processing Sketch and Off-screen Graphics
+DESCRIPTION: The setup() function configures the main display window to full screen with 3D capabilities and initializes pg, an off-screen PGraphics buffer, setting its dimensions and background color for subsequent drawing operations.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/processing/default.txt#_snippet_2
+
+LANGUAGE: Processing
+CODE:
+```
+void setup() {
+  size(displayWidth, displayHeight, P3D);
+  pg = createGraphics(displayWidth*2,displayHeight,P2D);
+  pg.beginDraw();
+  pg.background(255,255,255);
+  //pg.smooth(8);
+  pg.endDraw();
+}
+```
+
+----------------------------------------
+
+TITLE: Examples of Invalid Nix Attribute Definitions
+DESCRIPTION: Presents several examples of syntactically incorrect Nix attribute definitions, such as invalid attribute names starting with a number, malformed paths, and incorrect function assignments.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/nix/default.expect.txt#_snippet_11
+
+LANGUAGE: Nix
+CODE:
+```
+invalidAttrs = {
+  1invalidAttr = 1;
+  notAPath = //;
+  trailingSlashPath = /asdf/;
+  notAFunction = x:x;
+};
+```
+
+----------------------------------------
+
+TITLE: Access Log Entry: GET Request to CGI-BIN
+DESCRIPTION: This snippet represents a log entry for a GET request targeting a CGI-BIN directory, resulting in a 200 OK status. It's a common format for older web server configurations and dynamic content generation.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/accesslog/default.expect.txt#_snippet_2
+
+LANGUAGE: Log
+CODE:
+```
+192.168.2.20 - - [28/Jul/2006:10:27:10 -0300] "GET /cgi-bin/try/ HTTP/1.0" 200 3395
+```
+
+----------------------------------------
+
+TITLE: Defining Installer Pages and Sections in NSIS
+DESCRIPTION: This snippet shows how to insert a standard UI page (MUI_PAGE_INSTFILES) and define a basic installer section. The section named 'section_name' executes 'calc.exe' using nsExec::ExecToLog.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/nsis/default.expect.txt#_snippet_4
+
+LANGUAGE: NSIS
+CODE:
+```
+; Pages
+!insertmacro MUI_PAGE_INSTFILES
+
+; Sections
+Section "section_name" section_index
+  nsExec::ExecToLog "calc.exe"
+SectionEnd
+```
+
+----------------------------------------
+
+TITLE: Defining the 'blog' Command in LiveCode
+DESCRIPTION: This LiveCode command, `blog`, demonstrates basic variable assignment and helper loading. It assigns the string "Hello World!" to a local variable `sTest` and then loads a set of specified helpers (`form`, `url`, `asset`) using the `rigLoadHelper` function, which is commonly used in LiveCode web application frameworks for managing dependencies.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/livecodeserver/default.txt#_snippet_1
+
+LANGUAGE: LiveCode
+CODE:
+```
+command blog
+  -- simple comment
+  put "Hello World!" into sTest
+  # ANOTHER COMMENT
+  put "form,url,asset" into tHelpers
+  rigLoadHelper tHelpers
+end blog
+```
+
+----------------------------------------
+
+TITLE: Implementing FOR Loops in Fanuc TP
+DESCRIPTION: Shows the basic structure of a FOR loop, iterating a register from a start value to an end value, useful for repetitive tasks.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/tp/default.txt#_snippet_14
+
+LANGUAGE: Fanuc TP
+CODE:
+```
+FOR R[1]=1 TO R[2] ;
+ENDFOR ;
+```
+
+----------------------------------------
+
+TITLE: Calculating Age in Years (Arcade)
+DESCRIPTION: This code calculates the age in years between a specified start date (November 10, 1996) and the current date. It uses `DateOnly` to create date objects, `DateDiff` to find the difference, and `Floor` to get the integer part of the age.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/arcade/profile.expect.txt#_snippet_2
+
+LANGUAGE: Arcade
+CODE:
+```
+var startDate = DateOnly(1996,11,10);
+var endDate = DateOnly();
+var age = DateDiff(endDate, startDate, 'years');
+Floor(age);
+```
+
+----------------------------------------
+
+TITLE: Example DNS Zone File Configuration
+DESCRIPTION: This snippet defines a complete DNS zone file for 'example.com', including the SOA record for administrative details, NS records for nameservers, MX records for mail exchange, A and AAAA records for IPv4 and IPv6 addresses, and CNAME records for host aliases. It demonstrates the use of $ORIGIN and $TTL directives.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/dns/default.expect.txt#_snippet_0
+
+LANGUAGE: DNS Zone File
+CODE:
+```
+$ORIGIN example.com.    ; designates the start of this zone file in the namespace
+$TTL 1h                 ; default expiration time of all resource records without their own TTL value
+example.com.  IN  SOA   ns.example.com. username.example.com. ( 2007120710 1d 2h 4w 1h )
+example.com.  IN  NS    ns                    ; ns.example.com is a nameserver for example.com
+example.com.  IN  NS    ns.somewhere.example. ; ns.somewhere.example is a backup nameserver for example.com
+example.com.  IN  MX    10 mail.example.com.  ; mail.example.com is the mailserver for example.com
+@             IN  MX    20 mail2.example.com. ; equivalent to above line, "@" represents zone origin
+@             IN  MX    50 mail3              ; equivalent to above line, but using a relative host name
+example.com.  IN  A     192.0.2.1             ; IPv4 address for example.com
+              IN  AAAA  2001:db8:10::1        ; IPv6 address for example.com
+ns            IN  A     192.0.2.2             ; IPv4 address for ns.example.com
+              IN  AAAA  2001:db8:10::2        ; IPv6 address for ns.example.com
+www           IN  CNAME example.com.          ; www.example.com is an alias for example.com
+wwwtest       IN  CNAME www                   ; wwwtest.example.com is another alias for www.example.com
+mail          IN  A     192.0.2.3             ; IPv4 address for mail.example.com
+mail2         IN  A     192.0.2.4             ; IPv4 address for mail2.example.com
+mail3         IN  A     192.0.2.5             ; IPv4 address for mail3.example.com
+```
+
+----------------------------------------
+
+TITLE: Defining Custom Keyword Lexing Patterns in Highlight.js
+DESCRIPTION: This example illustrates how to use the `$pattern` attribute within the `keywords` object to define a custom regular expression for lexing keywords. This allows for keywords that do not conform to the default `\w+` word pattern, such as those starting with a dash.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/docs/language-guide.rst#_snippet_3
+
+LANGUAGE: javascript
+CODE:
+```
+{
+  keywords: {
+    $pattern: /-[a-z]+/,        // allow keywords to begin with dash
+    keyword: '-import -export'
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Basic Key-Value Assignments with Various Separators
+DESCRIPTION: Shows different valid syntaxes for assigning values to keys. The format supports '=', ':', and space as separators, allowing for flexible spacing around them.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/properties/syntax.txt#_snippet_1
+
+LANGUAGE: Configuration Syntax
+CODE:
+```
+key=val
+```
+
+LANGUAGE: Configuration Syntax
+CODE:
+```
+key = val
+```
+
+LANGUAGE: Configuration Syntax
+CODE:
+```
+key:val
+```
+
+LANGUAGE: Configuration Syntax
+CODE:
+```
+key : val
+```
+
+LANGUAGE: Configuration Syntax
+CODE:
+```
+key val
+```
+
+LANGUAGE: Configuration Syntax
+CODE:
+```
+key   val
+```
+
+----------------------------------------
+
+TITLE: Building a PHP-FPM Application Docker Image
+DESCRIPTION: This Dockerfile constructs a Docker image for a PHP-FPM application. It starts from an Ubuntu base, installs necessary PHP 5 FPM packages and extensions like APC, cURL, GD, INTL, and MySQL. It sets up a session directory, defines an application environment, switches to a non-root user, exposes port 80, and specifies the working directory and the command to run PHP-FPM.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/dockerfile/default.txt#_snippet_0
+
+LANGUAGE: Dockerfile
+CODE:
+```
+FROM ubuntu
+
+MAINTAINER laurent@docker.com
+
+ARG debug=0
+
+COPY www.conf /etc/php5/fpm/pool.d/
+
+RUN apt-get update \
+    && apt-get install -y php5-fpm php-apc php5-curl php5-gd php5-intl php5-mysql
+RUN mkdir /tmp/sessions
+
+ENV APPLICATION_ENV dev
+
+USER www-data
+
+EXPOSE 80
+
+VOLUME ["/var/www/html"]
+
+WORKDIR "/var/www/html"
+
+CMD [ "/usr/sbin/php5-fpm", "-F" ]
+```
+
+----------------------------------------
+
+TITLE: Installing Highlight.js Core via NPM or Yarn
+DESCRIPTION: These bash commands show how to install the main Highlight.js NPM package, which includes all supported languages, using either npm or yarn. This is the recommended method for Node.js projects or bundlers.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/README.md#_snippet_30
+
+LANGUAGE: bash
+CODE:
+```
+npm install highlight.js
+# or
+yarn add highlight.js
+```
+
+----------------------------------------
+
+TITLE: Example of an Invalid Swift Attribute
+DESCRIPTION: This snippet shows an example of what appears to be an invalid or malformed attribute declaration, `@ notAnAttribute`. It highlights that attributes must follow specific syntax rules, typically starting with `@` followed immediately by the attribute name, without spaces.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/swift/attributes.txt#_snippet_2
+
+LANGUAGE: Swift
+CODE:
+```
+@ notAnAttribute
+```
+
+----------------------------------------
+
+TITLE: Demonstrating Nested Comments in Maxima
+DESCRIPTION: This example illustrates the capability of Maxima to handle nested comments. Comments start with `/*` and end with `*/`, and can contain other comment blocks within them.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/maxima/example.expect.txt#_snippet_1
+
+LANGUAGE: Maxima
+CODE:
+```
+/* this
+  /* this is
+    /* this is a nested comment */ nested comment
+   */ comment
+ */
+```
+
+----------------------------------------
+
+TITLE: Key-Value Pair Delimiters in Configuration
+DESCRIPTION: Illustrates different delimiters ('=', ':', or space) used to separate keys from their corresponding values in configuration file entries, along with variations in whitespace for flexibility.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/properties/syntax.expect.txt#_snippet_1
+
+LANGUAGE: Configuration
+CODE:
+```
+key=val
+key = val
+key:val
+key : val
+key val
+key   val
+```
+
+----------------------------------------
+
+TITLE: Performing String Operations in Fanuc TP
+DESCRIPTION: Examples of built-in functions for string manipulation, including getting string length, extracting substrings, and finding substrings.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/tp/default.txt#_snippet_9
+
+LANGUAGE: Fanuc TP
+CODE:
+```
+R[1]=STRLEN SR[1] ;
+SR[1]=SUBSTR SR[2],R[3],R[4] ;
+R[1]=FINDSTR SR[1],SR[2] ;
+```
+
+----------------------------------------
+
+TITLE: Running Neo4j Docker Container (Bash)
+DESCRIPTION: This snippet demonstrates how to run a Neo4j database container using Docker. It maps ports, mounts volumes for data, plugins, and configuration, sets the user and group, and specifies the Neo4j 3.4 image. This command is essential for setting up a persistent Neo4j instance.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/shell/command-continuation.expect.txt#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+docker run \
+      --publish=7474:7474 --publish=7687:7687 \
+      --volume=/neo4j/data:/data \
+      --volume=/neo4j/plugins:/plugins \
+      --volume=/neo4j/conf:/conf \
+      --volume=/logs/neo4j:/logs \
+      --user=\"$(id -u neo4j):$(id -g neo4j)\" \
+      --group-add=$groups \
+      neo4j:3.4
+```
+
+----------------------------------------
+
+TITLE: Go Main Function with Channel, Goroutine, and Defer
+DESCRIPTION: This snippet defines the `main` function in Go, demonstrating the creation and use of a channel for float64 values, launching a goroutine, and utilizing `defer` for a cleanup action. It shows basic concurrency and resource management.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/go/default.txt#_snippet_0
+
+LANGUAGE: Go
+CODE:
+```
+package main
+
+import "fmt"
+
+func main() {
+    ch := make(chan float64)
+    ch <- 1.0e10    // magic number
+    x, ok := <- ch
+    defer fmt.Println(`exitting now\`)
+    go println(len("hello world!"))
+    return
+}
+```
+
+----------------------------------------
+
+TITLE: Using CSS Attribute Selectors
+DESCRIPTION: This snippet illustrates CSS attribute selectors. `[href*="example"]` selects `<a>` elements whose `href` attribute contains 'example', while `[class^="top"]` selects any element whose `class` attribute starts with 'top'.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/css/css_consistency.txt#_snippet_4
+
+LANGUAGE: CSS
+CODE:
+```
+a[href*="example"] {}
+[class^="top"] {}
+```
+
+----------------------------------------
+
+TITLE: Defining Enumerations in PureBASIC
+DESCRIPTION: This snippet demonstrates how to define an enumeration in PureBASIC, specifying a starting value and a step increment. Constants within the enumeration are automatically assigned values based on this definition.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/purebasic/default.expect.txt#_snippet_0
+
+LANGUAGE: PureBASIC
+CODE:
+```
+Enumeration Test 3 Step 10
+  #Constant_One ; Will be 3
+  #Constant_Two ; Will be 13
+EndEnumeration
+```
+
+----------------------------------------
+
+TITLE: Executing '/bin/sh' Command in Bash
+DESCRIPTION: This snippet demonstrates invoking the '/bin/sh' command, which typically executes the system's default shell. It's a common practice for explicitly starting a shell or running shell scripts.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/shell/plain-prompt.expect.txt#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+/bin/sh
+```
+
+----------------------------------------
+
+TITLE: Access Log Entry: GET Request with User Identifier
+DESCRIPTION: This log entry demonstrates a GET request for an image file, including a user identifier ('frank') in the log. It shows a successful 200 OK status and the response size, typical of an Apache Common Log Format with an ident field.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/accesslog/default.expect.txt#_snippet_1
+
+LANGUAGE: Log
+CODE:
+```
+127.0.0.1 user-identifier frank [10/Oct/2000:13:55:36 -0700] "GET /apache_pb.gif HTTP/1.0" 200 2326
+```
+
+----------------------------------------
+
+TITLE: Defining Comments in Configuration Files
+DESCRIPTION: Demonstrates various ways to define comments in configuration files, including using '#' or '!' as prefixes, with or without leading whitespace, which are ignored by the parser.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/properties/syntax.expect.txt#_snippet_0
+
+LANGUAGE: Configuration
+CODE:
+```
+# comment
+  # comment
+! comment
+  ! comment
+```
+
+----------------------------------------
+
+TITLE: Defining Floating-Point Literals in Python
+DESCRIPTION: Examples of standard floating-point literals, including those starting or ending with a decimal point. It also demonstrates the use of underscores for visual separation of digits in both the integer and fractional parts, which does not affect the value.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/python/numbers.expect.txt#_snippet_4
+
+LANGUAGE: Python
+CODE:
+```
+.0, .00, .9, 4.2, 40.0, 0., 00., 10.
+.0, .0_0, .9, 4.2, 4_0.0, 0., 0_0., 1_0.
+```
+
+----------------------------------------
+
+TITLE: Running Neo4j Docker Container (Shell)
+DESCRIPTION: This command runs a Neo4j Docker container, mapping ports and volumes for data persistence, plugins, configuration, and logs. It also sets the user and adds a group for proper permissions, ensuring the container runs with specific user and group IDs.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/shell/command-continuation.txt#_snippet_0
+
+LANGUAGE: shell
+CODE:
+```
+docker run \
+      --publish=7474:7474 --publish=7687:7687 \
+      --volume=/neo4j/data:/data \
+      --volume=/neo4j/plugins:/plugins \
+      --volume=/neo4j/conf:/conf \
+      --volume=/logs/neo4j:/logs \
+      --user="$(id -u neo4j):$(id -g neo4j)" \
+      --group-add=$groups \
+      neo4j:3.4
+```
+
+----------------------------------------
+
+TITLE: Initializing Processing Sketch in setup() Function
+DESCRIPTION: The `setup()` function initializes the Processing sketch. It sets the display size to full screen with a 3D renderer and creates an off-screen `PGraphics` buffer (`pg`) twice the display width for 2D rendering. The buffer is then initialized with a white background.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/processing/default.expect.txt#_snippet_1
+
+LANGUAGE: Processing
+CODE:
+```
+void setup() {
+  size(displayWidth, displayHeight, P3D);
+  pg = createGraphics(displayWidth*2,displayHeight,P2D);
+  pg.beginDraw();
+  pg.background(255,255,255);
+  //pg.smooth(8);
+  pg.endDraw();
+}
+```
+
+----------------------------------------
+
+TITLE: FIX Protocol Message with SOH Delimiter
+DESCRIPTION: An example of a FIX 4.2 Execution Report (MsgType=8) message, where fields are delimited by the Start of Header (SOH) character (represented as ␁). This is the standard delimiter for actual FIX communication.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/fix/default.txt#_snippet_0
+
+LANGUAGE: FIX Protocol
+CODE:
+```
+8=FIX.4.2␁9=0␁35=8␁49=SENDERTEST␁56=TARGETTEST␁34=00000001526␁52=20120429-13:30:08.137␁1=ABC12345␁11=2012abc1234␁14=100␁17=201254321␁20=0␁30=NYSE␁31=108.20␁32=100␁38=100␁39=2␁40=1␁47=A␁54=5␁55=BRK␁59=2␁60=20120429-13:30:08.000␁65=B␁76=BROKER␁84=0␁100=NYSE␁111=100␁150=2␁151=0␁167=CS␁377=N␁10000=SampleCustomTag␁10=123␁
+```
+
+----------------------------------------
+
+TITLE: Initializing SAS Environment and Libraries
+DESCRIPTION: This snippet sets up the SAS environment by defining system options, creating directory paths, executing a shell command to create an output directory, and assigning a read-only SAS library. It ensures the necessary file system and data access are configured before further processing.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/sas/default.txt#_snippet_0
+
+LANGUAGE: SAS
+CODE:
+```
+%put Started at %sysfunc(putn(%sysfunc(datetime()), datetime.));
+options
+    errors = 20  /* Maximum number of prints of repeat errors */
+    fullstimer   /* Detailed timer after each step execution  */
+;
+
+%let maindir = /path/to/maindir;
+%let outdir  = &maindir/out.;
+
+systask command "mkdir -p &outdir." wait;
+libname main "&maindir" access = readonly;
+```
+
+----------------------------------------
+
+TITLE: Example of an Unquoted Elixir Atom or Variable
+DESCRIPTION: This snippet shows a term that could represent either an unquoted atom or a variable name in Elixir. In many contexts, unquoted terms starting with a lowercase letter are treated as variables, while uppercase indicate modules/atoms.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/elixir/module-references.expect.txt#_snippet_5
+
+LANGUAGE: Elixir
+CODE:
+```
+not_matched
+```
+
+----------------------------------------
+
+TITLE: Defining .onInit Function in NSIS
+DESCRIPTION: This function executes at the very beginning of the installer's execution. It uses `DetailPrint` to display messages to the user, demonstrating string formatting, line breaks (`$\n$\r`), and escaping special characters (`$$`).
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/nsis/default.txt#_snippet_7
+
+LANGUAGE: NSIS
+CODE:
+```
+Function .onInit
+  DetailPrint "The install button reads $(^InstallBtn)"
+  DetailPrint 'Here comes a$\n$\rline-break!'
+  DetailPrint `Escape the dollar-sign: $$`
+FunctionEnd
+```
+
+----------------------------------------
+
+TITLE: Initializing Highlight.js in Browser (HTML)
+DESCRIPTION: This snippet demonstrates the minimum setup required to use Highlight.js on a web page. It involves linking the library and a theme, then calling `hljs.highlightAll()` to automatically detect and highlight code within `<pre><code>` tags.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/docs/readme.md#_snippet_0
+
+LANGUAGE: html
+CODE:
+```
+<link rel="stylesheet" href="/path/to/styles/default.min.css">
+<script src="/path/to/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+```
+
+----------------------------------------
+
+TITLE: Manipulating String Representation (lstrip) in Python
+DESCRIPTION: This snippet shows how to get the 'raw' representation of a string using repr(v) and then remove the leading double quote using lstrip('"'). This is another example of string manipulation for display purposes.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/python-repl/default.txt#_snippet_4
+
+LANGUAGE: Python
+CODE:
+```
+print(repr(v).lstrip('"'))
+```
+
+----------------------------------------
+
+TITLE: Implementing .onInit Function in NSIS
+DESCRIPTION: This snippet defines the .onInit function, which executes at the very beginning of the installer. It demonstrates using DetailPrint to display messages, including variables and various escape sequences for newlines and dollar signs.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/nsis/default.expect.txt#_snippet_5
+
+LANGUAGE: NSIS
+CODE:
+```
+; Functions
+Function .onInit
+  DetailPrint "The install button reads $(^InstallBtn)"
+  DetailPrint 'Here comes a$\n$\rline-break!'
+  DetailPrint `Escape the dollar-sign: $$`
+FunctionEnd
+```
+
+----------------------------------------
+
+TITLE: Defining a Multi-line Configuration Group
+DESCRIPTION: This example demonstrates a configuration group that spans multiple lines, allowing for structured parameters. It uses a function-like syntax to encapsulate multiple key-value pairs or flags.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/wren/attributes.txt#_snippet_2
+
+LANGUAGE: Configuration
+CODE:
+```
+#group(\n  multiple,\n  lines = true,\n  lines = 0\n)
+```
+
+----------------------------------------
+
+TITLE: CREATE TEXT SEARCH PARSER Options - SQL
+DESCRIPTION: Outlines options for creating text search parsers in SQL, defining functions for starting, getting tokens, ending, listing lexeme types, and handling headlines.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/pgsql/options.txt#_snippet_9
+
+LANGUAGE: SQL
+CODE:
+```
+START=, GETTOKEN=, END=, LEXTYPES=, HEADLINE=;
+```
+
+----------------------------------------
+
+TITLE: Initializing Highlight.js in the Browser
+DESCRIPTION: This snippet demonstrates the minimum setup required to use Highlight.js on a web page. It involves linking the library's CSS theme and JavaScript file, then calling `hljs.highlightAll()` to automatically find and highlight code within `<pre><code>` tags.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/README.md#_snippet_0
+
+LANGUAGE: html
+CODE:
+```
+<link rel="stylesheet" href="/path/to/styles/default.min.css">
+<script src="/path/to/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+```
+
+----------------------------------------
+
+TITLE: Access Log Entry: Googlebot GET Request to robots.txt
+DESCRIPTION: This snippet shows a log entry for a Googlebot's GET request to the robots.txt file, which is a common crawl behavior. It records a 200 OK status and a 0-byte response, typical for an empty or successfully served robots.txt.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/accesslog/default.expect.txt#_snippet_4
+
+LANGUAGE: Log
+CODE:
+```
+66.249.78.17 – – [13/Jul/2015:07:18:58 -0400] "GET /robots.txt HTTP/1.1" 200 0 "-" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+```
+
+----------------------------------------
+
+TITLE: Getting System Property in Java
+DESCRIPTION: This Java snippet calls the static `getProperty` method of the `System` class to retrieve the Java Virtual Machine version. It illustrates a common way to access system-level information in Java.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/clojure/symbols-numbers.txt#_snippet_1
+
+LANGUAGE: Java
+CODE:
+```
+(System/getProperty "java.vm.version")
+```
+
+----------------------------------------
+
+TITLE: Using Line Continuation for Commands in PureBASIC
+DESCRIPTION: This example illustrates how to split a single command or expression across multiple lines in PureBASIC using the line continuation character (+). This improves readability for long or complex statements.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/purebasic/default.expect.txt#_snippet_5
+
+LANGUAGE: PureBASIC
+CODE:
+```
+StrangeProcedureCall ("This command is split " +
+                      "over two lines") ; Line continuation example
+```
+
+----------------------------------------
+
+TITLE: Using Attribute Selectors in CSS
+DESCRIPTION: This snippet demonstrates attribute selectors for targeting elements based on their attributes. `[href*="example"]` selects `<a>` tags with `href` containing 'example', and `[class^="top"]` selects elements whose `class` attribute starts with 'top'.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/css/css_consistency.expect.txt#_snippet_7
+
+LANGUAGE: CSS
+CODE:
+```
+a[href*="example"] {}
+[class^="top"] {}
+```
+
+----------------------------------------
+
+TITLE: Defining Container Entrypoint - Dockerfile
+DESCRIPTION: Configures a container that will run as an executable. ENTRYPOINT allows you to configure a container that will run as an executable. There can only be one ENTRYPOINT instruction.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/dockerfile/default.txt#_snippet_11
+
+LANGUAGE: Dockerfile
+CODE:
+```
+ENTRYPOINT ["executable", "param1", "param2"]
+ENTRYPOINT command param1 param2
+```
+
+----------------------------------------
+
+TITLE: Configuring Key with Leading Special Characters - Configuration
+DESCRIPTION: This snippet demonstrates a configuration key that starts with a special character, "*/copilot". It maps the "/__tests__/**" pattern to this key, suggesting a rule for test directories within any 'copilot' path. This highlights flexibility in key naming conventions.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/yaml/special_chars.txt#_snippet_3
+
+LANGUAGE: Configuration
+CODE:
+```
+*/copilot:
+  - "/__tests__/**"
+```
+
+----------------------------------------
+
+TITLE: Formatting a Device with --format-drive-fully (Shell)
+DESCRIPTION: This snippet demonstrates the `format` command used to fully format a specific device, `/dev/devices/driveA`, with confirmation provided by the `-yes` flag. It shows a practical application of device management in a shell environment.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/powershell/flags.expect.txt#_snippet_3
+
+LANGUAGE: Shell
+CODE:
+```
+format /dev/devices/driveA --format-drive-fully -yes
+```
+
+----------------------------------------
+
+TITLE: Using CSS Attribute Selectors
+DESCRIPTION: This snippet illustrates the use of CSS attribute selectors. It includes `[href*="example"]` to select `<a>` elements whose `href` attribute contains 'example', and `[class^="top"]` to select elements whose `class` attribute starts with 'top'.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/stylus/css_consistency.txt#_snippet_5
+
+LANGUAGE: css
+CODE:
+```
+a[href*="example"] {}
+[class^="top"] {}
+```
+
+----------------------------------------
+
+TITLE: Defining Custom Property Accessors in F#
+DESCRIPTION: This snippet demonstrates how to define custom `get` and `set` accessors for a property in F#. The `get` accessor converts an integer `count` to a string, while the `set` accessor is intentionally unimplemented, causing a failure if called. This pattern allows for fine-grained control over property behavior.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/fsharp/types.expect.txt#_snippet_16
+
+LANGUAGE: F#
+CODE:
+```
+with get (count : int) : string = string count
+and set (value : int) : unit = failwith ""
+```
+
+----------------------------------------
+
+TITLE: Defining Package and Library in TOML
+DESCRIPTION: This TOML snippet illustrates the structure for defining a project's package metadata and a library. It includes fields for name, authors, and a multi-line description for the package, and properties like name, boolean flags (default, auto), and an integer counter for the library. It showcases basic TOML syntax for sections, key-value pairs, and data types.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/ini/default.txt#_snippet_0
+
+LANGUAGE: TOML
+CODE:
+```
+; boilerplate
+[package]
+name = "some_name"
+authors = ["Author"]
+description = "This is \
+a description"
+
+[[lib]]
+name = ${NAME}
+default = True
+auto = no
+counter = 1_000
+```
+
+----------------------------------------
+
+TITLE: License and DTS Include for Zynq-7000
+DESCRIPTION: This snippet includes the standard `skeleton.dtsi` file, providing a base Device Tree structure, and contains the GNU General Public License v2 header, outlining the software's distribution and modification terms.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/dts/default.expect.txt#_snippet_0
+
+LANGUAGE: DTS
+CODE:
+```
+/*
+ *  Copyright (C) 2011 - 2014 Xilinx
+ *
+ * This software is licensed under the terms of the GNU General Public
+ * License version 2, as published by the Free Software Foundation, and
+ * may be copied, distributed, and modified under those terms.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+/include/ "skeleton.dtsi"
+```
+
+----------------------------------------
+
+TITLE: Instantiating and Using Device and Rack Objects in PowerShell
+DESCRIPTION: This snippet demonstrates how to instantiate `Rack` and `Device` objects, set their properties, and use the `AddDevice` method to place a `Device` into a `Rack`. It also shows how to display the `Rack` object and query its available slots.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/powershell/classes.expect.txt#_snippet_2
+
+LANGUAGE: PowerShell
+CODE:
+```
+$rack = [Rack]::new()
+
+$surface = [Device]::new()
+$surface.Brand = "Microsoft"
+$surface.Model = "Surface Pro 4"
+$surface.VendorSku = "5072641000"
+
+$rack.AddDevice($surface, 2)
+
+$rack
+$rack.GetAvailableSlots()
+```
+
+----------------------------------------
+
+TITLE: Configuring a BIND DNS Zone File
+DESCRIPTION: This snippet provides a complete example of a BIND DNS zone file, defining essential resource records for a domain. It includes the Start of Authority (SOA) record, Name Server (NS) records, Mail Exchanger (MX) records, IPv4 (A) and IPv6 (AAAA) address records, and Canonical Name (CNAME) alias records. It demonstrates how to set TTLs, define primary and backup nameservers, specify mail routing, map hostnames to IP addresses, and create domain aliases.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/dns/default.txt#_snippet_0
+
+LANGUAGE: DNS Zone File
+CODE:
+```
+$ORIGIN example.com.    ; designates the start of this zone file in the namespace
+$TTL 1h                 ; default expiration time of all resource records without their own TTL value
+example.com.  IN  SOA   ns.example.com. username.example.com. ( 2007120710 1d 2h 4w 1h )
+example.com.  IN  NS    ns                    ; ns.example.com is a nameserver for example.com
+example.com.  IN  NS    ns.somewhere.example. ; ns.somewhere.example is a backup nameserver for example.com
+example.com.  IN  MX    10 mail.example.com.  ; mail.example.com is the mailserver for example.com
+@             IN  MX    20 mail2.example.com. ; equivalent to above line, "@" represents zone origin
+@             IN  MX    50 mail3              ; equivalent to above line, but using a relative host name
+example.com.  IN  A     192.0.2.1             ; IPv4 address for example.com
+              IN  AAAA  2001:db8:10::1        ; IPv6 address for example.com
+ns            IN  A     192.0.2.2             ; IPv4 address for ns.example.com
+              IN  AAAA  2001:db8:10::2        ; IPv6 address for ns.example.com
+www           IN  CNAME example.com.          ; www.example.com is an alias for example.com
+wwwtest       IN  CNAME www                   ; wwwtest.example.com is another alias for www.example.com
+mail          IN  A     192.0.2.3             ; IPv4 address for mail.example.com
+mail2         IN  A     192.0.2.4             ; IPv4 address for mail2.example.com
+mail3         IN  A     192.0.2.5             ; IPv4 address for mail3.example.com
+```
+
+----------------------------------------
+
+TITLE: Access Log Entry: GET Request with 403 Forbidden
+DESCRIPTION: This snippet shows a web server access log entry for a GET request to an index.php file, resulting in a 403 Forbidden status. It includes the client IP, timestamp, request line, status code, response size, referrer, and user agent.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/accesslog/default.expect.txt#_snippet_0
+
+LANGUAGE: Log
+CODE:
+```
+20.164.151.111 - - [20/Aug/2015:22:20:18 -0400] "GET /mywebpage/index.php HTTP/1.1" 403 772 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.220 Safari/535.1"
+```
+
+----------------------------------------
+
+TITLE: Single-line Comment - Fortran
+DESCRIPTION: Illustrates a standard single-line comment in Fortran, typically used for brief explanations or inline notes. The exclamation mark (!) denotes the start of a comment.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/fortran/comments.txt#_snippet_1
+
+LANGUAGE: Fortran
+CODE:
+```
+! another comment
+```
+
+----------------------------------------
+
+TITLE: Implementing 'Hello World' in Mercury
+DESCRIPTION: This snippet demonstrates a basic 'Hello World' program in Mercury. It defines a 'main' predicate, which is the entry point, and uses the 'io' module's 'write_string' predicate to print a message to standard output.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/mercury/default.txt#_snippet_0
+
+LANGUAGE: Mercury
+CODE:
+```
+:- module hello.
+
+
+:- interface.
+:- import_module io.
+
+:- pred main(io::di, io::uo) is det.
+
+
+:- implementation.
+
+main(!IO) :-
+    io.write_string("Hello, world\n", !IO).
+```
+
+----------------------------------------
+
+TITLE: Highlighting Standard Decimal Numbers - Code Example
+DESCRIPTION: This snippet demonstrates how `highlight.js` identifies and highlights various standard decimal number formats, including integers, floating-point numbers, and numbers expressed in scientific notation (for example, `123e3`, `1.23e-3`). It covers positive and negative values, as well as numbers starting with a decimal point.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/r/numbers.expect.txt#_snippet_0
+
+LANGUAGE: Code Example
+CODE:
+```
+0, 01, 08, 123456, 1256.701, 123e3, 123E+3, 1.23e-3, 1.23E3, .25, 2.
+```
+
+----------------------------------------
+
+TITLE: Example Detailed Ethernet Interface Trunk Configuration - Network CLI
+DESCRIPTION: This snippet presents a comprehensive configuration block for a single Ethernet interface (ethernet1/1/1) configured as a trunk port. It includes settings for interface description, administrative status, trunk mode, an extensive list of allowed VLANs, MTU size, and flow control parameters, demonstrating a typical complex interface setup.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/shell/prompt-with-slash.txt#_snippet_3
+
+LANGUAGE: Network CLI
+CODE:
+```
+!
+interface ethernet1/1/1
+ description pao-sw-a03-09_port56
+ no shutdown
+ switchport mode trunk
+ switchport access vlan 1
+ switchport trunk allowed vlan 998,1000,1006,1010,1012-1015,1102,1200,1210,1296,1300-1304,1310-1312,1320-1322,1330-1332,1340-1352,1400-1404,1410-1412,1420-1422,1430-1432,1440-1452,1500-1504,1510-1512,1520-1522,1530-1532,1540-1552,1600-1604,1610-1612,1620-1622,1630-1632,1640-1652,1700-1704,1710-1712,1720-1722,1730-1732,1740-1752,1800-1804,1810-1812,1820-1822,1830-1832,1840-1852,1900-1904,1910-1912,1920-1922,1930-1932,1940-1952,3939
+ mtu 9216
+ flowcontrol receive on
+ flowcontrol transmit off
+```
+
+----------------------------------------
+
+TITLE: Main Function with Variable Declaration and Object Instantiation in Custom Language
+DESCRIPTION: This snippet defines the main entry point function, 'main', which accepts arguments. It demonstrates variable declaration using 'let' and 'var', printing output, and instantiating the 'human' struct.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/golo/default.txt#_snippet_3
+
+LANGUAGE: Custom
+CODE:
+```
+@annotated
+function main = |args| {
+    let a = 1
+    var b = 2
+
+    println("hello")
+
+    let john = human("John Doe")
+}
+```
+
+----------------------------------------
+
+TITLE: Single-line Block Comment in JavaScript
+DESCRIPTION: This snippet illustrates a standard single-line block comment in JavaScript, used for short inline explanations or temporarily disabling code. It starts with /* and ends with */ on the same line.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/javascript/block-comments.expect.txt#_snippet_0
+
+LANGUAGE: JavaScript
+CODE:
+```
+/* Block-Comment */
+```
+
+----------------------------------------
+
+TITLE: Defining a Custom Installer Section in NSIS
+DESCRIPTION: This snippet defines a section named 'section_name' with a given index. Inside this section, `nsExec::ExecToLog` is used to execute `calc.exe` and log its output, demonstrating how to run external commands during installation.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/nsis/default.txt#_snippet_6
+
+LANGUAGE: NSIS
+CODE:
+```
+Section "section_name" section_index
+  nsExec::ExecToLog "calc.exe"
+SectionEnd
+```
+
+----------------------------------------
+
+TITLE: Main Function, Verbatim Strings, and Signal Connection in Vala
+DESCRIPTION: This snippet defines the `main` entry point function, demonstrating the use of a multi-line verbatim string. It also shows how to instantiate the `Foo` class and connect multiple callback functions (`callback_a`, `callback_b`) to its `some_event` signal before emitting the signal.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/vala/default.txt#_snippet_4
+
+LANGUAGE: Vala
+CODE:
+```
+void main () {
+  var long_string = """
+    Example of "verbatim string".
+    Same as in @"string" in C#
+  """;
+  var foo = new Foo ();
+  foo.some_event.connect (callback_a);      // connecting the callback functions
+  foo.some_event.connect (callback_b);
+  foo.method ();
+}
+```
+
+----------------------------------------
+
+TITLE: Installing Highlight.js NPM Package
+DESCRIPTION: This snippet provides commands to install the main Highlight.js NPM package, which includes all supported languages. Users can choose between npm or yarn for package management, making it suitable for Node.js projects or front-end projects using a build system.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/docs/readme.md#_snippet_31
+
+LANGUAGE: Bash
+CODE:
+```
+npm install highlight.js
+# or
+yarn add highlight.js
+```
+
+----------------------------------------
+
+TITLE: Fortran Variable Identifiers
+DESCRIPTION: This snippet shows examples of valid variable identifiers in Fortran. Fortran variable names typically start with a letter and can contain letters, digits, and underscores.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/fortran/numbers.expect.txt#_snippet_1
+
+LANGUAGE: Fortran
+CODE:
+```
+var1
+va1r
+```
+
+----------------------------------------
+
+TITLE: Configuring Nginx HTTP Module and Virtual Host
+DESCRIPTION: This snippet defines the global HTTP settings, including a custom log format, send timeout, client header buffer size, and gzip compression parameters. It also includes a 'server' block for 'one.example.com', demonstrating URL rewriting, proxying requests to a backend, handling API calls via FastCGI, and serving static image files from a specific root directory.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/nginx/default.expect.txt#_snippet_1
+
+LANGUAGE: Nginx
+CODE:
+```
+http {
+    log_format main      '$remote_addr - $remote_user [$time_local] '\n                         '"$request" $status $bytes_sent '\n                         '"$http_referer" "$http_user_agent" '\n                         '"$gzip_ratio"';
+
+    send_timeout 3m;
+    client_header_buffer_size 1k;
+
+    gzip on;
+    gzip_min_length 1100;
+
+    #lingering_time 30;
+
+    server {
+        server_name   one.example.com  www.one.example.com;
+        access_log   /var/log/nginx.access_log  main;
+
+        rewrite (.*) /index.php?page=$1 break;
+
+        location / {
+            proxy_pass         http://127.0.0.1/;
+            proxy_redirect     off;
+            proxy_set_header   Host             $host;
+            proxy_set_header   X-Real-IP        $remote_addr;
+            charset            koi8-r;
+        }
+
+        location /api/ {
+            fastcgi_pass 127.0.0.1:9000;
+        }
+
+        location ~* \.(jpg|jpeg|gif)$ {
+            root         /spool/www;
+        }
+    }
+}
+```
+
+----------------------------------------
+
+TITLE: Adding Single-Line Comment in JavaScript
+DESCRIPTION: This snippet illustrates a standard single-line comment in JavaScript, starting with '//'. Comments are used for code documentation and are ignored by the JavaScript engine during execution.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/dart/string-interpolation.expect.txt#_snippet_1
+
+LANGUAGE: javascript
+CODE:
+```
+// comment
+```
+
+----------------------------------------
+
+TITLE: Deploying an Application - JBoss CLI
+DESCRIPTION: This command deploys a WAR file to the JBoss/WildFly server. It's a common operation for deploying web applications.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/jboss-cli/default.txt#_snippet_1
+
+LANGUAGE: CLI
+CODE:
+```
+deploy /path/to/file.war
+```
+
+----------------------------------------
+
+TITLE: Iterating Over a Collection with For Loop
+DESCRIPTION: Provides an example of a `#for` loop, iterating through each 'friend' in the 'friends' collection and displaying their name within a list item. The loop starts with `#for` and ends with `#endfor`.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/leaf/default.txt#_snippet_4
+
+LANGUAGE: Templating Language
+CODE:
+```
+#for(friend in friends): <li>#(friend.name)</li> #endfor
+```
+
+----------------------------------------
+
+TITLE: Formatting a Specific Device - Shell
+DESCRIPTION: Provides a practical example of using the `format` command to fully format a specific device path (`/dev/devices/driveA`). The `--format-drive-fully` flag is used, and the `-yes` option automatically confirms the operation.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/powershell/flags.txt#_snippet_3
+
+LANGUAGE: Shell
+CODE:
+```
+format /dev/devices/driveA --format-drive-fully -yes
+```
+
+----------------------------------------
+
+TITLE: Handlebars Simple Comment Syntax
+DESCRIPTION: Demonstrates a simple, single-line comment in Handlebars, starting with `{{!` and ending with `}}`. This comment type is typically used for inline notes or to temporarily disable a line of code.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/handlebars/comments.expect.txt#_snippet_2
+
+LANGUAGE: Handlebars
+CODE:
+```
+{{! a simple comment }}
+```
+
+----------------------------------------
+
+TITLE: Implementing 'Hello World' in Mercury
+DESCRIPTION: This snippet presents the canonical 'Hello World' program in Mercury. It defines the `main` predicate, which serves as the entry point for execution, and uses `io.write_string` to print a message to standard output. The `!IO` syntax represents the unique input/output state, crucial for handling side effects in Mercury.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/mercury/default.expect.txt#_snippet_0
+
+LANGUAGE: Mercury
+CODE:
+```
+% "Hello World" in Mercury.
+:- module hello.
+
+
+:- interface.
+:- import_module io.
+
+:- pred main(io::di, io::uo) is det.
+
+
+:- implementation.
+
+main(!IO) :-
+    io.write_string("Hello, world\n", !IO).
+```
+
+----------------------------------------
+
+TITLE: Inserting Installation Files Page in NSIS
+DESCRIPTION: This macro inserts the standard 'Installation Files' page into the installer's sequence. This page typically displays the progress of file extraction and installation to the user.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/nsis/default.txt#_snippet_5
+
+LANGUAGE: NSIS
+CODE:
+```
+!insertmacro MUI_PAGE_INSTFILES
+```
+
+----------------------------------------
+
+TITLE: Inserting NSIS Modern UI Pages
+DESCRIPTION: This snippet inserts the MUI_PAGE_INSTFILES macro, which creates the installation files page in the Modern UI installer, displaying the progress of file extraction.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/nsis/default.txt#_snippet_4
+
+LANGUAGE: NSIS
+CODE:
+```
+!insertmacro MUI_PAGE_INSTFILES
+```
+
+----------------------------------------
+
+TITLE: Starting an Elixir GenServer and Sending a Message
+DESCRIPTION: This snippet demonstrates how to start the 'ListServer' GenServer using 'start_link' and then send an asynchronous message ('{:foo, "bar"}') to its process ID ('pid').
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/elixir/default.txt#_snippet_4
+
+LANGUAGE: Elixir
+CODE:
+```
+{:ok, pid} = ListServer.start_link
+pid <- {:foo, "bar"}
+```
+
+----------------------------------------
+
+TITLE: Copying Files/Directories (Wildcards & Multi-stage) - Dockerfile
+DESCRIPTION: Copies new files or directories from <src> and adds them to the filesystem of the image at the path <dest>. This example includes wildcard usage and copying from a multi-stage build stage named 'foo'.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/dockerfile/default.txt#_snippet_10
+
+LANGUAGE: Dockerfile
+CODE:
+```
+COPY hom* /mydir/        # adds all files starting with "hom"
+COPY hom?.txt /mydir/    # ? is replaced with any single character
+COPY --from=foo / .
+```
+
+----------------------------------------
+
+TITLE: Nix REPL Interactions and Derivation Building
+DESCRIPTION: Demonstrates common interactions within the Nix REPL (Read-Eval-Print Loop), including basic arithmetic and building a derivation using `pkgs.writeText`, along with the resulting output.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/nix/default.expect.txt#_snippet_12
+
+LANGUAGE: Nix
+CODE:
+```
+nix-repl> 1 + 2
+
+3
+nix-repl> :b pkgs.writeText "file.txt" "content"
+
+This derivation produced the following outputs:
+  out -> /nix/store/v5a715bk02cgvb0fv9kby0nsyy1prpy2-file.txt
+[2 built]
+```
+
+----------------------------------------
+
+TITLE: Multi-line Comment Block - Fortran
+DESCRIPTION: Demonstrates a multi-line comment block used for section headers or general documentation within Fortran-like code. Comments in Fortran start with an exclamation mark (!).
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/fortran/comments.txt#_snippet_0
+
+LANGUAGE: Fortran
+CODE:
+```
+!===============================
+!   This is a test subroutine
+!===============================
+```
+
+----------------------------------------
+
+TITLE: Iterating with For-Unless Loop in Maxima
+DESCRIPTION: This snippet uses a `for` loop where `m` starts at 0 and continues unless `m` becomes greater than 10, printing `m` in each iteration. This provides an inverse condition for loop termination.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/maxima/example.expect.txt#_snippet_6
+
+LANGUAGE: Maxima
+CODE:
+```
+for m:0 unless m > 10 do print(m);
+```
+
+----------------------------------------
+
+TITLE: Instantiating OpenStack VM with MySQL (DSL)
+DESCRIPTION: This snippet shows how to instantiate a single 'VM_openstack' component named 'VM_database'. It includes an embedded instance of the 'mysql' component, named 'mysql', demonstrating nested instance definitions.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/roboconf/default.txt#_snippet_7
+
+LANGUAGE: DSL
+CODE:
+```
+instance of VM_openstack {
+	name: VM_database;
+	
+	instance of mysql {
+		name: mysql;
+	}
+}
+```
+
+----------------------------------------
+
+TITLE: Initializing Digital Pin as Output in Arduino (C++)
+DESCRIPTION: The 'setup()' function is executed once when the Arduino board powers up or resets. This snippet configures the 'led' pin (pin 13) as an output pin using the 'pinMode()' function, which is necessary before controlling the LED's state.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/arduino/default.txt#_snippet_1
+
+LANGUAGE: C++
+CODE:
+```
+void setup() {
+  pinMode(led, OUTPUT);
+}
+```
+
+----------------------------------------
+
+TITLE: Creating a Basic Table with Single Primary Key (Compact) in SQL
+DESCRIPTION: This SQL snippet demonstrates how to create a simple `users` table with a single integer column `id` designated as the primary key. It also includes `username` and `email` columns for user information. The `PRIMARY KEY` constraint ensures uniqueness and provides a fast lookup mechanism for records.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/sql/combos.expect.txt#_snippet_0
+
+LANGUAGE: SQL
+CODE:
+```
+CREATE    TABLE    users    (
+    id    INT    PRIMARY   KEY,
+    username   VARCHAR(50),
+    email    VARCHAR(100)
+);
+```
+
+----------------------------------------
+
+TITLE: Implementing For Loops with Ranges and Enumeration (Rust)
+DESCRIPTION: Shows examples of `for` loops in Rust, including iterating over a range and using `enumerate()` to get both index and value. These loops are used for iterating over collections or sequences.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/rust/invoked-keywords.expect.txt#_snippet_2
+
+LANGUAGE: Rust
+CODE:
+```
+for (a, b) in (0..10).enumerate() {}
+for a in 0..10 {}
+```
+
+----------------------------------------
+
+TITLE: Progress Command Examples - Plaintext
+DESCRIPTION: This collection of commands demonstrates various ways to interact with a 'progress' system. It includes examples for setting numerical values (absolute or relative) and managing a progress state using 'push' and 'pop' operations, implying a stack-like behavior.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/subunit/subunit-progressline.expect.txt#_snippet_0
+
+LANGUAGE: Plaintext
+CODE:
+```
+progress: +5
+```
+
+LANGUAGE: Plaintext
+CODE:
+```
+progress: +12
+```
+
+LANGUAGE: Plaintext
+CODE:
+```
+progress: 29
+```
+
+LANGUAGE: Plaintext
+CODE:
+```
+progress: -3
+```
+
+LANGUAGE: Plaintext
+CODE:
+```
+progress: -91
+```
+
+LANGUAGE: Plaintext
+CODE:
+```
+progress: push
+```
+
+LANGUAGE: Plaintext
+CODE:
+```
+progress: pop
+```
+
+----------------------------------------
+
+TITLE: Defining NSIS Installer Sections
+DESCRIPTION: This snippet defines a section named 'section_name' with a specific index. Inside the section, it uses nsExec::ExecToLog to execute calc.exe and log its output, demonstrating a typical action within an installer section.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/detect/nsis/default.txt#_snippet_5
+
+LANGUAGE: NSIS
+CODE:
+```
+Section "section_name" section_index
+  nsExec::ExecToLog "calc.exe"
+SectionEnd
+```
+
+----------------------------------------
+
+TITLE: Counting Elements in a Collection - Templating Language
+DESCRIPTION: This snippet demonstrates the use of the `#count(friends)` function to get the number of items in the 'friends' collection. This count can be used for conditional logic or display.
+
+SOURCE: https://github.com/highlightjs/highlight.js/blob/main/test/markup/leaf/default.txt#_snippet_3
+
+LANGUAGE: Templating Language
+CODE:
+```
+#count(friends)
+```

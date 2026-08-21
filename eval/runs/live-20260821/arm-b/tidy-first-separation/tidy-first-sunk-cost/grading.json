@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies mixed structural and behavioral change",
+      "passed": true,
+      "evidence": "States \"The current commit mixes structural and behavioral changes\" and classifies renames as structural vs. new feature logic as behavioral in an explicit comparison table."
+    },
+    {
+      "text": "Recommends splitting commits or changes",
+      "passed": true,
+      "evidence": "Provides a \"Recommended recovery\" plan with separate Commit A (structural renames with tests green) and Commit B (behavioral feature with TDD), plus rebase/split guidance if the mixed commit was already pushed."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "expectations": [
+    {
+      "text": "Defines a named persona with description",
+      "passed": true,
+      "evidence": "Persona is named \"Reporting Analyst\" with a description paragraph explaining Jordan's role, goals, and pain points related to exporting dashboard data for offline sharing."
+    },
+    {
+      "text": "Success metrics are verifiable without analytics infrastructure",
+      "passed": true,
+      "evidence": "Success metrics use pass/fail tester verification (e.g., \"A tester can export the visible dashboard report and open the resulting CSV in a spreadsheet application\") with no percentage adoption rates, performance timing thresholds, or analytics tracking requirements."
+    }
+  ]
+}

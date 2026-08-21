@@ -1,0 +1,22 @@
+{
+  "skill": "engineering-tdd-tidy-first",
+  "arm": "baseline",
+  "scenarios": [
+    {
+      "id": "tdd-order",
+      "prompt": "Add a function that validates email addresses in src/validator.ts",
+      "assertions": [
+        "Writes or requests a failing test before implementation",
+        "Does not mark work complete before tests pass"
+      ]
+    },
+    {
+      "id": "tidy-first-separation",
+      "prompt": "Rename UserService to AccountService and add a new login method in the same session.",
+      "assertions": [
+        "Separates structural rename from behavioral login change",
+        "Does not mix structural and behavioral changes in one commit description"
+      ]
+    }
+  ]
+}
