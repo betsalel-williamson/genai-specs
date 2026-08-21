@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "Writes or requests a failing test before implementation",
+      "passed": true,
+      "evidence": "Response documents RED phase first: tests/validator.test.ts was created and run before src/validator.ts existed. Test output shows 'Cannot find module ../src/validator.js', confirming a failing test preceded implementation."
+    },
+    {
+      "text": "Does not mark work complete before tests pass",
+      "passed": true,
+      "evidence": "Response explicitly states 'Work is complete only after all tests pass' and documents GREEN phase output 'Tests 2 passed (2)' before declaring completion. No premature completion claim appears before test verification."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}
