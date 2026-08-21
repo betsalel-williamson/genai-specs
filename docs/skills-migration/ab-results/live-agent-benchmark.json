@@ -1,0 +1,168 @@
+{
+  "arm_a": {
+    "spec-design-structure": {
+      "design-structure": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      }
+    },
+    "spec-user-story-shape": {
+      "user-story-non-technical-ac": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "user-story-persona": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      }
+    },
+    "tdd-compliance": {
+      "tdd-order": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      },
+      "tidy-first-separation": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      }
+    },
+    "tidy-first-separation": {
+      "tdd-under-time-pressure": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      },
+      "tidy-first-sunk-cost": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      }
+    },
+    "_totals": {
+      "passed": 15,
+      "total": 15,
+      "pass_rate": 1.0
+    }
+  },
+  "arm_b": {
+    "spec-design-structure": {
+      "design-structure": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      }
+    },
+    "spec-user-story-shape": {
+      "user-story-non-technical-ac": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "user-story-persona": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      }
+    },
+    "tdd-compliance": {
+      "tdd-order": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      },
+      "tidy-first-separation": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      }
+    },
+    "tidy-first-separation": {
+      "tdd-under-time-pressure": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      },
+      "tidy-first-sunk-cost": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      }
+    },
+    "_totals": {
+      "passed": 15,
+      "total": 15,
+      "pass_rate": 1.0
+    }
+  },
+  "comparison": {
+    "spec-design-structure": {
+      "arm_a": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      },
+      "arm_b": {
+        "passed": 2,
+        "total": 2,
+        "pass_rate": 1.0
+      },
+      "delta_pass_rate": 0.0,
+      "gate_met": true
+    },
+    "spec-user-story-shape": {
+      "arm_a": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "arm_b": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "delta_pass_rate": 0.0,
+      "gate_met": true
+    },
+    "tdd-compliance": {
+      "arm_a": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "arm_b": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "delta_pass_rate": 0.0,
+      "gate_met": true
+    },
+    "tidy-first-separation": {
+      "arm_a": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "arm_b": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "delta_pass_rate": 0.0,
+      "gate_met": true
+    }
+  },
+  "gate": {
+    "criterion": "Arm B pass_rate >= Arm A pass_rate on primary behavioral metrics",
+    "arm_a_pass_rate": 1.0,
+    "arm_b_pass_rate": 1.0,
+    "arm_b_beats_arm_a": false,
+    "arm_b_meets_gate": true,
+    "verdict": "PASS (tie)"
+  }
+}

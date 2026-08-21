@@ -1,0 +1,19 @@
+{
+  "expectations": [
+    {
+      "text": "Acceptance criteria use user-observable EARS format",
+      "passed": true,
+      "evidence": "All acceptance criteria use EARS patterns with user-observable outcomes, e.g. \"WHEN I open the settings page THEN I SHALL see a clear option to choose between light and dark appearance\" and \"IF I change appearance on the settings page THEN I SHALL see my choice reflected consistently across all sections of that page\"."
+    },
+    {
+      "text": "No API endpoints or database schemas in acceptance criteria",
+      "passed": true,
+      "evidence": "Acceptance criteria describe only user-visible behavior (appearance options, color scheme changes, readability) with no mention of APIs, databases, configuration flags, or other implementation details."
+    },
+    {
+      "text": "Includes As a / I want / so that structure",
+      "passed": true,
+      "evidence": "User Story section includes: \"As a Accessibility-Conscious Professional\", \"I want to switch the settings page to a dark appearance\", and \"so that I can work comfortably in dim lighting and reduce eye strain without leaving the settings area\"."
+    }
+  ]
+}

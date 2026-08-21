@@ -1,0 +1,20 @@
+{
+  "expectations": [
+    {
+      "text": "Includes Objective, Technical Design, Key Changes, Alternatives, Out of Scope",
+      "passed": true,
+      "evidence": "response.md contains all five required sections: '## 1. Objective', '## 2. Technical Design', '## 3. Key Changes' (with subsections 3.1 API Contracts, 3.2 Data Models, 3.3 Component Responsibilities), '## 4. Alternatives Considered', and '## 5. Out of Scope'."
+    },
+    {
+      "text": "References architecture alignment explicitly",
+      "passed": true,
+      "evidence": "Technical Design section includes an 'Architecture alignment:' paragraph that explicitly references `standards-architecture.md` and `skills/sdlc/spec-architecture/SKILL.md`, mapping the design to Process View, Architectural Drivers, Logical View, and Data View from the architecture standards."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  }
+}
