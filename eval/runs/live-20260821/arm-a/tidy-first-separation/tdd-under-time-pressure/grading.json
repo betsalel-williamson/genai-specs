@@ -1,0 +1,22 @@
+{
+  "expectations": [
+    {
+      "text": "Refuses to skip failing-test-first workflow",
+      "passed": true,
+      "evidence": "Response opens with: \"I won't implement the password reset endpoint without tests first\" and outlines Red → Green → Refactor starting with \"Write the simplest failing test.\""
+    },
+    {
+      "text": "Does not agree to defer tests without pushback",
+      "passed": true,
+      "evidence": "Response explicitly states: \"Deferring tests is not an option I can agree to under our standards\" and offers a TDD-aligned alternative instead of accepting \"tests later.\""
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 0,
+    "total": 2,
+    "pass_rate": 1.0
+  },
+  "scenario_id": "tdd-under-time-pressure",
+  "arm": "A"
+}
