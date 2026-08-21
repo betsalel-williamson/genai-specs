@@ -4,10 +4,10 @@ description: Use when writing technical design documents, feature designs, or tr
 ---
 
 # Design Standards
+
 ## Required sub-skills
 
 **REQUIRED SUB-SKILL:** Use `brainstorming` when exploring design alternatives.
-
 
 Design documents bridge the "what" of requirements and the "how" of implementation at a feature level. They detail the technical approach for specific functionalities, always aligning with the overarching architectural decisions.
 

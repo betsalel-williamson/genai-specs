@@ -1,13 +1,12 @@
 ---
-name: domain-ios
-description: Use when building SwiftUI views, iOS UI composition, or iOS-specific testing for Swift projects.
-paths: "**/*.swift"
+name: domain-pkl
+description: Use when writing or reviewing Pkl configuration, templating, or Pkl language constructs.
+paths: "**/*.pkl"
 ---
 
-# iOS Guidelines
+# Pkl Language Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

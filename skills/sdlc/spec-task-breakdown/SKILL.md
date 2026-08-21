@@ -4,10 +4,10 @@ description: Use when breaking features into tasks, writing task.md files, ACID 
 ---
 
 # Task Standards
+
 ## Required sub-skills
 
 **REQUIRED SUB-SKILL:** Use `writing-plans` when producing implementation plans from tasks.
-
 
 Tasks must be granular, technical work items that implement user stories through code.
 

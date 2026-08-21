@@ -1,13 +1,12 @@
 ---
-name: domain-react
-description: Use when writing or reviewing React components, hooks, JSX, or TSX UI code.
-paths: "**/*.{jsx,tsx}"
+name: domain-docker
+description: Use when writing Dockerfiles, container builds, image hardening, or Docker-based deployment workflows.
+paths: "**/{Dd}ocker*"
 ---
 
-# React Guidelines
+# Docker Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

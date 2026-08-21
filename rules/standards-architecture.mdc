@@ -9,4 +9,4 @@ This rule was migrated to an Agent Skill. Use `skills/sdlc/spec-architecture/SKI
 
 See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
 
-Original description: Architecture Standards
+Original description: DEPRECATED — use skills/sdlc/spec-architecture/SKILL.md

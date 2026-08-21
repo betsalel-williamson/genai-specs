@@ -1,13 +1,12 @@
 ---
-name: domain-swift
-description: Use when writing or reviewing Swift language code, concurrency, or Swift-specific patterns.
-paths: "**/*.swift"
+name: domain-python
+description: Use when writing or reviewing Python code or Python project conventions.
+paths: "**/*.py"
 ---
 
-# Swift Guidelines
+# Python Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

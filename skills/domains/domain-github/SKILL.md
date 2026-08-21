@@ -1,13 +1,12 @@
 ---
-name: domain-javascript
-description: Use when writing or reviewing JavaScript code, ES modules, or JS-specific patterns.
-paths: "**/*.js"
+name: domain-github
+description: Use when configuring GitHub Actions workflows, CI YAML, or Makefile-based GitHub automation.
+paths: ".github/**/*.yml,.github/**/*.yaml,Makefile"
 ---
 
-# JavaScript Guidelines
+# GitHub Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

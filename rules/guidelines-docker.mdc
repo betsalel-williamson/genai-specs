@@ -1,12 +1,12 @@
 ---
-description: DEPRECATED — use skills/domains/docker/SKILL.md
+description: DEPRECATED — use skills/domains/domain-docker/SKILL.md
 alwaysApply: false
 ---
 
 # Deprecated
 
-This rule was migrated to an Agent Skill. Use `skills/domains/docker/SKILL.md` instead.
+This rule was migrated to an Agent Skill. Use `skills/domains/domain-docker/SKILL.md` instead.
 
 See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
 
-Original description: Docker Guidelines
+Original description: DEPRECATED — use skills/domains/docker/SKILL.md

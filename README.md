@@ -18,9 +18,12 @@ Migration docs: [`docs/skills-migration/`](docs/skills-migration/). Refresh skil
 
 ```bash
 ./scripts/translate-specs-to-skills.sh
+./scripts/setup-cursor-skills.sh
 ```
 
 Legacy `rules/*.mdc` files are deprecation stubs pointing to skills. Original guideline shards remain in `guidelines/` during transition.
+
+Install skills in Cursor-compatible projects by cloning this repo and running `./scripts/setup-cursor-skills.sh` (creates `.cursor/skills` → `skills/`; `.cursor/` is gitignored).
 
 ## What This Was
 

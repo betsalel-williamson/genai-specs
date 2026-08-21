@@ -9,4 +9,4 @@ This rule was migrated to an Agent Skill. Use `skills/sdlc/spec-guideline-author
 
 See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
 
-Original description: Guidelines Standards
+Original description: DEPRECATED — use skills/sdlc/spec-guideline-authoring/SKILL.md

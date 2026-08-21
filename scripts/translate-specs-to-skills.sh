@@ -14,6 +14,9 @@ python3 scripts/create-skill-templates.py
 echo "==> Writing rule deprecation stubs"
 python3 scripts/deprecate-rules.py
 
+echo "==> Linking .cursor/skills for Cursor discovery"
+bash scripts/setup-cursor-skills.sh
+
 echo "==> Done. Skills live under skills/"
 echo "    Docs: docs/skills-migration/"
 echo "    Eval: eval/harness/run_arm.sh [A|B|C|D]"

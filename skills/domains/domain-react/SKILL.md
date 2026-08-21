@@ -1,13 +1,12 @@
 ---
-name: domain-github
-description: Use when configuring GitHub Actions workflows, CI YAML, or Makefile-based GitHub automation.
-paths: ".github/**/*.yml,.github/**/*.yaml,Makefile"
+name: domain-react
+description: Use when writing or reviewing React components, hooks, JSX, or TSX UI code.
+paths: "**/*.{jsx,tsx}"
 ---
 
-# GitHub Guidelines
+# React Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

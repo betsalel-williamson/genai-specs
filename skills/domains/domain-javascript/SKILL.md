@@ -1,13 +1,12 @@
 ---
-name: domain-pkl
-description: Use when writing or reviewing Pkl configuration, templating, or Pkl language constructs.
-paths: "**/*.pkl"
+name: domain-javascript
+description: Use when writing or reviewing JavaScript code, ES modules, or JS-specific patterns.
+paths: "**/*.js"
 ---
 
-# Pkl Language Guidelines
+# JavaScript Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

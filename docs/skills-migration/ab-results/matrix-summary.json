@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-08-21T17:45:55.905818+00:00",
+  "skill_count": 30,
+  "trigger_summary": [
+    {
+      "file": "domain-typescript-triggers.json",
+      "skill": "domain-typescript",
+      "total": 10,
+      "should_trigger": 5,
+      "should_not_trigger": 5
+    },
+    {
+      "file": "spec-user-story-triggers.json",
+      "skill": "spec-user-story",
+      "total": 16,
+      "should_trigger": 8,
+      "should_not_trigger": 8
+    }
+  ],
+  "scenario_dirs": [
+    "spec-design-structure",
+    "spec-user-story-shape",
+    "tdd-compliance",
+    "tidy-first-separation"
+  ],
+  "arms": [
+    "arm-A-20260821-172055.md",
+    "arm-A-20260821-174555.md",
+    "arm-B-20260821-172055.md",
+    "arm-B-20260821-174555.md",
+    "arm-C-20260821-172055.md",
+    "arm-C-20260821-174555.md",
+    "arm-D-20260821-172055.md",
+    "arm-D-20260821-174555.md"
+  ],
+  "gate": "Run agent scenarios per eval/sdlc/*; Arm B must beat Arm A on primary behavioral metrics"
+}

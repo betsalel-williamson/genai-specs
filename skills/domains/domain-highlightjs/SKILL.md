@@ -1,13 +1,12 @@
 ---
-name: domain-xcode
-description: Use when debugging in Xcode, profiling performance, or configuring xcodebuild simulator destinations.
-paths: "**/*.swift"
+name: domain-highlightjs
+description: Use when contributing Highlight.js language definitions or syntax highlighting for JS/TS code.
+paths: "**/*.{js,ts,jsx,tsx}"
 ---
 
-# Xcode Guidelines
+# Highlight.js Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

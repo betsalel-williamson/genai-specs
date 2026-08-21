@@ -16,6 +16,8 @@ Tracking issue: <https://github.com/betsalel-williamson/genai-specs/issues/5>
 
 See [overlap-matrix.md](overlap-matrix.md) and [rules-to-skills-mapping.md](rules-to-skills-mapping.md).
 
+Cursor loads skills via `.cursor/skills` symlink (run `./scripts/setup-cursor-skills.sh`). See [taxonomy-rationale.md](taxonomy-rationale.md).
+
 ## A/B experiment matrix
 
 | Arm | Configuration |

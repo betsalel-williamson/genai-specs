@@ -4,10 +4,10 @@ description: Use when designing agent evals, verifying TDD or Tidy First complia
 ---
 
 # Verification Protocol
+
 ## Required sub-skills
 
 **REQUIRED SUB-SKILL:** Use `verification-before-completion` before claiming eval or migration success.
-
 
 Framework for verifying correct adherence to configured standards and instructions.
 

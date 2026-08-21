@@ -1,0 +1,16 @@
+[
+  {
+    "file": "domain-typescript-triggers.json",
+    "skill": "domain-typescript",
+    "total": 10,
+    "should_trigger": 5,
+    "should_not_trigger": 5
+  },
+  {
+    "file": "spec-user-story-triggers.json",
+    "skill": "spec-user-story",
+    "total": 16,
+    "should_trigger": 8,
+    "should_not_trigger": 8
+  }
+]

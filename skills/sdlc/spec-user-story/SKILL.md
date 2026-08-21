@@ -4,10 +4,10 @@ description: Use when writing user stories, capturing requirements, defining per
 ---
 
 # User Story Standards
+
 ## Required sub-skills
 
 **REQUIRED SUB-SKILL:** Use `brainstorming` before creative requirements work.
-
 
 User stories must capture end-user value and follow the standard format. They focus on what users experience and achieve, not on technical implementation details. Technical requirements belong in design documents, not user stories.
 
@@ -89,11 +89,13 @@ Include verifiable success criteria that can be easily tested:
 - **Avoid Unverifiable Metrics**: Do not include metrics that require complex analytics, user tracking, or long-term data collection
 
 **Good Examples:**
+
 - ✅ "Users can successfully complete the primary action" (verifiable through testing)
 - ✅ "Error messages appear for invalid inputs" (verifiable through testing)
 - ✅ "Feature works across supported browsers" (verifiable through testing)
 
 **Bad Examples:**
+
 - ❌ "95% of users complete the action successfully" (requires analytics tracking)
 - ❌ "Users complete the action in under 3 seconds" (requires performance measurement)
 - ❌ "80% user adoption rate" (requires long-term usage tracking)

@@ -1,12 +1,12 @@
 ---
-description: DEPRECATED — use skills/domains/github/SKILL.md
+description: DEPRECATED — use skills/domains/domain-github/SKILL.md
 alwaysApply: false
 ---
 
 # Deprecated
 
-This rule was migrated to an Agent Skill. Use `skills/domains/github/SKILL.md` instead.
+This rule was migrated to an Agent Skill. Use `skills/domains/domain-github/SKILL.md` instead.
 
 See [docs/skills-migration/rules-to-skills-mapping.md](../docs/skills-migration/rules-to-skills-mapping.md).
 
-Original description: GitHub Guidelines
+Original description: DEPRECATED — use skills/domains/github/SKILL.md

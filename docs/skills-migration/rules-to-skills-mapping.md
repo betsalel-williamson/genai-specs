@@ -33,18 +33,18 @@ Complete mapping from legacy `rules/*.mdc` to Agent Skills.
 
 | Source rule | Skill name | Skill path | paths |
 |-------------|------------|------------|-------|
-| guidelines-typescript.mdc | domain-typescript | skills/domains/typescript/ | `**/*.{ts,tsx}` |
-| guidelines-javascript.mdc | domain-javascript | skills/domains/javascript/ | `**/*.js` |
-| guidelines-react.mdc | domain-react | skills/domains/react/ | `**/*.{jsx,tsx}` |
-| guidelines-python.mdc | domain-python | skills/domains/python/ | `**/*.py` |
-| guidelines-swift.mdc | domain-swift | skills/domains/swift/ | `**/*.swift` |
-| guidelines-ios.mdc | domain-ios | skills/domains/ios/ | `**/*.swift` |
-| guidelines-xcode.mdc | domain-xcode | skills/domains/xcode/ | `**/*.swift` |
-| guidelines-docker.mdc | domain-docker | skills/domains/docker/ | `**/{Dd}ocker*` |
-| guidelines-github.mdc | domain-github | skills/domains/github/ | `.github/**/*.yml,.github/**/*.yaml,Makefile` |
-| guidelines-pkl.mdc | domain-pkl | skills/domains/pkl/ | `**/*.pkl` |
-| guidelines-highlightjs.mdc | domain-highlightjs | skills/domains/highlightjs/ | `**/*.{js,ts,jsx,tsx}` |
-| guidelines-testing.mdc | domain-testing | skills/domains/testing/ | `**/*.test.*` |
+| guidelines-typescript.mdc | domain-typescript | skills/domains/domain-typescript/ | `**/*.{ts,tsx}` |
+| guidelines-javascript.mdc | domain-javascript | skills/domains/domain-javascript/ | `**/*.js` |
+| guidelines-react.mdc | domain-react | skills/domains/domain-react/ | `**/*.{jsx,tsx}` |
+| guidelines-python.mdc | domain-python | skills/domains/domain-python/ | `**/*.py` |
+| guidelines-swift.mdc | domain-swift | skills/domains/domain-swift/ | `**/*.swift` |
+| guidelines-ios.mdc | domain-ios | skills/domains/domain-ios/ | `**/*.swift` |
+| guidelines-xcode.mdc | domain-xcode | skills/domains/domain-xcode/ | `**/*.swift` |
+| guidelines-docker.mdc | domain-docker | skills/domains/domain-docker/ | `**/{Dd}ocker*` |
+| guidelines-github.mdc | domain-github | skills/domains/domain-github/ | `.github/**/*.yml,.github/**/*.yaml,Makefile` |
+| guidelines-pkl.mdc | domain-pkl | skills/domains/domain-pkl/ | `**/*.pkl` |
+| guidelines-highlightjs.mdc | domain-highlightjs | skills/domains/domain-highlightjs/ | `**/*.{js,ts,jsx,tsx}` |
+| guidelines-testing.mdc | domain-testing | skills/domains/domain-testing/ | `**/*.test.*` |
 
 Each domain skill includes `references/` copied from `guidelines/{stack}/`.
 

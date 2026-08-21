@@ -1,13 +1,12 @@
 ---
-name: domain-docker
-description: Use when writing Dockerfiles, container builds, image hardening, or Docker-based deployment workflows.
-paths: "**/{Dd}ocker*"
+name: domain-xcode
+description: Use when debugging in Xcode, profiling performance, or configuring xcodebuild simulator destinations.
+paths: "**/*.swift"
 ---
 
-# Docker Guidelines
+# Xcode Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

@@ -4,10 +4,10 @@ description: Use when implementing features, fixing bugs, or refactoring code wh
 ---
 
 # Development Process Standards
+
 ## Required sub-skills
 
 **REQUIRED SUB-SKILL:** Use `test-driven-development` for the Red-Green-Refactor cycle.
-
 
 All implementation must follow Test-Driven Development (TDD) and "Tidy First" methodology.
 

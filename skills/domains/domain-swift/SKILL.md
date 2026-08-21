@@ -1,13 +1,12 @@
 ---
-name: domain-testing
-description: Use when writing tests, test strategy, BDD scenarios, or CSV/assertion patterns in test files.
-paths: "**/*.test.*"
+name: domain-swift
+description: Use when writing or reviewing Swift language code, concurrency, or Swift-specific patterns.
+paths: "**/*.swift"
 ---
 
-# Testing Guidelines
+# Swift Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

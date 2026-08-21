@@ -1,13 +1,12 @@
 ---
-name: domain-python
-description: Use when writing or reviewing Python code or Python project conventions.
-paths: "**/*.py"
+name: domain-typescript
+description: Use when writing, reviewing, or refactoring TypeScript or TSX code, types, modules, or TS-specific tests.
+paths: "**/*.{ts,tsx}"
 ---
 
-# Python Guidelines
+# TypeScript Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 

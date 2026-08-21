@@ -1,13 +1,12 @@
 ---
-name: domain-typescript
-description: Use when writing, reviewing, or refactoring TypeScript or TSX code, types, modules, or TS-specific tests.
-paths: "**/*.{ts,tsx}"
+name: domain-ios
+description: Use when building SwiftUI views, iOS UI composition, or iOS-specific testing for Swift projects.
+paths: "**/*.swift"
 ---
 
-# TypeScript Guidelines
+# iOS Guidelines
 
 See [references/index.md](references/index.md) for the full index.
-
 
 ## Progressive loading
 
